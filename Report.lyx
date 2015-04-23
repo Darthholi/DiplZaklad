@@ -1,0 +1,290 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Přečetl jsem si dárečkovou knížku, ještě jednou děkuju (zatím jsem jí četl
+ elektronicky a bude se mi navíc, jako bonus, hodit i jako příprava ke státnícím
+, protože obsahuje i mechaniku kontinua) a díky ní se cítím jistější co
+ se týče rovnic pro elektrolyzér, baterie, články a fotovoltaiku.
+ (Protože simulujeme celý systém tak jsem bral zatím samozřejmě nejjednodušší
+ modely - s modely s PDR by to bylo neupočitatelné.)
+\end_layout
+
+\begin_layout Standard
+Poslední dobu jsem strávil programováním samotné optimalizace.
+ Z modelů, co jsem posílal v textu minule, jsem vybral následující:
+\end_layout
+
+\begin_layout Standard
+Pro elektrolyzér jsem použil tenhle model: (s teplotou zatím danou konstantně)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T^{2})\log(\frac{t_{1}+t_{2}/T+t_{3}/T^{2}}{A_{elec}}I_{elec}+1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pro palivový článek tenhle model: 
+\begin_inset Formula 
+\begin{eqnarray*}
+V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\\
+V_{o} & = & V_{rev,FC}+B\log(i_{o})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Chtěl jsem vzít modely (případně jen jejich konstanty) od pana Doučka, nicméně
+ ten mi neodpověděl už na dva emaily, takže to na vědátorské partnerství
+ moc nevypadá.
+\end_layout
+
+\begin_layout Standard
+Data generované solární energie a spotřeby beru odsuď: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.networkrevolution.co.uk/project-library/dataset-tc5-enhanced-profiling-s
+olar-photovoltaic-pv-users/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(Pro algoritmus neberu přímo data osvitu, protože to by zpomalovalo výpočet.
+ Vstupem je už vypočítaný výkon solárních článků a vyžadovaná spotřeba.
+ Pokud máme data osvitu, pak samozřejmě lze výkon solárních panelů předgenerovat.
+)
+\end_layout
+
+\begin_layout Standard
+Momentálně jsem ponořený do numerických kouzel a čtu tématickou a detailní
+ knížku 
+\begin_inset Quotes eld
+\end_inset
+
+nonlinear and dynamic optimization
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://workspace.imperial.ac.uk/people/Public/chemicalengineering/b.chachuat/ic-32_
+secured.pdf
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Obecně jde říct, že je po internetu velice mnoho velice drahých optimalizačních
+ programů a balíků, nicméně povedlo se mi sehnat nějaké dobré výjmky zdarma.
+\end_layout
+
+\begin_layout Standard
+Nejpve jsem pro optimalizaci použil balíček jménem ACADO (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://acado.github.io/
+\end_layout
+
+\end_inset
+
+), bohužel ten momentálně hlásí, že problém je špatně podmíněný.
+ Tak jsem přesedlal na MATLAB (a také na OPTI toolbox 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.i2c2.aut.ac.nz/Wiki/OPTI/
+\end_layout
+
+\end_inset
+
+), který podobnou chybou netrpí (můj odhad je, že je to dáno tím, že matlab
+ má implementovanou větší přesnost, než typ double ....
+ nicméně taky výpočty trvají delší dobu).
+\end_layout
+
+\begin_layout Standard
+Tyhle dvě věty zní dost stručně, ale když se mi nakonec algoritmus povedlo
+ v MATLABu rozběhnout, tak jsem měl radost každopádně nepopsatelnou.
+ Takže mám teď celkem hodně zdrojových kódů, které můžu dát k práci do příloh
+ (v MATLABu jsem zkoušel jak metodu 
+\begin_inset Quotes eld
+\end_inset
+
+direct single shooting", tak metodu 
+\begin_inset Quotes eld
+\end_inset
+
+direct multiple shooting", která je pro náš problém asi nejlepší).
+\end_layout
+
+\begin_layout Itemize
+Momentálně mám špatně (protože nahodile) nastavené konstanty (elektorlyzéru
+ a článků), takže algoritmus hlásí, že se nevyplácí generovat energii do
+ vodíku a používá jen baterie.
+ Zkusil bych najít nějaké zdroje které mají tyhle konstanty nastavené podle
+ skutečných produktů.
+\end_layout
+
+\begin_layout Itemize
+Samotný algoritmus zatím spouštím s nižší přesností (kontrolní funkce zdiskretiz
+ovaná na 256 uzlů...
+ to zní jako celkem málo, ale jedná se o hledání optima v 256 dimenzionálním
+ prostoru), protože na požadovanou přesnost mi nestačí paměť počítače.
+\end_layout
+
+\begin_layout Itemize
+Konvergence se průběžně dosahuje v patnácti iteracích.
+ Protože jedna iterace trvá u 256 uzlů neůměrně dlouho, zkouším si nastudovat
+ metodu výpočtu derivací pomocí dopředné sensitivity.
+ (Ale zase v nejhorším případě patnáct dní výpočtu stojí za nalezení optimální
+ konfigurace co ušetří spoustu peněz.)
+\end_layout
+
+\begin_layout Itemize
+Jen pro zajímavost - kouknul jsem se i jak dělá optimalizaci konkurence
+ - přímo i na kurzu o neurálních sítích se říká, že neurální sítě se používají
+ pouze v případech, kdy nemáme k dispozici rovnice.
+ Takže je dobře, že jsme na začátku rovnou řekli, že touhle cestou jít nechceme.
+\end_layout
+
+\begin_layout Standard
+Takže celkově se teď snažím rozběhat nějaký testovací případ.
+ Pak můžu přidat detaily na kráse, jako například modelování teploty (případně
+ jen její zadání okrajovou podmínkou jakožto venkovní teplotou); prográmek
+ co z osvitu nageneruje výkon pro algoritmus; simultánní optimalizaci konstrukčn
+ích parametrů (vznešená fráze do diplomové práce pro 
+\begin_inset Quotes eld
+\end_inset
+
+jak velký elektrolyzér koupit") a samozřejmě nějakou poznámku o existenci
+ a jednoznačnosti minima.
+\end_layout
+
+\begin_layout Standard
+Dál -
+\end_layout
+
+\begin_layout Standard
+-A pridelat fitting pro solary a programek na generovani dat elektriky z
+ osvitu
+\end_layout
+
+\begin_layout Standard
+(DIary: stejne jako jsem se musel naucit fyziku kvuli rovnicim, tak ted
+ musim pochopit numeriku a nelin prog kvuli tomu ze to nekonverguje.
+ Nasel sem dobrej zdroj a zkousel nasledujici veci: lin modely, acado,matlab,
+ matlab singleshooting there is so much tricks that it is impossible to
+ try to program it :D Doucek neodpovida.
+ Nejsem backora a nebudu pouzivat neuralni site.
+ Multiplshooting pomohl, timeinterval pomohl.
+ trva to jen hrzone dlouho.
+ Ted jak pujde OPTI dava totez.
+ Takze zda se ze problem je v tom, ze se mu spatne integruje ten system.
+ ....pozn scaling je dobrej protoze v casovy ose zrychli vypocty a na ose controls
+ muze zaridit rychlejsi konvergenci (protoze delka kroku je jedna..).
+ Note tyhle metody fungujou jako newton na derivaci nula s trikem hlidani,
+ ze se cena skutecne zmensuje nebo zvetsuje.
+ No je to kurna pomaly.
+ Pomohly by sensitivity.
+ Coz uvazovat ze ty dalsi parametry neovlivnujou sensitivitu? Ok.)
+\end_layout
+
+\begin_layout Standard
+Dano do diplomky jako zdroje:
+\end_layout
+
+\begin_layout Standard
+-[Sensitivity20061553,OptcontrNLP,ottanumerical,vepa2013dynamic]milyutin1999calc
+ulus,Abdelkafi20141,Sarioglu20147,Taher2014268,Cai2014212,rayment2003introductio
+n (precist jeste jednou pro jistotu)
+\end_layout
+
+\end_body
+\end_document
