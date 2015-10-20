@@ -148,11 +148,19 @@
 
 \begin_layout Title
 Optimization of operation of renewable electric energy sources based on
- fuel cells, accumulators and FV panels for small powers
-\begin_inset Newpage pagebreak
-\end_inset
+ fuel cells, accumulators and PV panels for small powers
+\end_layout
 
+\begin_layout Standard
+Abstract
+\end_layout
 
+\begin_layout Standard
+The first part of the research is motivated to provide citations deeper
+ to the literature of optimal control principles that could be linked to
+ the system optimization problem, discuss these principles and ways to apply
+ them (also with a reminder to cite needed proofs, for example of existence
+ of minima).
 \end_layout
 
 \begin_layout Part*
@@ -160,15 +168,15 @@ Motivation and introduction
 \end_layout
 
 \begin_layout Standard
-For better understanding of the whole text, lets imagine a model problem,
- which we can follow through the entire work.
+For better understanding of the whole problem and work, lets imagine a model
+ situation, that we can follow.
  Lets say, we want to make an energy independent unit - ecologic house,
  for example.
 \end_layout
 
 \begin_layout Standard
-Lets add renewable energy source (fotovoltaic panels) and a system for storing
- energy.
+Lets add renewable energy source (photovoltaic panels) and a system for
+ storing energy.
  Batteries alone are not sufficient, because they would need to be changed,
  due to degradation.
  So lets add availible hydrogen technologies - electrolyzer, hydrogen tank,
@@ -185,8 +193,8 @@ nt as much as possible (minimizing the consumption of backup energy or energy
 status open
 
 \begin_layout Plain Layout
-In this work we want not only solving this problem, but also to make this
- text usefull for future coworkers,
+In this work not only do we want to solve this problem, but also to make
+ this text usefull for future coworkers,
 \end_layout
 
 \end_inset
@@ -196,7 +204,7 @@ In this work we want not only solving this problem, but also to make this
 
 \begin_layout Standard
 For now, lets look at the theoretical and practical tools needed to solve
- this problem - in the following part 
+ this problem in the following part 
 \begin_inset Quotes eld
 \end_inset
 
@@ -207,12 +215,22 @@ research and previous works
 .
  Later we will return to our model problem, and we will use the tools to
  analyze the setting and rewrite it into mathematical formulation.
- Next we will state arising interesting questions, which we will try to
- answer - to complement other works.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Next we will state arising interesting questions, which we will try to answer
+ - to complement other works.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Lastly, there will be a brief note about developed computer program.
+Lastly, there will be a brief note about the developed algorithms.
 \end_layout
 
 \begin_layout Standard
@@ -228,16 +246,42 @@ At our disposition we will have (or will develop) model for the system with
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
+\begin_inset Float figure
+placement b
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename System.jpg
-	lyxscale 50
+	filename Schema-copy.png
+	lyxscale 40
+	width 45text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename instalace.jpg
+	lyxscale 40
+	width 45text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schema of functional units (left) and a photo of existing installation in
+ ÚJV Řež (right) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UJVInst"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -254,7 +298,7 @@ Research and previous works
 \end_layout
 
 \begin_layout Standard
-Lets summarize other works and interesting ideas from the relevant fields.
+Lets look at other works and summarize concepts from the relevant fields.
 \end_layout
 
 \begin_layout Section*
@@ -276,9 +320,9 @@ key "EnergyAccumulation"
 
 \end_inset
 
- and creates a possibility for research of various systems and using mathematica
-l tools to model and optimize theese systems.
- One example of such a system are the standalone energetic units 
+ and create a possibility for research of various systems using mathematical
+ tools to model and optimize these systems.
+ One example of such a system are standalone energetic units 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "MassimoStandalone"
@@ -289,7 +333,7 @@ key "MassimoStandalone"
 \end_layout
 
 \begin_layout Standard
-Some possibilities of optimization theese standalone systems are sumarized
+Some possibilities of optimization of these standalone systems are summarized
  in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -305,7 +349,7 @@ key "IpsakisPowerManagmentStrategies"
 
 \end_inset
 
-), and some work is also focused on specific installations 
+), and some works are also focused on specific installations 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abdelkafi20141"
@@ -334,11 +378,37 @@ key "Cai2014212"
 \end_inset
 
 .
+ Also optimization problems are solved for vehicles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maalej2014668"
+
+\end_inset
+
+.
+ In the article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CaliseSingleLevel"
+
+\end_inset
+
+, there is proposed an optimal system even for the powerplant of SOFC (solid
+ oxide fuel cell) type.
+ Practical measurements of standalone systems efficiency are described together
+ with theoretical background in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VyrobaAVyuziti"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Application of optimization in the theory of optimal control is described
- in the books 
+From the other side, practical application of optimization in the theory
+ of optimal control is described in the books 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EvansControlCourse"
@@ -361,14 +431,15 @@ key "Warga1972optimal"
 
 .
  An example of a method used for global optimization is an application of
- metropolis algorithm, so called Simulated Annealing 
+ metropolis algorithm, so called Simulated annealing 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "SimulatedAnnealing"
 
 \end_inset
 
- (that is used too for the design of electric circuits or in chemistry 
+ (that was originally used for the design of electric circuits or in chemistry
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Chaudhuri1997733"
@@ -376,8 +447,8 @@ key "Chaudhuri1997733"
 \end_inset
 
 ).
- There is even a method taking in account the uncertainity of data, Stochastic
- Annealing 
+ There is even a method taking in account the uncertainity of data, called
+ Stochastic annealing 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PaintonStochastic"
@@ -392,43 +463,27 @@ key "GiannakoudisOptimumDesign"
 
 \end_inset
 
- for optimization of the parameters of the control strategy.
+ for optimization of the parameters of a control strategy.
 \end_layout
 
 \begin_layout Standard
-Another interesting principle, the Pontryagin principle, is used to prolong
- the lifetime of such systems 
+Another interesting optimization principle, the Pontryagin principle, is
+ used to prolong the lifetime of such systems 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "XuPontryaginStrategy,ProlongingLifetime,ZhengPontryaginProlonging"
 
 \end_inset
 
-, or optimization problems are solved for vehicles 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Maalej2014668"
-
-\end_inset
-
 .
- In the article 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CaliseSingleLevel"
-
-\end_inset
-
-, there is proposed an optimal system even for the powerplant of SOFC (solid
- oxide fuel cell) type.
 \end_layout
 
 \begin_layout Standard
-Needed to say, that often, new algorithms of global optimization are being
+Needed to say, that new algorithms of global optimization are often being
  used (ex.
  particle swarm, or genetic algorithms).
- For theese algorithms, the question of convergence is still an open problem
- (about this and another possibilities of algorithms is the text 
+ For these algorithms, the question of convergence is still an open problem
+ (about this and another possibilities of such algorithms see the text 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ExperimentalAlgorithms"
@@ -508,10 +563,11 @@ key "vepa2013dynamic"
 
 ), complex models (with PDEs) are used for complicated problems and for
  detailed desription of inside processes (for example in a battery), but
- theese models arent meant and suited for simulations.
+ these models aren't meant and suited for simulations taking longer time
+ or scale.
  More simple models with less variables (for example like curve fitting)
- are better in case we need to evaluate the model more times (as in our
- case).
+ are better in case in which we do need to evaluate the model more times
+ per run (as in our case).
 \end_layout
 
 \begin_layout Subsection*
@@ -520,18 +576,25 @@ Photovoltaics
 
 \begin_layout Standard
 When looking at photovoltaic (PV) panels, if we want a better model than
- saying 
+ just saying 
 \begin_inset Quotes eld
 \end_inset
 
 general power source", we need to consider that the photoelectric effect
  (the power source) happens at the P-N junction, which is, of course, a
- diode, and that there is some ressistance present.
- Thats the reason, why the following equivalent circuit 
+ diode, and that there is also some ressistance present.
+ Thats the reason, why the following (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5-parameter-equivalent"
+
+\end_inset
+
+) equivalent circuit - 
 \begin_inset Quotes eld
 \end_inset
 
-5 parameter circuit" is used (there exists even the so called 
+5 parameter circuit" - is used (there exists even the so called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -540,17 +603,41 @@ general power source", we need to consider that the photoelectric effect
 \end_layout
 
 \begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement O
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename 275px-Solar_cell_equivalent_circuit.svg.png
 
 \end_inset
 
 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5-parameter-equivalent"
+
+\end_inset
+
+5 parameter equivalent circuit for photovoltaic panel
 \end_layout
 
-\begin_layout Standard
-Contruction details, like material used (single crystalline silicon, polycrystal
-line and semicrystalline, thin films, amorphous silicon, spheral) or additional
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Construction details, like material used (single crystalline silicon, polycrysta
+lline and semicrystalline, thin films, amorphous silicon, spheral...) or additional
  tricks (concentrated cells, lens, antireflexive and other coating) affect
  the parameters and the efficiency.
  
@@ -637,7 +724,7 @@ description "Power from photovoltaic model circuit ($J$)"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$G$"
-description "Incident radiation"
+description "Incident radiation ($W/m^2$)"
 
 \end_inset
 
@@ -648,7 +735,7 @@ description "Incident radiation"
 \begin_inset Formula $T$
 \end_inset
 
- surface temperature
+ surface temperature (in kelvins)
 \end_layout
 
 \begin_layout Itemize
@@ -800,8 +887,8 @@ description "effectivity of photovoltaic output power"
 \end_layout
 
 \begin_layout Standard
-Parameters used to characterize the output of the unit are short circuit
- current, open circuit voltage and maximum power point.
+Parameters commonly used to characterize the output of the unit are: short
+ circuit current, open circuit voltage and maximum power point.
  Nice derivation is in the work 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -809,10 +896,9 @@ key "Stand-alonePowerSystems"
 
 \end_inset
 
- together with a method how to compute the parameters from manufacturers
- supplied information from datasheet and notes on behavior with changing
- temperature and finally even a fortran code for PV panels.
- Also, the efficiency of PV energy generation is said to be from 5 to 20%.
+ together with a method on how to compute the parameters from manufacturer
+ supplied information from datasheet, notes on behavior with changing temperatur
+e, and finally even a fortran code for PV panels.
  
 \begin_inset Note Note
 status open
@@ -838,6 +924,7 @@ key "olubukunmi2011solar"
 
 , there is deeper description and analysis and measurement of output power
  dependency on illumination and even thermal effects.
+ The efficiency of PV energy generation is said to be from 5 to 20%.
 \end_layout
 
 \begin_layout Standard
@@ -860,7 +947,7 @@ key "beyer2004robust,salas2006review"
 
 \end_inset
 
-, even using neural networks is considered 
+, also using neural networks is considered 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caluianu2011photovoltaic"
@@ -915,12 +1002,14 @@ Battery
 
 \begin_layout Standard
 Why to use both batteries and hydrogen (tanks) to store energy? Batteries
- have higher efficiency, but cant store as much energy as we can with hydrogen.
+ have higher efficiency, but can not store as much energy as we can with
+ hydrogen.
  Moreover, the state of charge of batteries tends to decrease and batteries
  tends to lose quality over time.
  But using them as quick source, or buffer of energy, is generally a good
- idea, moreover in case, where electrolyzer works better at lower loads,
- battery can lower the load by taking it on itself.
+ idea.
+ Moreover, in a case, where electrolyzer works more efficiently at lower
+ loads, battery can lower the load by taking it on itself.
 \begin_inset Note Note
 status open
 
@@ -934,8 +1023,41 @@ SOlarHydrogenStandAlonePowerSystemIndex.pdf str 77
 \end_layout
 
 \begin_layout Standard
-The main variables for a battery model are the voltage and state of charge
- (SOC).
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename EqivLeadAcid.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Equivalent circuit for lead acid accumulator.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The main variables for a common battery model are the voltage and state
+ of charge (SOC).
  Lets speak about a model of lead acid accumulator from 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -943,14 +1065,11 @@ key "voutetakis2011design"
 
 \end_inset
 
- - the model is valid for batteries charged more than 20 %, has relations
- for charging and discharging and parameters that need to becomputed experimenta
-lly.
- (Needed to say, that there exists models even for overcharged batteries
+ - the model is generally valid for batteries charged more than 20 %, has
+ relations for charging and discharging and is parametrized by parameters
+ that need to becomputed experimentally.
+ (Needed to say, that there exist models even for overcharged batteries
  and other specific cases.)
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -962,17 +1081,6 @@ model - book votetaukis seferlis str 42, najit orig knizku: "photovoltaic
 \begin_layout Plain Layout
 jinak v tehle knizce, strana 44.
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename EqivLeadAcid.png
-	lyxscale 20
-	scale 20
 
 \end_inset
 
@@ -1003,13 +1111,17 @@ The battery current is the reaction current (
 \begin_inset Formula $I_{q}$
 \end_inset
 
-) minus the gas current loses, that are modelled using nominal capacity
+) minus the gas current losses, that are modelled using nominal capacity
  of accumulator (
 \begin_inset Formula $Q_{bat,nom}$
 \end_inset
 
- in Ah), cell voltage, temperature and gassing current parameters.
- The cell voltage is the equillibrium plus polarization voltage:
+ in 
+\begin_inset Formula $Ah$
+\end_inset
+
+), cell voltage, temperature and gassing current parameters.
+ The cell voltage is the equillibrium voltage plus polarization voltage:
 \end_layout
 
 \begin_layout Standard
@@ -1205,8 +1317,8 @@ Electrolyzer and Fuel cell
 \end_layout
 
 \begin_layout Standard
-Electrolyzer and fuel cell both basically operate from simple chemical reaction
- (
+Electrolyzer and fuel cell both basically operate from a simple chemical
+ reaction (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rayment2003introduction"
@@ -1228,7 +1340,7 @@ H_{2}O\longleftrightarrow H_{2}+\frac{1}{2}O_{2}
 \end_layout
 
 \begin_layout Standard
-By adding electrical power, the reaction occurs from left side to the right,
+By adding (electric) power, the reaction occurs from left side to the right,
  producing hydrogen and oxygen, whereas combining hydrogen and oxygen allows
  us to get the energy back.
  The first way is the basic function of electrolyzer and the latter is of
@@ -1247,12 +1359,12 @@ rs like temperature, material of electrolyte or membrane, catalyzators etc...),
 It is good to note, that hydrogen has the best heating value (energy to
  fuel ratio).
  The higher heating value is 
-\begin_inset Formula $285.83\,kj\,mol^{-1}$
+\begin_inset Formula $142.12\,MJ\,kg^{-1}$
 \end_inset
 
-, the pure standart heat formation of the product water.
+, the pure standard heat formation of the product water.
  The lower heating value is 
-\begin_inset Formula $120\,MJ\,kg^{-1}$
+\begin_inset Formula $120.21\,MJ\,kg^{-1}$
 \end_inset
 
 , calculated from the fact, that the product oxygen goes out unused as a
@@ -1263,6 +1375,17 @@ It is good to note, that hydrogen has the best heating value (energy to
  °C ).
  Electrolysis is not the only way to get hydrogen, other ways are being
  considered too, for example by reforming natural gases.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+http://cta.ornl.gov/bedb/appendix_a/Lower_and_Higher_Heating_Values_of_Gas_Liquid_
+and_Solid_Fuels.pdf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1271,7 +1394,7 @@ Electrolyzer
 
 \begin_layout Standard
 Common types of electrolyzers are alkaline based (operates using an alkaline
- solution) electrolyzers and proton exchange membrane electrolyzer.
+ solution) and proton exchange membrane electrolyzer (PEM).
 \end_layout
 
 \begin_layout Standard
@@ -1282,10 +1405,10 @@ key "voutetakis2011design"
 
 \end_inset
 
-, there are many ways to the voltage - current model of the electrolyzer
- - regression, models based on analysis of processes on anothe, cathode
- and membrane (and calculating then V-I relationship by subtracting from
- the open circuit voltage the voltages of activation polarization and ohmic
+, there are many ways that lead to the voltage-current model of the electrolyzer
+: regression, models based on analysis of processes on anothe, cathode and
+ membrane (and calculating then V-I relationship by subtracting from the
+ open circuit voltage the voltages of activation polarization and ohmic
  polarization), and even rigorous CFD models.
 \end_layout
 
@@ -1335,7 +1458,7 @@ With unknown parameters
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$n_{H_2}$"
-description "hydrogen production rate TODO units $\\frac{mol}{hr \\cdot A}$"
+description "hydrogen production rate ($\\frac{mol}{hr \\cdot A}$)"
 
 \end_inset
 
@@ -1395,7 +1518,7 @@ where
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$n_e$"
-description "TODO"
+description "Electrons in $H_2$"
 
 \end_inset
 
@@ -1445,8 +1568,16 @@ description "area of electrolyzer $m^2$"
 \end_layout
 
 \begin_layout Standard
-There exists even empirical model for the faraday's efficiency, that takes
- into account the fact, that with decreasing current and/or higher temperatures,
+This model primary expresses dependency on temperature (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "voutetakis2011design"
+
+\end_inset
+
+).
+ There exists even empirical model for the faraday's efficiency, that also
+ accounts for the fact, that with decreasing current and/or higher temperatures,
  the parasitic currents increase (because of the electrolyte).
 \end_layout
 
@@ -1488,7 +1619,7 @@ Fuel cell
 \end_layout
 
 \begin_layout Standard
-The exact process happens in this way:
+The exact process in fuel cell happens in this way:
 \begin_inset Note Note
 status open
 
@@ -1515,18 +1646,14 @@ H_{2} & \rightarrow & 2H^{+}+2e^{-}\\
 \end_layout
 
 \begin_layout Standard
-And the calculation for the amount of hydrogen produced is (from 
+And the calculation (from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "olubukunmi2011solar"
 
 \end_inset
 
-), where 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- is the fuel cell efficiency:
+) for the amount of hydrogen produced is:
 \end_layout
 
 \begin_layout Standard
@@ -1545,13 +1672,18 @@ description "hydrogen production rate (kilograms instead of mols) $\\frac{kg}{hr
 
 \end_inset
 
+...
+ where 
+\begin_inset Formula $\epsilon$
+\end_inset
 
+ is the fuel cell efficiency:
 \end_layout
 
 \begin_layout Standard
 The simplest way to model fuel cell V-I relationship is to look at it as
- a reverse electrolyzer, this course is followed by the following model
- from 
+ a reverse electrolyzer, this way is followed by the following model from
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "voutetakis2011design"
@@ -1606,7 +1738,11 @@ description "open circuit voltage for fuel cell $V$"
 \begin_inset Formula $i$
 \end_inset
 
-, model parameter 
+ (in 
+\begin_inset Formula $A/m^{2}$
+\end_inset
+
+), model parameter 
 \begin_inset Formula $b$
 \end_inset
 
@@ -1685,7 +1821,7 @@ K=K_{1}+K_{2}T+K_{3}T\ln(p_{O_{2}})
 
 \begin_layout Standard
 It is said, that this model is suitable more for low voltages and powers.
- But can be used even for electrolyzer (
+ But it can be used even for electrolyzer (
 \begin_inset Formula $p_{O_{2}}$
 \end_inset
 
@@ -1775,7 +1911,7 @@ FuelCells pdf str 33
 \begin_inset Formula $\Omega\cdot cm^{2}$
 \end_inset
 
-), finally the model parameters 
+), and finally the model parameters 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1784,17 +1920,22 @@ FuelCells pdf str 33
 \end_inset
 
  representing the overvoltage due to mass transport limits.
- All theese parameters can depend on temperature.
+ All these parameters can depend on temperature.
 \end_layout
 
 \begin_layout Standard
-Hydrogen and oxygen then flows according to equations (by Faradays law):
+Hydrogen and oxygen then flows according to this equations (by Faradays
+ law, already substitued 
+\begin_inset Formula $n_{e,H_{2}}=2,\,n_{e,O_{2}}=4$
+\end_inset
+
+):
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-H_{2,g}=\frac{N_{cell}I}{2F\eta_{F}},\,O_{2,g}=\frac{N_{cell}I}{4F\eta_{F}}
+H_{2,g}=\frac{N_{cell}I}{2F\eta_{F}}\,mol/s,\,O_{2,g}=\frac{N_{cell}I}{4F\eta_{F}}\,mol/s
 \]
 
 \end_inset
@@ -1803,12 +1944,13 @@ H_{2,g}=\frac{N_{cell}I}{2F\eta_{F}},\,O_{2,g}=\frac{N_{cell}I}{4F\eta_{F}}
 \end_layout
 
 \begin_layout Standard
-All theese models are empirical and are important only because of their
- low computational complexity.
- For greater complexity, there are of course more sophisticated models using
- partial differential equations.
- There is also a nice book about fuel cells, that examines every aspect
- of fuel cell design and explains the details of how fuel cells works 
+All these models are empirical and are important because of their low computatio
+nal complexity.
+ For greater complexity, there are, of course, more sophisticated models
+ using partial differential equations.
+ For more in depth description, there is also a book about fuel cells, that
+ examines every aspect of fuel cell design and explains the details of how
+ fuel cells work 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "larminie2003fuel"
@@ -1822,8 +1964,8 @@ key "larminie2003fuel"
 Lets add a word about the storage of hydrogen.
  The possibilities for storage are to store it at the output pressue of
  the electrolyzer, or at higher pressue or liquidified.
- Theese possibilities are covered in most of presented resources and citations.
- If we wanted to store the hydrogen in any other way than at the output
+ These possibilities are covered in most of presented resources and citations.
+ If we wanted to store the hydrogen in any other way, than at the output
  pressue, we would need to add the compressor into the equation (like it
  is done in 
 \begin_inset CommandInset citation
@@ -1975,6 +2117,13 @@ end{itemize}
 end{frame}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -2149,16 +2298,16 @@ numopticon.pdf - super zdroj
 
 \begin_layout Standard
 Optimization is a rich field with many subproblems arising from the specific
- problems settings.
- Optimal control is applied optimization together with variational calculus
- 
+ problem settings.
+ Optimal control is actually applied optimization together with variational
+ calculus 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "milyutin1999calculus"
 
 \end_inset
 
- and has similar subproblems.
+ and has similar subproblems (or subclasses).
 \end_layout
 
 \begin_layout Standard
@@ -2199,7 +2348,7 @@ g(x,u,t) & \leq0\tag*{...constraints}
 \end_layout
 
 \begin_layout Standard
-In free final time, the function 
+In free final time case, the function 
 \begin_inset Formula $\phi$
 \end_inset
 
@@ -2218,11 +2367,22 @@ Basic terms
 \end_layout
 
 \begin_layout Standard
-Optimization problems have many subclasses (as the picture shows) and optimal
- control is not an exception.
-\end_layout
+Optimization problems have many subclasses (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Optimization-Tree"
 
-\begin_layout Standard
+\end_inset
+
+) and optimal control is not an exception.
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename treeoptimiz.gif
 	lyxscale 20
@@ -2231,6 +2391,29 @@ Optimization problems have many subclasses (as the picture shows) and optimal
 \end_inset
 
 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Optimization-Tree"
+
+\end_inset
+
+Optimization Tree, neos.mcs.anl.gov
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2247,15 +2430,15 @@ Optimization Tree, neos.mcs.anl.gov DOD reference jak se to da delat a k tomu
 \begin_layout Standard
 So, in formulating the problem, there are many decisions that need to be
  made, or many features, that can be adressed.
- To get a grasp of the field, lest summarize the most common features (more
- details can be found in the book 
+ To get a grasp of the field, lest summarize the most common features.
+ (More details can be found in the book 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bertsekas1995dynamic"
 
 \end_inset
 
- and the developement of this field over time is summarized in the article
+, the developement of this field over time is summarized in the article
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2349,8 +2532,8 @@ closed loop
  formulation.
  Closed loop does care for values and decisions in intermediate states,
  whereas open loop control has the control function predetermined in advance
- and not relying on intermedate states and values.
- Methods for solving optimal control problems are 
+ and does not rely on intermedate states and values.
+ Methods for solving optimal control problems are: 
 \series bold
 dynamic programming
 \series default
@@ -2362,8 +2545,8 @@ Hamilton Jacobi Bellman (HJB) equations
 \series bold
 Pontryagin maximum principle
 \series default
- (or minimum principle, it doesn't matter and is called by both names in
- literature).
+ (or minimum principle ...
+ is called by both names in literature).
  Only some of the problems can be solved analytically, for example the class
  of 
 \series bold
@@ -2388,7 +2571,8 @@ Long story short, there are two main approaches - direct methods and indirect
  Indirect methods take the optimal control problem and reformulate it as
  differential equation problem with possible boundary conditions - this
  approach is best used for continuous functions, of course.
- Direct methods view the problem as a problem of nonlinear programming
+ Direct methods, on the other hand, would see the problem as a problem of
+ nonlinear programming
 \end_layout
 
 \begin_layout Standard
@@ -2411,7 +2595,8 @@ Hamiltonian of the system
 Many problem formulations could be efficiently written using Hamiltonian
  of the system.
  We will use it too, so lets state the Hamiltonian as a Lagrangian (from
- cost function) plus adjoint variable times system dynamics.
+ cost function) plus adjoint variable times system dynamics, how the Hamiltonian
+ is usually defined:
 \end_layout
 
 \begin_layout Standard
@@ -2436,21 +2621,22 @@ key "EvansControlCourse,Lewis2012optimal,bryson1975applied"
 
 \end_inset
 
-) or from HJB equations (there are two ways to get the equations presented
- later, one gives the name 
+) or from HJB equations.
+ There are two ways to get the equations presented later, one gives the
+ name 
 \begin_inset Quotes eld
 \end_inset
 
 adjoint variable" to one of the derivatives, so it is conveniet to use the
- name).
+ name.
  It is essential for formulations, that will come later.
  Lets just note here, that Hamiltonian is constant for systems with parametres
- undependent on time.
+ independent on time.
 \end_layout
 
 \begin_layout Standard
-To summarize, the problem is then to optimize the vallue of Hamiltonian
- - finding such optimal control function 
+To summarize, the problem is then to optimize the value of Hamiltonian -
+ finding such optimal control function 
 \begin_inset Formula $u$
 \end_inset
 
@@ -2499,11 +2685,10 @@ Dynamic Programming is a principle well known for problems, that can be
  The principle is easy - if the optimal solution of a problem can be composed
  from optimal solutions of subproblems, we can use this information to build
  the solution.
- Whenever this is true (needs for example additive cost function), we just
- dont need to search the whole state space, but we can construct the solution
- by constructing subsolutions one from another in a clever order.
- One example from other field is the problem of finding the shortest path
- in a graph.
+ Whenever this is true (needs, for example, additive cost function), we
+ just dont need to search the whole state space, but we can construct the
+ solution by constructing subsolutions one from another in a clever order.
+ Like, for example, the problem of finding the shortest path in a graph.
 \begin_inset Note Note
 status open
 
@@ -2518,8 +2703,9 @@ reference na nejaky jiny problemy kde se resi, nebo na knizku co jeste nemam
 \end_layout
 
 \begin_layout Standard
-Dynamic programming needs discretized problem formulation, but going to
- the limit gives rise to the HJB equations.
+Dynamic programming needs discretized problem formulation.
+ Ultimately, going to the limit with discretization points gives rise to
+ the HJB equations.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2527,7 +2713,7 @@ Hamilton-Jakobi-Bellman equations
 \end_layout
 
 \begin_layout Standard
-HJB eq.
+HJB eqs.
  are partial differential equations of the problem (here we need the Hamiltonian
 ), the last equation is just system dynamic written using Hamiltonian:
 \end_layout
@@ -2546,7 +2732,7 @@ J^{\star}(x(T),T) & =\phi(x(T),T)\\
 \end_layout
 
 \begin_layout Standard
-When using this apporach, the first step is to solve to get the optimal
+When using this apporach, the first step to solve is to get the optimal
  value function first and from that the other values.
 \begin_inset Note Note
 status open
@@ -2557,17 +2743,20 @@ control course strana 76
 
 \end_inset
 
- Hamilton-Jakobi-Bellman equations from optimal control gave life to the
- theory of viscosity solutions, more can be found in articles 
+
+\end_layout
+
+\begin_layout Standard
+Hamilton-Jakobi-Bellman equations from optimal control gave life to the
+ theory of viscosity solutions (more can be found in the articles 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bardi2008optimal,dragoniintroduction,liu2013introduction"
 
 \end_inset
 
-.
- Theese equations can be solved using finite element methods, but their
- stability is said not to be good.
+.) These equations can be solved using finite element methods, but their
+ numerical stability is said to not be good in practise.
 \begin_inset Note Note
 status open
 
@@ -2585,8 +2774,8 @@ Pontryagin principle of maximality, PMP
 \end_layout
 
 \begin_layout Standard
-The last step - or method - principle of maximality (Pontryagin principle
- of maximality, PMP), can be - for continuous control functions - derived
+The last step - or method - is principle of maximality (Pontryagin principle
+ of maximality, PMP) and can be - for continuous control functions - derived
  using the HJB equations (as in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2723,7 +2912,7 @@ DOD jake metody k tomu, relaxation atp...
 \end_layout
 
 \begin_layout Standard
-All theese analytic methods will give us equations, to solve the equations
+All these analytic methods will give us equations, to solve the equations
  is a concern of numerical optimal control.
 \end_layout
 
@@ -2732,12 +2921,12 @@ Numerical optimal control
 \end_layout
 
 \begin_layout Standard
-Numerical optimal control can be, again, used to solve continuous or discretized
- problems.
+Numerical optimal control can be, again, used to solve either continuous
+ or discretized problems.
  Heavily relies on the problem analysis and follows the said methods.
  It would seem, that it is sufficient to just solve HJB PDR's, but it is
  not used everytime.
- For example, the problem is the, so called, curse of dimensionality - when
+ For example, the problem is, so called, curse of dimensionality - when
  state and/or control, has many components, the problem becomes exponentially
  hard to solve.
  Suggested remedy, in the article 
@@ -2747,7 +2936,8 @@ key "diehl2011numerical"
 
 \end_inset
 
-, is, for example, to approximate value function by neural network methods.
+, is, for example, to approximate value function by another means, for example
+ using neural network methods.
  
 \begin_inset Note Note
 status open
@@ -2758,7 +2948,7 @@ and, in fact it is really used in practise
 
 \end_inset
 
- Second guide, to know when to use state and costate equations, is, that
+ Second clue, to know when to use state and costate equations, is, that
  when we want to have continuous control function, we can just solve the
  boundary value problem (as in, for example, 
 \begin_inset CommandInset citation
@@ -2823,6 +3013,20 @@ wide false
 sideways false
 status open
 
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
 \begin_layout Itemize
 HJB Equations - tabulation in state space
 \end_layout
@@ -2849,6 +3053,11 @@ Collocation - disretized controls and states
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
@@ -2876,8 +3085,8 @@ indirect methods
 direct methods
 \series default
  (first discretize, then optimize).
- Indirect methods results in algorithms similar to ODE solvers, but the
- resulting system can be badly conditioned or unstable.
+ Indirect methods result in algorithms similar to ODE solvers, but the resulting
+ system can be badly conditioned or unstable in some cases.
  Direct methods just rewrite the problem to the area of nonlinear programming
  problem and then apply convenient solver.
 \end_layout
@@ -2910,8 +3119,7 @@ Single shooting algorithm is usefull, but the stability can sometimes depend
 Collocation discretizes both the control function and state function and
  approximates the integral.
  We get larger system for nonlinear programming, but the good news is that
- the system is sparse (in the meaning, that the Jacobians have many zero
- elements).
+ the system is sparse (in the meaning, that the Jacobian has many zero elements).
  Collocation can treat better even unstable systems, but refining the grid
  results in new problem with higher dimensions.
 \end_layout
@@ -2919,8 +3127,16 @@ Collocation discretizes both the control function and state function and
 \begin_layout Standard
 Multiple shooting discretizes the control, as single shooting, and additionally
  the time scale.
- So it is multiple shooting, because it is like running single shooting
- algorithm again from the starting times 
+ So it is called 
+\begin_inset Quotes eld
+\end_inset
+
+multiple
+\begin_inset Quotes erd
+\end_inset
+
+ shooting, because it works like running single shooting algorithm repeatedly
+ again from the starting times 
 \begin_inset Formula $t_{i}$
 \end_inset
 
@@ -2928,8 +3144,8 @@ Multiple shooting discretizes the control, as single shooting, and additionally
  Of course we need to add constraints for continuity (the end values from
  the previous interval to be the same as the starting values on the next
  interval).
- Multiple shooting is only block sparse, but is easy to paralelize and can
- treat even unstable systems well.
+ Multiple shooting algorithm results in only a block sparse problem, but
+ is easy to paralelize and can treat even unstable systems well.
 \begin_inset Note Note
 status open
 
@@ -2943,8 +3159,8 @@ toliko numericaloptimalcontrol.pdf ted jde jen o to to trochu lip popsat
 \end_layout
 
 \begin_layout Standard
-Numerous implementations of numerical optimal control are availible, namely
- 
+Numerous implementations of numerical optimal control are availible, not
+ only in MATLAB, but for example also in C++ in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Houska2011a"
@@ -3003,8 +3219,8 @@ key "Sensitivity20061553"
 \end_layout
 
 \begin_layout Standard
-Also a suggested technique is, for example, Sequential quadratic programming,
- SQP, 
+A suggested technique for solving optimal control problems is, for example,
+ Sequential quadratic programming, SQP, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "boggs1995sequential"
@@ -3036,11 +3252,11 @@ Solution
 
 \begin_layout Standard
 In this section we will apply the theory and methods to our setting and
- problem (trying to focus on issues, that were not answered in other works).
+ problem (trying to focus on issues, that were not answered elsewhere).
 \end_layout
 
 \begin_layout Paragraph*
-Our contribution
+Contribution of this work
 \end_layout
 
 \begin_layout Standard
@@ -3048,7 +3264,13 @@ Now, lets emphasize, that other existing works tried to model the problem
  using discontinuous functions and optimized only the system parameters
  (for minimial cost) for given power managment strategy or optimized only
  the the power managment strategy (or decision constants of the said strategy).
- So lets ask the question:
+\end_layout
+
+\begin_layout Standard
+So our aim will be to optimize the global parameters against the cost (using
+ global optimization algorithms) but for each test case (values of variables)
+ use the methods of optimal control theory to find the best control strategy.
+ That can be usefull in cases, where we wonder about the following:
 \end_layout
 
 \begin_layout Itemize
@@ -3058,19 +3280,21 @@ How will the perception of the problem change for continuous formulation
 
 \begin_layout Itemize
 Will there be a case, when it is not valid to suppose, that for all system
- parameters the optimal control strategy is still the same?
+ parameters the optimal control strategy are still the same through time?
 \end_layout
 
 \begin_layout Standard
-So our aim will be to optimize the global parameters against the cost (using
- global optimization algorithms) but for each test case (values of variables)
- use the methods of optimal control theory to find the best control strategy.
+At the end, we will discuss how can we use ideas from other works
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ (for example to switch from Simulated Annealing to Stochastic annealing)
 \end_layout
 
-\begin_layout Standard
-At the end, we will discuss how can we use ideas from other works (for example
- to switch from Simulated Annealing to Stochastic annealing) or how to use
- the designed method in practical setting.
+\end_inset
+
+ or how to use the designed method in practical setting.
 \end_layout
 
 \begin_layout Standard
@@ -3101,21 +3325,8 @@ Mathematical formulation
 \end_layout
 
 \begin_layout Standard
-This section will go smoothly from writing the problem in terms of equations
+This section will goadvance from writing the problem in terms of equations
  to actually applying knowledge and methods for rewriting the problem.
-\end_layout
-
-\begin_layout Subsection*
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nadpis: Formulation of the global optimization problem
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection*
@@ -3206,7 +3417,7 @@ description "stored hydrogen $2F \\cdot mol$"
 \end_inset
 
 .
- Theese quantities are bounded by 
+ These quantities are bounded by 
 \begin_inset Formula $B(t)\leq B_{max}$
 \end_inset
 
@@ -3257,7 +3468,7 @@ The control function
 \begin_inset Formula $u$
 \end_inset
 
- is a two dimensional function of time and will define the power flow:
+ is also a two dimensional function of time and will define the power flow:
 \end_layout
 
 \begin_layout Itemize
@@ -3324,7 +3535,7 @@ Using this equation we can model the less than one efficiency by setting
 \end_inset
 
 .
- There is a bound, how much power can we get from battery 
+ There is a bound, how much power we can get from battery 
 \begin_inset Formula $-u_{1}\in[P_{batt-min},P_{batt-max}]$
 \end_inset
 
@@ -3408,7 +3619,7 @@ Again, here we can model the efficiency (for example
 \begin_inset Formula $u_{2}<0$
 \end_inset
 
- - the current would flow to the fuelcell so we use the equation for fuelcell
+ - the current would flow to the fuelcell, so we use the equation for fuelcell
  times efficiency) and even nonlinear characteristics of the efficiency.
  This design follows the wise rule, that the electrolyzer and fuel cell
  should not operate simultaneously (because that would be a waste of power).
@@ -3542,16 +3753,16 @@ pridej info o jednotkach a predelej z u na to co pouzivas ve skutecnosti
 
 \begin_layout Standard
 That simply says, that for not using the grid we pay nothng, selling gives
- us money, by buying we lose money and that selling the power to grid wouldnt
- give us such an amount of money as we would lose by buying the power.
+ us money, by buying we lose money and that selling the power to grid would
+ not give us such an amount of money as we would lose by buying the power.
 \end_layout
 
 \begin_layout Standard
-Genrally we can think of any 
+Generally we can think of any 
 \begin_inset Formula $pcost$
 \end_inset
 
- function, in the solution and scrupts below we will simply use 
+ function, in the solution and scripts below we will simply use 
 \begin_inset Formula $pcost(x)=c_{1}x\mbox{ if }x\geq0\mbox{, otherwise }=c_{2}x$
 \end_inset
 
@@ -3625,12 +3836,25 @@ For the testing run in the scripts attached, very simple models are used,
  that bind the efficiency quadraticaly to cost (bounded on an interval).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo simple model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 Construction of solutions and rewriting the problem
 \end_layout
 
 \begin_layout Standard
-Now we will look at different formulations and use methods like in literature,
+Now we will look at different formulations and used methods from the literature,
  that will give us necessary conditions for minimality, even from different
  views.
 \end_layout
@@ -3657,10 +3881,10 @@ H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
 \end_layout
 
 \begin_layout Standard
-By the way, because our state equations does not depend on time, our Hamiltonian
+By the way, because our state equations do not depend on time, our Hamiltonian
  is constant.
- If we would include, that, for example, the battery gets old and less efficient
- in time, the hamiltonian will suddenly become non constant.
+ If we would include the fact that, for example, the battery gets old and
+ less efficient in time, the hamiltonian will suddenly become non constant.
 \end_layout
 
 \begin_layout Standard
@@ -3878,8 +4102,8 @@ Approach using direct methods
 \end_layout
 
 \begin_layout Standard
-Above conditions for minimum come from the indirect approach (and allowing
- countable number of disconiuities would araise the need of difficult rewriting
+Above conditions for minimum come from the indirect approach.
+ Allowing countable number of discontinuities would rise the need to rewrite
  the problem, as in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3887,8 +4111,8 @@ key "gelfand1964calculus"
 
 \end_inset
 
-).
- If we would like to use direct methods with functions with disconiuities,
+.
+ If we would like to use direct methods with functions with discontinuities,
  the thoughts will go in different way.
 \end_layout
 
@@ -3897,18 +4121,19 @@ Ritz method, finite differences and existence
 \end_layout
 
 \begin_layout Standard
-As a note about direct methods using 
+As an important known result about direct methods, the direct way to get
+ to the minimum is the following (using 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gelfand1964calculus"
 
 \end_inset
 
- as a reference, the direct way to get to the minimum is the following:
+ as a reference):
 \end_layout
 
 \begin_layout Standard
-We construct a sequence of spaces 
+We construct an approximating sequence of spaces 
 \begin_inset Formula $\mathcal{M}_{i}$
 \end_inset
 
@@ -3917,7 +4142,7 @@ We construct a sequence of spaces
 \begin_inset Formula $\mathcal{M}_{i}$
 \end_inset
 
- is defined by basis functions 
+ is defined by the basis functions 
 \begin_inset Formula $\{\varphi_{i}\}_{i=1}^{n}$
 \end_inset
 
@@ -3925,34 +4150,34 @@ We construct a sequence of spaces
 \begin_inset Formula $\sum^{n}\alpha_{i}\varphi_{i}$
 \end_inset
 
- then make the whole particular space 
+ together make the whole particular space 
 \begin_inset Formula $\mathcal{M}_{i}$
 \end_inset
 
 .
- The sequence of spaces will be needed to approximate 
+ The sequence of spaces will need to approximate (in subset sense 
 \begin_inset Formula $\mathcal{M}_{1}\subseteq...\subseteq\mathcal{M}_{i}\subseteq...\subseteq\mathcal{M}$
 \end_inset
 
- the space 
+) the space 
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
  in which we would like the solution to lie.
- This is called the Ritz Method.
+ This approach is called Ritz method.
 \end_layout
 
 \begin_layout Standard
-Note that the space 
+Note, that the space 
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
- is likely to be infinite dimensional, because the solution is of course
+ is likely to be infinite dimensional, because the solution is, of course,
  a control function.
 \end_layout
 
 \begin_layout Standard
-Such a sequence of spaces is called complete, if for any given 
+Approximating sequence of spaces is called complete, if, for any given 
 \begin_inset Formula $y\in\mathcal{M}$
 \end_inset
 
@@ -3960,7 +4185,7 @@ Such a sequence of spaces is called complete, if for any given
 \begin_inset Formula $\epsilon>0$
 \end_inset
 
- we can have a function 
+, we can have a function 
 \begin_inset Formula $y_{n}$
 \end_inset
 
@@ -3973,7 +4198,7 @@ Such a sequence of spaces is called complete, if for any given
 \end_layout
 
 \begin_layout Standard
-The convergence result is then like this:
+The convergence results then continue in this way:
 \end_layout
 
 \begin_layout Standard
@@ -3985,7 +4210,7 @@ If a functional
 \begin_inset Formula $y\in\mathcal{M}$
 \end_inset
 
- is continuoous (in the norm of the space 
+ is continuous (in the norm of the space 
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
@@ -4009,7 +4234,7 @@ If a functional
 \end_layout
 
 \begin_layout Standard
-The finite differences idea then says, that the approximation in each particular
+The finite differences idea then adds, that the approximation in each particular
  space is done by piecewise linear function.
 \end_layout
 
@@ -4018,16 +4243,20 @@ Together then, if we have a sequence (
 \begin_inset Formula $y_{n}$
 \end_inset
 
-) of optimal solutions of our problem - constrained to space 
+), of optimal solutions of our problem constrained to space 
 \begin_inset Formula $\mathcal{M}_{n}$
 \end_inset
 
-, then we are approaching the limit if given functional is continuous.
+, we are approaching the limit if the given functional is continuous.
 \end_layout
 
 \begin_layout Standard
-So, does our problem, from the point of view of direct methods from calculus
- of variations (such a point of view means, that 
+Does our problem, from the point of view of direct methods from calculus
+ of variations (
+\begin_inset Quotes eld
+\end_inset
+
+
 \begin_inset Formula $J$
 \end_inset
 
@@ -4039,18 +4268,24 @@ So, does our problem, from the point of view of direct methods from calculus
 \begin_inset Formula $u,\,x,\,\lambda$
 \end_inset
 
+
+\begin_inset Quotes erd
+\end_inset
+
 ), have this property?
 \end_layout
 
 \begin_layout Standard
-Cost for our problem was given by
+Cost for our problem was given by:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-J[x,u]=\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt=hcost(S(u(T),x(T)))+bcost(B(u(T),x(T)))+\int_{0}^{T}pcost(P_{src}(x(t))-P_{batt}(u(t),x(t))-P_{H_{2}}(u(t),x(t)))\,dt
-\]
+\begin{eqnarray*}
+J[x,u] & = & \phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\\
+ & = & hcost(S(u(T),x(T)))+bcost(B(u(T),x(T)))+\\
+ &  & +\int_{0}^{T}pcost(P_{src}(x(t))-P_{batt}(u(t),x(t))-P_{H_{2}}(u(t),x(t)))\,dt
+\end{eqnarray*}
 
 \end_inset
 
@@ -4058,7 +4293,7 @@ J[x,u]=\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt=hcost(S(u(T),x(T)))+bcost(B(u(T),x(
 \end_layout
 
 \begin_layout Standard
-So, given the fact, that everything comes down to functions 
+And because everything comes down to functions 
 \family roman
 \series medium
 \shape up
@@ -4078,7 +4313,7 @@ So, given the fact, that everything comes down to functions
 \begin_inset Formula $P_{H_{2}}$
 \end_inset
 
-
+...
 \family default
 \series default
 \shape default
@@ -4119,8 +4354,9 @@ P_{H_{2}}(u_{2})
 \uwave off
 \noun off
 \color none
-, that are selected to be continuous (see models up there - it is not only
- physically-wise selection that makes approximating easier, computation
+...
+ that are selected to be continuous (see models presented before - it is
+ not only physically-wise selection that makes approximating easier, computation
  faster, but it also gives us the needed results here), we just need to
  clarify our demands on functions 
 \begin_inset Formula $hcost$
@@ -4167,16 +4403,16 @@ DOD otazka - staci to? Co si muzeme dovolit u funkce pcost? Tam muzeme i
 In this analysis we ommited any constraints, but given the fact that the
  constraints are, in the basic sense, constant, not dependent on anything
  (because they just limit the maximal allowed powers of components), they
- are not gonna affect continuity in the presence of multipliers, or any
- clever tricks meant to incorporate them (and they also dont affect the
- existence of minima, because they constrain the spaces on which we are
- finding the minima).
+ are not going to affect continuity in the presence of multipliers, or any
+ clever tricks meant to incorporate the multipliers (and they also dont
+ affect the existence of minima, because they constrain the spaces on which
+ we are searching for the minima).
 \end_layout
 
 \begin_layout Standard
-Our functional is, in the end, easier to work with, than normal problems
- from the calculus of variations, because we dont have derivations of the
- constrol function in our functional.
+Our functional is, in the end, easier to work with, than normally presented
+ problems from the calculus of variations, because we dont have derivatives
+ of the control function in our functional.
 \end_layout
 
 \begin_layout Standard
@@ -4460,13 +4696,13 @@ Implementation and results
 \end_layout
 
 \begin_layout Standard
-Using all previously mentioned, we developed a computer program answering
- following question 
+Using all previously mentioned, we developed a program answering following
+ question 
 \begin_inset Quotes eld
 \end_inset
 
-What is the optimal control function (or the most economic setting) for
- photovoltaic and hydrogen system and what is the power managment strategy
+What is the most economic setting for photovoltaic and hydrogen system and
+ what is the specific power managment strategy (the optimal control function)
  of such system?".
  Lets suppose, that we already have measured yearly power consumption and
  have already installed photovoltaic panels and measured power output.
@@ -4492,8 +4728,10 @@ Setting up the constants
 \end_layout
 
 \begin_layout Standard
-The data of generated solar energy and house consumption were taken from
- this dataset 
+Two datasets standing for the boundary conditions of power consumption and
+ demand are supplied.
+ The first data of generated solar energy and house consumption were taken
+ from this dataset 
 \begin_inset Flex URL
 status collapsed
 
@@ -4507,7 +4745,26 @@ olar-photovoltaic-pv-users/
 
  (using the monthly average averaged with weekday average for weekdays and
  monthly average averaged with weekends average for weekends) and through
- the scripts, the results are in a file data.txt.
+ the scripts, the results are in a file 
+\family typewriter
+data.txt
+\family default
+.
+ The second dataset is a dataset that was also used in planning of a real
+ standalone system in the work 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VyrobaAVyuziti"
+
+\end_inset
+
+, 
+\family typewriter
+data2.txt
+\family default
+.
+ (The first dataset was used in first experiments, in this text there will
+ be presented the data from the second dataset to allow comparsion.)
 \end_layout
 
 \begin_layout Standard
@@ -4542,36 +4799,57 @@ fit".
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename fittedelectrolyzerplot.png
+	width 45text%
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename fittedfuelcell.png
+	width 45text%
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
 Results of the fitting for electrolyzer (left) and fuelcell (right), x axis
  is current density (
 \begin_inset Formula $mA\cdot m^{-2}$
 \end_inset
 
-), y axis is voltage (
+ ), y axis is voltage (
 \begin_inset Formula $V$
 \end_inset
 
 ).
+ Actual values of parameters are kept in the file 
+\family typewriter
+consts.m
+\family default
+ together with all the other model constants and numerical settings.
 \end_layout
 
-\begin_layout Standard
-Actual values of parameters are kept in the file consts.m together with all
- the other model constants and numerical settings.
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -4602,6 +4880,8 @@ http://www.i2c2.aut.ac.nz/Wiki/OPTI/
 \end_inset
 
 ).
+ In the case of algorithm breakdown on a specific problem setting, we can
+ just easily switch to different algorithm.
 \end_layout
 
 \begin_layout Standard
@@ -4616,8 +4896,11 @@ MatlabSinglShooting1
 \family default
  contains implementation using single shooting technique.
  This implementation was not effective for this problem.
- In the main directory, there is implementation of multiple shooting using
- fmincon.
+\end_layout
+
+\begin_layout Itemize
+In the main directory, there is implementation of multiple shooting using
+ MATLAB function fmincon.
 \end_layout
 
 \begin_layout Itemize
@@ -4652,6 +4935,16 @@ Directory
 Opti
 \family default
  contains the code for multiple shooting using Opti toolbox solver.
+\end_layout
+
+\begin_layout Itemize
+Directory 
+\family typewriter
+AsBusiness
+\family default
+ has sample scripts for optimization of the cost - variables that influence
+ the efficiency of the fuelcell are added to the formulation, optimizer
+ and final cost.
 \end_layout
 
 \begin_layout Standard
@@ -4866,6 +5159,11 @@ TODO
 BVP matlab implementation uplne nejde, protoze constraints.
 \end_layout
 
+\begin_layout Plain Layout
+because in the optimization algorithms, the choice of starting point in
+ the search space matters.
+\end_layout
+
 \end_inset
 
 
@@ -4876,7 +5174,7 @@ Results of test runs
 \end_layout
 
 \begin_layout Standard
-The scripts will startsolving the problem on discretized control function
+The scripts will start solving the problem on discretized control function
  to number of discretization points beggining at 
 \begin_inset Formula $2^{\mbox{cLogBeg}}$
 \end_inset
@@ -4889,14 +5187,152 @@ The scripts will startsolving the problem on discretized control function
 \family typewriter
 consts.m
 \family default
-), copying the results from previous run to the next run, because in the
- optimization algorithms, the choice of starting point in the search space
- matters.
- Because of that, some iterations can fail to satisfy the bounds thinking
- that the problem is infeasible - that is automatically fixed when the number
- of discretization points grows bigger.
- Because then there will be more decision points, that can steer the system
- to allowed set of states.
+), copying the results from previous run to the next run.
+ Some iterations can fail to satisfy the bounds thinking that the problem
+ is infeasible, because at lower number of discretization points it can
+ actually be really difficult to achieve.
+ Anyway it is automatically fixed when the number of discretization points
+ grows bigger.
+ Then there will be more decision points, that can steer the system to allowed
+ set of states.
+\end_layout
+
+\begin_layout Standard
+After each iteration, matlab will show the state of the optimization in
+ 4 graphs, like in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:1strun"
+
+\end_inset
+
+.
+ Left top graph shows the state of energy in batter and hydrogen in tank,
+ right top graph shows the evolution of the cost function in time, left
+ bottom graph shows the control function (2 dimension - power to battery
+ and current to hydrogen - so two lines) and right bottom graph shows the
+ state trajectory.
+ At the beginning, the results will look like in the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1strun"
+
+\end_inset
+
+, because the algorithm starts from a point far from optimum.
+ As for multiple shooting, the graph for states is not even continuous,
+ because the algorithm had not many iterations to guess correctly the beginnning
+s of states.
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 1stiter.png
+	lyxscale 80
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1strun"
+
+\end_inset
+
+Algorithm results in progress.
+ Axes are scaled for better run of the algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For correct one-year long prediction, the optimization process would take
+ long time (
+\begin_inset Formula $2^{14}$
+\end_inset
+
+ discretization points would require more than 4 days of processor time
+ per iteration), so we would chose smaller time scale for testing purposes
+ - one week and 
+\begin_inset Formula $2^{8}$
+\end_inset
+
+ discretization points.
+ 
+\end_layout
+
+\begin_layout Standard
+To test the algorithm against common sense, the cost of the hydrogen remaining
+ in the tank was set to be high.
+ The observed results are satisfactory - in the end of the week, the control
+ process tries to accumulate hydrogen, but before the turning point, it
+ uses the hydrogen to supply power demand.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo interpretuj vysledky
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Summary
+\end_layout
+
+\begin_layout Standard
+We have summarized optimal control and fuel cells works and articles, including
+ deeper links to existence and uniqueness results.
+ Then applied a numerical optimal control method on a physical problem in
+ a (so far) unique way to get:
+\end_layout
+
+\begin_layout Itemize
+a method for optimizing system (and system's cost) not against a certain
+ strategy, but against ideal maximum (which would work even better in the
+ need of control strategy change in runtime)
+\end_layout
+
+\begin_layout Itemize
+a method for comparing two strategies against ideal maximum - to allow to
+ answer a question whether we can get better, that cannot be otherwise answered.
+\end_layout
+
+\begin_layout Itemize
+matlab implementation allowing for solver changes for testing different
+ minimum finding algorithms (in case of breakdowns)
+\end_layout
+
+\begin_layout Standard
+Future work could include tuning the method for real applications - the
+ process would need to be implemented, for example, on a graphic card or
+ a computing cluster to be faster.
+ Also given a reasonable forecast of sunshine and power consumption, it
+ could actually control the system (by precalculating the control for the
+ next week each specified step in time), though this would need to be tested
+ against (currently considered) best power managment strategies.
+ (Using previous forecast as a starting point could make the calculation
+ even faster.)
 \end_layout
 
 \begin_layout Subsection*
@@ -4933,32 +5369,11 @@ The costs for * were *, tahere were option to use * number of fuel cells,
 
 \end_layout
 
-\begin_layout Subsubsection*
-\begin_inset Note Note
-status open
-
-\begin_layout Subsubsection*
-Algorithms
-\end_layout
-
-\begin_layout Subsubsection*
-Using the program
-\end_layout
-
-\begin_layout Section*
-Results
-\end_layout
-
-\begin_layout Paragraph*
-Comparing the results
-\end_layout
-
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -4968,6 +5383,15 @@ status open
 \backslash
 printnomenclature 
 \end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset FloatList figure
 
 \end_inset
 
