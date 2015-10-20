@@ -2,10 +2,21 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass article
+\textclass report
 \begin_preamble
+\setlength{\textwidth}{145mm}
+\setlength{\textheight}{247mm}
+\setlength{\oddsidemargin}{15mm}
+\setlength{\evensidemargin}{15mm}
+\setlength{\topmargin}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\headheight}{0mm}
+\let\openright=\clearpage
+%\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
 \usepackage{amsthm,amsmath,amssymb,amscd,mathrsfs,url}
 %\usepackage[czech]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[cp1250]{inputenc}
 \usepackage{verbatim}
 %\usepackage{ictamxs}
 \usepackage{showkeys}
@@ -23,58 +34,91 @@
 \usepackage{marginnote}
 \usepackage{esint}
 \usepackage{ulem}
-\setlength\textwidth{145mm}
-\setlength\textheight{247mm}
-\setlength{\topmargin}{-2.3cm}          % HORNI ODSAZENI
-\setlength{\textheight}{26.0cm}           % VYSKA STRANKY
-\setlength{\textwidth}{18cm}          % SIRKA STRANKY, nebo pouzij: \addtolength{\textwidth}{4.0cm}
-\addtolength{\oddsidemargin}{-2cm}    % POSUNUTI LEVEHO ODSAZENI, default for book=36mm%%
-\addtolength{\evensidemargin}{-2cm}
+\usepackage{multicol}%%% vícesloupcová sazba
+\usepackage{fancybox}%%% vkládání obrázků
+\usepackage{psfrag}
+\usepackage{fancyvrb}
+\usepackage{bbding}
+\usepackage{comment}
+\usepackage{epstopdf} 
+\usepackage{url}
+\usepackage{natbib}
+\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
+\numberwithin{table}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{equation}{chapter}
 
 \newcommand{\opdiv}{\mathop{\mathrm{div}}}
 \newcommand{\oprot}{\mathop{\mathrm{rot}}}
 
-\newcommand*\mnote[3][0pt]{%
-  \if l#2\reversemarginpar\def\pointer{\filledmedtriangleright}%
-    \def\stackalignment{r}\fi%
-  \if r#2\normalmarginpar\def\pointer{\filledmedtriangleleft}%
-    \def\stackalignment{l}\fi%
-  \marginpar{%
-    \topinset{%
-      \scalebox{1.5}{\textcolor{blue}{$\pointer$}}}{%
-      \belowbaseline[-1.5\baselineskip-#1]{%
-        \stackengine%
-          {-5pt}%
-          {\fcolorbox{blue}{white}{\parbox{1.8cm}%
-            {\vspace{3pt}\raggedright#3}}}%
-          {~\colorbox{white}{\sffamily Pozn.}}%
-          {O}%
-          {l}%
-          {F}%
-          {F}%
-          {S}%
-        }%
-      }{%
-      3ex+#1}{%
-      -2ex}%
-  }%
+\newcommand{\FIGDIR}{./Obrazky}    %%% cesta do adresare s obrazky
+
+\newcounter{definice}
+\numberwithin{definice}{chapter}
+\renewcommand{\thedefinice}{\arabic{chapter}.\arabic{definice}}
+\newenvironment{definice}[1][]{
+  \refstepcounter{definice}
+  \par\medskip\noindent
+  \textbf{Definice \thedefinice #1}.
+}{
+}
+
+\newcounter{veta}
+\numberwithin{veta}{chapter}
+\renewcommand{\theveta}{\arabic{chapter}.\arabic{veta}}
+\newenvironment{veta}[1][]{
+  \refstepcounter{veta}
+  \par\medskip\noindent
+  \textbf{Věta \theveta #1}.
+  \itshape
+}{
+}
+
+\newenvironment{dukaz}{
+  \par\medskip\noindent
+  \textit{Důkaz}.
+}{
+\newline
+\rightline{\SquareCastShadowBottomRight}
 }
 
 
-\tikzstyle{mybox} = [draw=red, fill=blue!20, very thick,
-    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
-\tikzstyle{fancytitle} =[fill=red, text=white]
+\DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=lines}
+\DefineVerbatimEnvironment{PCinoutsmaller}{Verbatim}{fontsize=\smaller, frame=lines}
 
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Natu}{\mathbb{N}}
+
+\DeclareMathOperator{\Prob}{\textsf{P}}
+\DeclareMathOperator{\EV}{\textsf{E}}
+\DeclareMathOperator{\var}{\textrm{var}}
+\DeclareMathOperator{\sd}{\textrm{sd}}
+
+\newcommand{\betab}{\boldsymbol{\beta}}
+\newcommand{\thetab}{\boldsymbol{\theta}}
+\newcommand{\varepsilonb}{\boldsymbol{\varepsilon}}
+
+\newcommand{\xb}{\boldsymbol{x}}
+\newcommand{\yb}{\boldsymbol{y}}
+\newcommand{\Xb}{\boldsymbol{X}}
+\newcommand{\Yb}{\boldsymbol{Y}}
+
+\newcommand{\Xm}{\mathbb{X}}
+
+\renewcommand{\t}[1]{#1^\top}  
+\bibliographystyle{alpha}
+\usepackage{ae}
+%\hyphenation{troj-ú-hel-ník nic-mé-ně před-in-te-gro-vá-ní pří-pa-dě pře-cho-do-vé uva-žo-va-né na-pří-klad na-po-čí-ta-nou po-ža-du-je-me umož-ní-me mat-lab-u}
 \makenomenclature
 \end_preamble
-\options a4paper,english,czech,12pt
+\options 12pt,a4paper,czech,english
 \use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding utf8
-\fontencoding global
+\inputencoding cp1250
+\fontencoding default
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -93,8 +137,8 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_title "2PDE"
-\pdf_author "Martin Holi Holecek"
+\pdf_title "Optimization of operation of renewable electric energy sources based on fuel cells, accumulators and PV panels for small powers"
+\pdf_author "Martin Holeček"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -103,28 +147,28 @@
 \pdf_pdfborder false
 \pdf_colorlinks false
 \pdf_backref false
-\pdf_pdfusetitle true
-\papersize default
+\pdf_pdfusetitle false
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
-\use_package esint 0
-\use_package mathdots 0
+\use_package esint 1
+\use_package mathdots 1
 \use_package mathtools 1
-\use_package mhchem 0
+\use_package mhchem 1
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
-\biblio_style plain
+\biblio_style alpha
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -145,6 +189,16 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "dp_titulni.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 Optimization of operation of renewable electric energy sources based on
@@ -5410,6 +5464,51 @@ printnomenclature
 LatexCommand bibtex
 bibfiles "bibdata"
 options "bibtotoc,alpha"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+def
+\backslash
+bibname{Bibliography}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{thebibliography}{99}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+addcontentsline{toc}{chapter}{
+\backslash
+bibname}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+bibliography{bibdata} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{thebibliography}
+\end_layout
 
 \end_inset
 

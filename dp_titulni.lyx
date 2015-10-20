@@ -1,0 +1,916 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\use_default_options false
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding cp1250
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Efektivnímetodyzobrazováníobjemovýchdat"
+\pdf_author "MartinHoleček"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle true
+\pdf_pagemode UseOutlines
+\pdf_quoted_options "unicode,%% hyperlinky budou označeny červenými rámečky, které budou neviditelné při tisku na papír"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Charles University in Prague
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\size large
+Faculty of Mathematics and Physics
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\series bold
+\size larger
+MASTER THESIS
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Obrazky/logo.eps
+	width 60mm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\begin_inset VSpace 5mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size largest
+Martin Holeček
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace 15mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size largest
+Optimization of operation of renewable electric energy sources based on
+ fuel cells, accumulators and FV panels for small powers.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+Mathematical Institute of Charles University
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Supervisor of the master thesis:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prof.
+ Ing.
+ František Maršík, DrSc.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%% Jméno a příjmení s~tituly 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noalign
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 2mm
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ Study programme: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Matematika
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noalign
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 2mm
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ Specialization:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Matematické modelování ve fyzice a technice
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Zde doplnte rok
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Prague 2015
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% Následuje vevázaný list -- kopie podepsaného "Zadání diplomove práce".
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% Toto zadání NENÍ součástí elektronické verze práce, nescanovat.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% Na tomto místě mohou být napsána případná poděkování (vedoucímu práce,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% konzultantovi, tomu, kdo zapůjčil software, literaturu apod.)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+openright
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%DOD: Děkuji panu Hronovi za podporu a pomoc v .
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% Strana s čestným prohlášením k diplo práci
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vglue 0pt plus 1fill
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent I declare that I carried out this master thesis independently,
+ and only with the cited sources, literature and other professional sources.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\backslash
+noindent I understand that my work relates to the rights and obligations
+ under the Act No.~121/2000 Coll., the Copyright Act, as amended, in particular
+ the fact that the Charles University in Prague has the right to conclude
+ a license agreement on the use of this work as a school work pursuant to
+ Section 60 paragraph 1 of the Copyright Act.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{10mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hbox{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+hbox to 0.5
+\backslash
+hsize{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  In ........
+ date ............
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hss}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hbox to 0.5
+\backslash
+hsize{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  signature of the author 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hss}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+vspace{20mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vbox to 0.5 
+\backslash
+vsize{
+\backslash
+setlength{
+\backslash
+parindent}{0mm}
+\backslash
+setlength{
+\backslash
+parskip}{5mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Název práce: Optimalizace funkce obnovitelných zdrojů elektrické energie
+ na bázi palivových článků, akumulátorů a FV panelů pro malé výkony.
+\end_layout
+
+\begin_layout Standard
+Autor: Martin Holeček
+\end_layout
+
+\begin_layout Standard
+Katedra: Matematický ústav UK
+\end_layout
+
+\begin_layout Standard
+Vedoucí diplomové práce: prof.
+ Ing.
+ František Maršík, DrSc., Matematický ústav UK 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% Jméno a příjmení s tituly, pracoviště
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% dle Organizační struktury MFF UK, případně plný název pracoviště mimo
+ MFF UK
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abstrakt: 
+\end_layout
+
+\begin_layout Standard
+Klíčová slova: řídící systémy, palivové články, stacionární zdroje energie
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vss}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nobreak 
+\backslash
+vbox to 0.49 
+\backslash
+vsize{ 
+\backslash
+setlength{
+\backslash
+parindent}{0mm} 
+\backslash
+setlength{
+\backslash
+parskip}{5mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Title: Optimization of operation of renewable electric energy sources based
+ on fuel cells, accumulators and FV panels for small powers.
+\end_layout
+
+\begin_layout Standard
+Author: Martin Holeček
+\end_layout
+
+\begin_layout Standard
+Department: Mathematical Institute of Charles University
+\end_layout
+
+\begin_layout Standard
+Supervisor: prof.
+ Ing.
+ František Maršík, DrSc., Ph.D., Mathematical Institute
+\end_layout
+
+\begin_layout Standard
+Abstract: 
+\end_layout
+
+\begin_layout Standard
+Keywords: control systems, fuel cells, stationary electric energy sources
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vss}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% Strana s automaticky generovaným obsahem diplolářské práce.
+ U matematických
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% prací je přípustné, aby případný seznam tabulek a zkratek, existují-li,
+ byl umístěn
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%% na začátku práce, místo na jejím konci.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+openright
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{plain}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
