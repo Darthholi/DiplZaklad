@@ -222,7 +222,7 @@ Martin Holeček
 \series bold
 \size largest
 Optimization of operation of renewable electric energy sources based on
- fuel cells, accumulators and FV panels for small powers.
+ fuel cells, accumulators and FV panels for small powers
 \end_layout
 
 \begin_layout Standard
@@ -341,7 +341,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Matematika
+Mathematics
 \end_layout
 
 \end_inset
@@ -399,7 +399,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Matematické modelování ve fyzice a technice
+Mathematical Modelling in Physics and Technology
 \end_layout
 
 \end_inset
@@ -517,6 +517,11 @@ openright
 \end_layout
 
 \begin_layout Standard
+Děkuji panu profesorovi Maršíkovi za podporu při vypracování a zkontaktování
+ s výzkumnými kolegy a panu Douckovi za vzorová data pro testování.
+\end_layout
+
+\begin_layout Standard
 \noindent
 \begin_inset ERT
 status open
@@ -564,6 +569,10 @@ vglue 0pt plus 1fill
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 noindent I declare that I carried out this master thesis independently,
@@ -572,15 +581,32 @@ noindent I declare that I carried out this master thesis independently,
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 medskip
 \backslash
-noindent I understand that my work relates to the rights and obligations
- under the Act No.~121/2000 Coll., the Copyright Act, as amended, in particular
- the fact that the Charles University in Prague has the right to conclude
- a license agreement on the use of this work as a school work pursuant to
+noindent
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I understand that my work relates to the rights and obligations under the
+ Act No.~121/2000 Coll., the Copyright Act, as amended, in particular the
+ fact that the Charles University in Prague has the right to conclude a
+ license agreement on the use of this work as a school work pursuant to
  Section 60 paragraph 1 of the Copyright Act.
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -588,6 +614,10 @@ noindent I understand that my work relates to the rights and obligations
 
 \backslash
 vspace{10mm}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -603,7 +633,7 @@ hbox{
 \backslash
 hbox to 0.5
 \backslash
-hsize{%
+hsize{
 \end_layout
 
 \begin_layout Plain Layout
@@ -617,7 +647,12 @@ hsize{%
 
 
 \backslash
-hss}
+hss
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -626,7 +661,7 @@ hss}
 \backslash
 hbox to 0.5
 \backslash
-hsize{%
+hsize{
 \end_layout
 
 \begin_layout Plain Layout
@@ -638,7 +673,7 @@ hsize{%
 
 
 \backslash
-hss}
+hss
 \end_layout
 
 \begin_layout Plain Layout
@@ -648,7 +683,12 @@ hss}
 
 \begin_layout Plain Layout
 
-%
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
 vspace{20mm}
 \end_layout
@@ -746,6 +786,22 @@ Abstrakt:
 \end_layout
 
 \begin_layout Standard
+První část práce je věnovaná hlubší rešerši do literatury optimálního řízení,
+ shrnutí principů a způsobů jak je aplikovat na prezentovaný problém.
+ Následně je sestaven a popsán model použitelný pro samostatnou energetickou
+ jednotku s použitím vodíkových článků, akumulátoru a fotovoltaických panelů,
+ spolu s nejčastějšími používanými rovnicemi z literatury.
+ Také je formulován problém optimálního řízení řečeného systému pro optimální
+ cenu v provozu při nejlepších podmínkách.
+ Dále jsou popsány algoritmy numerického řešení systému spolu s implementací
+ konkrétního numerického algoritmu 
+\begin_inset Quotes gld
+\end_inset
+
+multiple shooting" na tento problém spolu s numerickými testy a výsledky.
+\end_layout
+
+\begin_layout Standard
 Klíčová slova: řídící systémy, palivové články, stacionární zdroje energie
 \end_layout
 
@@ -805,6 +861,21 @@ Supervisor: prof.
 
 \begin_layout Standard
 Abstract: 
+\end_layout
+
+\begin_layout Standard
+The first part of the research is motivated to provide citations deeper
+ to the literature of optimal control principles that could be linked to
+ the system optimization problem, discuss these principles and various ways
+ to apply them.
+ Then we describe one fuel cell, accumulator and photovoltaic standalone
+ system along with the most used equations from the literature.
+ Next, we formulate the problem of optimal control for this system to optimize
+ the system financial cost in the best case and we process to describe and
+ discuss the numerical optimal control algorithm - multiple shooting - that
+ will be used to solve the problem, that was not used in literature so far
+ in conjunction with the problem.
+ The codes and numerical simulations are also provided.
 \end_layout
 
 \begin_layout Standard
