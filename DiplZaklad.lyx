@@ -45,11 +45,14 @@
 \usepackage{natbib}
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
-\setcounter{secnumdepth}{0}
+%\setcounter{secnumdepth}{0}
 
 \numberwithin{table}{chapter}
 \numberwithin{figure}{chapter}
 \numberwithin{equation}{chapter}
+
+\renewcommand\[{\begin{equation}} 
+\renewcommand\]{\end{equation}}
 
 \newcommand{\opdiv}{\mathop{\mathrm{div}}}
 \newcommand{\oprot}{\mathop{\mathrm{rot}}}
@@ -202,6 +205,37 @@ filename "dp_titulni.lyx"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+printnomenclature
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Nomenclature}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter*
 Motivation and introduction
 \end_layout
@@ -212,9 +246,16 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 setcounter{chapter}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepcounter{chapter}
 \end_layout
 
 \begin_layout Plain Layout
@@ -356,7 +397,7 @@ key "UJVInst"
 \end_layout
 
 \begin_layout Chapter*
-Research and previous works
+Basic assumptions and definitions
 \end_layout
 
 \begin_layout Standard
@@ -365,9 +406,16 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 setcounter{chapter}{2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepcounter{chapter}
 \end_layout
 
 \begin_layout Plain Layout
@@ -480,7 +528,15 @@ key "CaliseSingleLevel"
 \end_inset
 
 , there is proposed an optimal system even for the powerplant of SOFC (solid
- oxide fuel cell) type.
+ oxide fuel cell 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SOFC"
+description "Solid oxide fuelcell"
+
+\end_inset
+
+) type.
  Practical measurements of standalone systems efficiency are described together
  with theoretical background in 
 \begin_inset CommandInset citation
@@ -647,10 +703,17 @@ key "vepa2013dynamic"
 
 \end_inset
 
-), complex models (with PDEs) are used for complicated problems and for
- detailed desription of inside processes (for example in a battery), but
- these models aren't meant and suited for simulations taking longer time
- or scale.
+), complex models (with PDEs 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PDE"
+description "Partial differential equation"
+
+\end_inset
+
+) are used for complicated problems and for detailed desription of inside
+ processes (for example in a battery), but these models aren't meant and
+ suited for simulations taking longer time or scale.
  More simple models with less variables (for example like curve fitting)
  are better in case in which we do need to evaluate the model more times
  per run (as in our case).
@@ -661,8 +724,15 @@ Photovoltaics
 \end_layout
 
 \begin_layout Standard
-When looking at photovoltaic (PV) panels, if we want a better model than
- just saying 
+When looking at photovoltaic (PV 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PV"
+description "Photovoltaic, usually photovoltaic panels"
+
+\end_inset
+
+) panels, if we want a better model than just saying 
 \begin_inset Quotes eld
 \end_inset
 
@@ -759,8 +829,12 @@ The circuit supplies current
  This way we can derive the model:
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Formula $I_{pv}=I_{L}-I_{D}-I_{sh}=I_{L}-I_{0}(\exp(\frac{V_{pv}+I_{pv}R_{s}}{\alpha}))-\frac{V_{pv}+I_{pv}R_{s}}{R_{sh}}$
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I_{pv}=I_{L}-I_{D}-I_{sh}=I_{L}-I_{0}(\exp(\frac{V_{pv}+I_{pv}R_{s}}{\alpha}))-\frac{V_{pv}+I_{pv}R_{s}}{R_{sh}}
+\end{equation}
+
 \end_inset
 
 
@@ -772,17 +846,19 @@ description "Current from photovoltaic model circuit ($A$)"
 \end_inset
 
 
-\end_layout
+\begin_inset Formula 
+\begin{equation}
+I_{L}=C_{1}G,\,I_{0}=C_{2}T^{3}\exp(\frac{-E_{GO}}{kT})
+\end{equation}
 
-\begin_layout Itemize
-\begin_inset Formula $I_{L}=C_{1}G,\,I_{0}=C_{2}T^{3}\exp(\frac{-E_{GO}}{kT})$
 \end_inset
 
 
-\end_layout
+\begin_inset Formula 
+\begin{equation}
+P_{pv}=V_{pv}I_{pv}\eta_{conv}
+\end{equation}
 
-\begin_layout Itemize
-\begin_inset Formula $P_{pv}=V_{pv}I_{pv}\eta_{conv}$
 \end_inset
 
  
@@ -807,7 +883,11 @@ description "Power from photovoltaic model circuit ($J$)"
 \begin_inset Formula $G$
 \end_inset
 
- incident radiation 
+ incident radiation [
+\begin_inset Formula $W/m^{2}$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$G$"
@@ -822,7 +902,11 @@ description "Incident radiation ($W/m^2$)"
 \begin_inset Formula $T$
 \end_inset
 
- surface temperature (in kelvins)
+ surface temperature (
+\begin_inset Formula $K$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
@@ -851,11 +935,15 @@ description "band gap of the used PV material"
 \begin_inset Formula $I_{L}$
 \end_inset
 
- light current
+ light current [
+\begin_inset Formula $A$
+\end_inset
+
+]
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_L$"
-description "light current $A$"
+description "light current ($A$)"
 
 \end_inset
 
@@ -866,11 +954,15 @@ description "light current $A$"
 \begin_inset Formula $I_{D}$
 \end_inset
 
- diode current 
+ diode current [
+\begin_inset Formula $A$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{D}$"
-description "diode current $A$"
+description "diode current ($A$)"
 
 \end_inset
 
@@ -881,11 +973,15 @@ description "diode current $A$"
 \begin_inset Formula $I_{sh}$
 \end_inset
 
- shunt current 
+ shunt current [
+\begin_inset Formula $A$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{sh}$"
-description "shunt current $A$"
+description "shunt current ($A$)"
 
 \end_inset
 
@@ -897,11 +993,15 @@ description "shunt current $A$"
 \end_inset
 
  diode reverse saturation current (comes from the Shockley's diode equation)
- 
+ [
+\begin_inset Formula $A$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{0}$"
-description "diode reverse saturation current $A$"
+description "diode reverse saturation current ($A$)"
 
 \end_inset
 
@@ -916,11 +1016,19 @@ description "diode reverse saturation current $A$"
 \begin_inset Formula $I_{pv}$
 \end_inset
 
-, operational voltage and current 
+, operational voltage and current [
+\begin_inset Formula $V$
+\end_inset
+
+], [
+\begin_inset Formula $A$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{pv}$"
-description "operation voltage (photovoltaic) $V$"
+description "operation voltage (photovoltaic) ($V$)"
 
 \end_inset
 
@@ -935,11 +1043,15 @@ description "operation voltage (photovoltaic) $V$"
 \begin_inset Formula $R_{sh}$
 \end_inset
 
-, parallel and shunt ressistors 
+, parallel and shunt ressistors [
+\begin_inset Formula $\Omega$
+\end_inset
+
+] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$R_{s}$"
-description "parallel resistor ressistance $Ohm$"
+description "parallel resistor ressistance ($\\Omega$)"
 
 \end_inset
 
@@ -947,7 +1059,7 @@ description "parallel resistor ressistance $Ohm$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$R_{sh}$"
-description "shunt ressistor ressitance $Ohm$"
+description "shunt ressistor ressitance ($\\Omega$)"
 
 \end_inset
 
@@ -962,7 +1074,11 @@ description "shunt ressistor ressitance $Ohm$"
 \begin_inset Formula $\eta_{conv}$
 \end_inset
 
- output power and effectivity 
+ output power and effectivity [
+\begin_inset Formula $W$
+\end_inset
+
+], [dimensionless] 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$\\eta_{conv}$"
@@ -1026,6 +1142,14 @@ key "voutetakis2011design"
 , that there is a maximal power point in the voltage current characteristic;
  this is ideally exploited by a microcontroller, traking this point.
  (In addition this book covers many interesting details, even about AC/DC
+ 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "AC, DC"
+description "Analog current, direct current"
+
+\end_inset
+
  converters.) Algorithms for tracking maximal power point are also being
  developed in 
 \begin_inset CommandInset citation
@@ -1186,7 +1310,7 @@ I_{bat}=I_{q}-\frac{Q_{bat,nom}}{10}g_{0}\exp(\frac{V_{cell}}{g_{1}}-\frac{g_{2}
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{bat}$"
-description "battery current $A$"
+description "battery current ($A$)"
 
 \end_inset
 
@@ -1223,7 +1347,7 @@ V_{cell}=V_{equ,0}+\frac{V_{equ,l}SOC}{100}+V_{pol}
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{cell}$"
-description "cell voltage $V$"
+description "cell voltage ($V$)"
 
 \end_inset
 
@@ -1245,10 +1369,10 @@ The equillibrium voltage is approximated linearily by its value at
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
-V_{pol,ch} & = & U_{ch}a_{ch}(1-\exp(-\frac{I_{q,norm}}{b_{ch}})+c_{ch}I_{q,norm})\\
-V_{pol,dch} & = & U_{dch}(1-\exp(-\frac{I_{q,norm}}{b_{dch}})+c_{dch}I_{q,norm})(1+(g_{100}-1)\exp(\frac{SOC-100}{k_{100}}))
-\end{eqnarray*}
+\begin{align}
+V_{pol,ch} & =U_{ch}a_{ch}(1-\exp(-\frac{I_{q,norm}}{b_{ch}})+c_{ch}I_{q,norm})\\
+V_{pol,dch} & =U_{dch}(1-\exp(-\frac{I_{q,norm}}{b_{dch}})+c_{dch}I_{q,norm})(1+(g_{100}-1)\exp(\frac{SOC-100}{k_{100}}))
+\end{align}
 
 \end_inset
 
@@ -1256,7 +1380,7 @@ V_{pol,dch} & = & U_{dch}(1-\exp(-\frac{I_{q,norm}}{b_{dch}})+c_{dch}I_{q,norm})
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{pol,ch}$"
-description "charging polarization voltage $V$"
+description "charging polarization voltage ($V$)"
 
 \end_inset
 
@@ -1264,7 +1388,7 @@ description "charging polarization voltage $V$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{pol,dch}$"
-description "discharging polarization voltage"
+description "discharging polarization voltage ($V$)"
 
 \end_inset
 
@@ -1305,7 +1429,7 @@ Q_{bat,i}=Q_{bat,i-1}+I_{q}(t_{i}-t_{i-1})=Q_{bat,nom}SOC_{i-1}/100+I_{q}(t_{i}-
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$Q_{bat.i}$"
-description "battery capacity $J$"
+description "battery capacity ($J$)"
 
 \end_inset
 
@@ -1351,7 +1475,7 @@ description "battery discharge rate"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{ac}$"
-description "battery current (charge or discharge)"
+description "battery current (charge or discharge) ($A$)"
 
 \end_inset
 
@@ -1360,9 +1484,9 @@ description "battery current (charge or discharge)"
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-SOC(t+1)=SOC(t)(1-\sigma_{ac})+I_{ac}\eta_{ac}(\Delta t)
-\]
+\begin{equation}
+SOC(t+1)=SOC(t)(1-\sigma_{ac})+I_{ac}\eta_{ac}(\Delta t)\label{eq:battmodel}
+\end{equation}
 
 \end_inset
 
@@ -1481,7 +1605,15 @@ Electrolyzer
 
 \begin_layout Standard
 Common types of electrolyzers are alkaline based (operates using an alkaline
- solution) and proton exchange membrane electrolyzer (PEM).
+ solution) and proton exchange membrane electrolyzer (PEM 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PEM"
+description "Proton exchange membrane"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -1496,7 +1628,15 @@ key "voutetakis2011design"
 : regression, models based on analysis of processes on anothe, cathode and
  membrane (and calculating then V-I relationship by subtracting from the
  open circuit voltage the voltages of activation polarization and ohmic
- polarization), and even rigorous CFD models.
+ polarization), and even rigorous CFD 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CFD"
+description "Computational fluid dynamics"
+
+\end_inset
+
+ models.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1536,7 +1676,7 @@ With unknown parameters
 \begin_inset Formula $\alpha_{e}$
 \end_inset
 
- (symmetry factor) and
+ (symmetry factor) and 
 \begin_inset Formula $U_{eq}$
 \end_inset
 
@@ -1572,7 +1712,7 @@ description "number of cells"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{elec}$"
-description "current through electrolyzer $A$"
+description "current through electrolyzer ($A$)"
 
 \end_inset
 
@@ -1629,9 +1769,9 @@ One empirical model
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T^{2})\log(\frac{t_{1}+t_{2}/T+t_{3}/T^{2}}{A_{elec}}I_{elec}+1)
-\]
+\begin{equation}
+V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T^{2})\log(\frac{t_{1}+t_{2}/T+t_{3}/T^{2}}{A_{elec}}I_{elec}+1)\label{eq:electr}
+\end{equation}
 
 \end_inset
 
@@ -1639,7 +1779,7 @@ V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{elec}$"
-description "electrolyzer voltage $V$"
+description "electrolyzer voltage ($V$)"
 
 \end_inset
 
@@ -1647,7 +1787,7 @@ description "electrolyzer voltage $V$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$A_{elec}$"
-description "area of electrolyzer $m^2$"
+description "area of electrolyzer ($m^2$)"
 
 \end_inset
 
@@ -1680,7 +1820,7 @@ key "voutetakis2011design"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$i$"
-description "area current $A/m^2$"
+description "area current ($A/m^2$)"
 
 \end_inset
 
@@ -1755,7 +1895,7 @@ n_{H_{2}}=\epsilon\cdot0,01866\frac{mol}{hr\cdot A},\,m_{H_{2}}=\epsilon\cdot3,7
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$m_{H_2}$"
-description "hydrogen production rate (kilograms instead of mols) $\\frac{kg}{hr \\cdot A}$"
+description "hydrogen production rate (kilograms instead of mols) ($\\frac{kg}{hr \\cdot A}$)"
 
 \end_inset
 
@@ -1805,7 +1945,7 @@ Takes into account the overvoltages (ohmic and activation), but not effects
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{fc}$"
-description "fuel cell voltage $V$"
+description "fuel cell voltage ($V$)"
 
 \end_inset
 
@@ -1817,7 +1957,7 @@ description "fuel cell voltage $V$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{o}$"
-description "open circuit voltage for fuel cell $V$"
+description "open circuit voltage for fuel cell ($V$)"
 
 \end_inset
 
@@ -1845,7 +1985,7 @@ description "open circuit voltage for fuel cell $V$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$I_{d}$"
-description "current at inflection point in fuelcell V-I curve "
+description "current at inflection point in fuelcell V-I curve ($A$)"
 
 \end_inset
 
@@ -1880,7 +2020,7 @@ description "general notation for one parameter in empiric model for fuelcells"
 \begin_inset Formula $T$
 \end_inset
 
- and oxygen partial pressue 
+ and oxygen partial pressure 
 \begin_inset Formula $p_{O_{2}}$
 \end_inset
 
@@ -1888,7 +2028,7 @@ description "general notation for one parameter in empiric model for fuelcells"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$p_{O_2}$"
-description "oxygen partial pressue"
+description "oxygen partial pressue ($Pa$)"
 
 \end_inset
 
@@ -1935,10 +2075,10 @@ This model takes into effect even the mass transport limitation.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
-V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\\
-V_{o} & = & V_{rev,FC}+B\log(i_{o})
-\end{eqnarray*}
+\begin{eqnarray}
+V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\label{eq:usedfuelcell}\\
+V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -1954,7 +2094,7 @@ Where
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$V_{rev,fc}$"
-description "fuelcell, reversible voltage"
+description "fuelcell, reversible voltage ($V$)"
 
 \end_inset
 
@@ -2217,7 +2357,7 @@ end{frame}
 \end_layout
 
 \begin_layout Section
-Optimization and optimal control
+Optimization and optimal control - general theory
 \end_layout
 
 \begin_layout Standard
@@ -2422,12 +2562,12 @@ cost function"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\tag*{...cost function / objective function}\\
-\dot{x} & =f(x,u,t)\tag*{...system dynamics}\\
-x(0) & =x_{0}\\
-g(x,u,t) & \leq0\tag*{...constraints}
-\end{align*}
+\begin{align}
+\mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u(x,t),t)\,dt\tag*{...cost function / objective function}\nonumber \\
+\dot{x} & =f(x,u(x,t),t)\tag*{...system dynamics}\nonumber \\
+x(0) & =x_{0}\label{eq:basiceqs}\\
+g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber 
+\end{align}
 
 \end_inset
 
@@ -2447,6 +2587,22 @@ Problems from calculus of variations can be formulated as an optimal control
  problem, so the ideas from this field apply in optimal control too.
  Moreover, optimal control theory has methods for solving the problem of
  controllability and observability and the presence of noise.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepcounter{subsection}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2626,7 +2782,19 @@ dynamic programming
 \series default
 , 
 \series bold
-Hamilton Jacobi Bellman (HJB) equations
+Hamilton Jacobi Bellman (HJB) 
+\series default
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HJB"
+description "Hamilton Jacobi Bellman (equations)"
+
+\end_inset
+
+
+\series bold
+ equations
 \series default
  and 
 \series bold
@@ -2688,9 +2856,9 @@ Many problem formulations could be efficiently written using Hamiltonian
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -2807,11 +2975,11 @@ HJB eqs.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
+\begin{align}
 J^{\star}(x(T),T) & =\phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\\
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}
-\end{align*}
+-\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber \\
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber 
+\end{align}
 
 \end_inset
 
@@ -2862,8 +3030,16 @@ Pontryagin principle of maximality, PMP
 
 \begin_layout Standard
 The last step - or method - is principle of maximality (Pontryagin principle
- of maximality, PMP) and can be - for continuous control functions - derived
- using the HJB equations (as in 
+ of maximality, PMP 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PMP"
+description "Pontryagin maximum principle"
+
+\end_inset
+
+) and can be - for continuous control functions - derived using the HJB
+ equations (as in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bertsekas1995dynamic"
@@ -2915,11 +3091,11 @@ And to get
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
+\begin{align}
 u^{\star}(t,x,\lambda) & =\arg\min_{u}(H(x,u,\lambda,t))\phi(x(T),T)\\
 -\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\\
 \lambda(T) & =\nabla\phi(x(T),T)
-\end{align*}
+\end{align}
 
 \end_inset
 
@@ -2961,17 +3137,17 @@ key "EvansControlCourse"
 
  - we need to define a function 
 \begin_inset Formula 
-\[
+\begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)
-\]
+\end{equation}
 
 \end_inset
 
  and the costate equation becomes: 
 \begin_inset Formula 
-\[
+\begin{equation}
 -\dot{\lambda}=\frac{\partial H}{\partial x}(x,u,t)+\mu\frac{\partial c}{\partial x}(x,u)
-\]
+\end{equation}
 
 \end_inset
 
@@ -3003,7 +3179,7 @@ All these analytic methods will give us equations, to solve the equations
  is a concern of numerical optimal control.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Numerical optimal control
 \end_layout
 
@@ -3011,7 +3187,7 @@ Numerical optimal control
 Numerical optimal control can be, again, used to solve either continuous
  or discretized problems.
  Heavily relies on the problem analysis and follows the said methods.
- It would seem, that it is sufficient to just solve HJB PDR's, but it is
+ It would seem, that it is sufficient to just solve HJB PDE's, but it is
  not used everytime.
  For example, the problem is, so called, curse of dimensionality - when
  state and/or control, has many components, the problem becomes exponentially
@@ -3023,7 +3199,7 @@ key "diehl2011numerical"
 
 \end_inset
 
-, is, for example, to approximate value function by another means, for example
+, is, for example, to approximate cost function by another means, for example
  using neural network methods.
  
 \begin_inset Note Note
@@ -3172,20 +3348,45 @@ indirect methods
 direct methods
 \series default
  (first discretize, then optimize).
- Indirect methods result in algorithms similar to ODE solvers, but the resulting
- system can be badly conditioned or unstable in some cases.
+ Indirect methods result in algorithms similar to ODE 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ODE"
+description "Ordinary differential equation"
+
+\end_inset
+
+ solvers, but the resulting system can be badly conditioned or unstable
+ in some cases.
  Direct methods just rewrite the problem to the area of nonlinear programming
  problem and then apply convenient solver.
 \end_layout
 
 \begin_layout Standard
-There are three main cases of direct methods - single shooting, Multiple
- shooting and collocation.
+There are three main cases of direct methods - 
+\series bold
+\color black
+single shooting
+\series default
+\color inherit
+, 
+\series bold
+multiple shooting
+\series default
+ and 
+\series bold
+collocation
+\series default
+.
+\end_layout
+
+\begin_layout Paragraph*
+Single shooting
 \end_layout
 
 \begin_layout Standard
-Single shooting discretizes the control to piecewise constant function and
- uses numerical integrator for the evaluation of the cost function (ODE).
+discretizes the control to piecewise constant function and uses numerical
+ integrator for the evaluation of the cost function (ODE).
  This way we get a finite dimensional optimization problem, which can be
  solved by any nonlinear programming algorithm 
 \begin_inset CommandInset citation
@@ -3202,18 +3403,25 @@ Single shooting algorithm is usefull, but the stability can sometimes depend
  heavily on starting value.
 \end_layout
 
+\begin_layout Paragraph*
+Collocation
+\end_layout
+
 \begin_layout Standard
-Collocation discretizes both the control function and state function and
- approximates the integral.
+discretizes both the control function and state function and approximates
+ the integral.
  We get larger system for nonlinear programming, but the good news is that
  the system is sparse (in the meaning, that the Jacobian has many zero elements).
  Collocation can treat better even unstable systems, but refining the grid
  results in new problem with higher dimensions.
 \end_layout
 
+\begin_layout Paragraph*
+Multiple shooting
+\end_layout
+
 \begin_layout Standard
-Multiple shooting discretizes the control, as single shooting, and additionally
- the time scale.
+discretizes the control, as single shooting, and additionally the time scale.
  So it is called 
 \begin_inset Quotes eld
 \end_inset
@@ -3269,6 +3477,14 @@ dod pridat pozn ze to pouzijeme if to pouzijeme
 
 \begin_layout Paragraph
 Nonlinear programming (NLP)
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "NLP"
+description "Nonlinear programming"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3277,7 +3493,7 @@ Is an area of algorithms for optimizing nonlinear cost functions (on constrained
  Methods include derived algorithms from ideas of gradient descend or newton
  method (applied on finding a point where the gradient is zero), for example.
  Usually these methods can also make use of derivatives (with said newton
- method on forst derivative we, for example, need also second derivatives)
+ method on first derivative we, for example, need also second derivatives)
  and that, in case of optimal control and optimizing differential equations,
  leads to the need of computing sensitivity equations.
  That means how the functional depends on the choice of (discretized) control
@@ -3288,10 +3504,9 @@ Is an area of algorithms for optimizing nonlinear cost functions (on constrained
 .
  When not supplied, methods usually compute these just by approximating.
  Algoritmical approaches for getting the results for sensitivity are, for
- example External Numerical Differentiation (END), Variational Differential
- Equations, Automatic Differentiation, Internal Numerical Differentiation
- (IND) (that makes use of the equations written directly in source code
- for numerical computation).
+ example External Numerical Differentiation, Variational Differential Equations,
+ Automatic Differentiation, Internal Numerical Differentiation (that makes
+ use of the equations written directly in source code for numerical computation).
 \end_layout
 
 \begin_layout Standard
@@ -3303,11 +3518,16 @@ key "Sensitivity20061553"
 \end_inset
 
 .
-\end_layout
+ A suggested technique for solving optimal control problems is, for example,
+ Sequential quadratic programming, SQP 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SQP"
+description "Sequential quadratic programming"
 
-\begin_layout Standard
-A suggested technique for solving optimal control problems is, for example,
- Sequential quadratic programming, SQP, 
+\end_inset
+
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "boggs1995sequential"
@@ -3334,7 +3554,7 @@ key "ottanumerical"
 \end_layout
 
 \begin_layout Chapter*
-Solution
+Optimal problem algorithm for actual energy source configuration
 \end_layout
 
 \begin_layout Standard
@@ -3343,9 +3563,37 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 setcounter{chapter}{3}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+setcounter{subsubsection}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+stepcounter{chapter}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3373,7 +3621,7 @@ Contribution of this work
 Now, lets emphasize, that other existing works tried to model the problem
  using discontinuous functions and optimized only the system parameters
  (for minimial cost) for given power managment strategy or optimized only
- the the power managment strategy (or decision constants of the said strategy).
+ the power managment strategy (or decision constants of the said strategy).
 \end_layout
 
 \begin_layout Standard
@@ -3469,15 +3717,24 @@ We need to rewrite the setting using mathematical formulation - to express
 \end_inset
 
  and the dynamics of the system 
-\begin_inset Formula $f(x,u,t)$
+\begin_inset Formula $\dot{x}=f(x,u,t)$
 \end_inset
 
- (using notation consistent with the optimal control theory).
+ (using notation consistent with the optimal control theory, see eqs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basiceqs"
+
+\end_inset
+
+).
  
 \end_layout
 
 \begin_layout Standard
-Lets express every variable in energy, Joules, with exception for 
+Lets express every state variable in energy, Joules, and control variables
+ in Watts, with exception for 
 \begin_inset Formula $u_{2}$
 \end_inset
 
@@ -3485,7 +3742,7 @@ Lets express every variable in energy, Joules, with exception for
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$u_2$"
-description "current flow from hydrogen $A$"
+description "current flow from hydrogen ($A$)"
 
 \end_inset
 
@@ -3502,7 +3759,7 @@ Because we have two state variables - the state of charge of the accumulator
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$B(t)$"
-description "energy stored in the accumulator $J$"
+description "energy stored in the accumulator ($J$)"
 
 \end_inset
 
@@ -3514,7 +3771,7 @@ description "energy stored in the accumulator $J$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$S(t)$"
-description "stored hydrogen $2F \\cdot mol$"
+description "stored hydrogen ($2F \\cdot mol$)"
 
 \end_inset
 
@@ -3522,8 +3779,8 @@ description "stored hydrogen $2F \\cdot mol$"
 \begin_inset Formula $n_{e}$
 \end_inset
 
- to not do conversion again for electrolyzer and fuelcell), our state is
- two dimensional real valued function 
+ times number of moles - to not do conversion again for electrolyzer and
+ fuelcell), our state is two dimensional real valued function 
 \begin_inset Formula $x(t)=(x_{1}(t),x_{2}(t))=(B(t),S(t))$
 \end_inset
 
@@ -3536,7 +3793,7 @@ description "stored hydrogen $2F \\cdot mol$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$B_{max}$"
-description "maximal energy in battery $J$"
+description "maximal energy in battery ($J$)"
 
 \end_inset
 
@@ -3548,7 +3805,7 @@ description "maximal energy in battery $J$"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$S_{max}$"
-description "maximum of hydrogen in tank $2F \\cdot mol$"
+description "maximum of hydrogen in tank ($2F \\cdot mol$)"
 
 \end_inset
 
@@ -3558,7 +3815,8 @@ description "maximum of hydrogen in tank $2F \\cdot mol$"
 \end_layout
 
 \begin_layout Standard
-The boundary condition is 
+The boundary condition is the source power from solar collectors and power
+ demand, defined as 
 \begin_inset Formula $P_{src}(t)=P_{in}(t)-P_{demand}(t)$
 \end_inset
 
@@ -3566,15 +3824,58 @@ The boundary condition is
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "$P_{src}$"
-description "source power as energy from solar collectors minus electricity demand $W$"
+description "source power as energy from solar collectors minus electricity demand ($W$)"
 
 \end_inset
 
-, difference between input power and power demand (so its units will be
- Watts).
+, difference between input power and power demand (in Watts).
+ Usually the data would look like in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:First-seven-days"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename oneweekofdata.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:First-seven-days"
+
+\end_inset
+
+First seven days of availible data (power production from PV panels from
+ UJV Řež).
+ As the data start with wednsday, notice bigger consumption over weekends
+ (in the middle).
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 The control function 
 \begin_inset Formula $u$
 \end_inset
@@ -3625,6 +3926,14 @@ Using this equation we can model the efficiency by setting
 \end_inset
 
 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "$P_{batt+max},P_{batt+max},$"
+description "Maximal/minimal power flow to the battery ($W$)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -3647,6 +3956,14 @@ Using this equation we can model the efficiency by setting
 .
  There is a bound, how much power we can get from battery 
 \begin_inset Formula $-u_{1}\in[P_{batt-min},P_{batt-max}]$
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "$P_{batt-max},P_{batt-max},$"
+description "Maximal/minimal power flow from the battery ($W$)"
+
 \end_inset
 
 
@@ -3693,6 +4010,14 @@ Definitely the term will be different for
 \end_inset
 
 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "$P_{H_{2}+min},P_{H_{2}+max}$"
+description "Maximal/minimal current to electrolyzer ($A$)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -3718,6 +4043,14 @@ Definitely the term will be different for
 \end_inset
 
 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "$P_{H_{2}-min},P_{H_{2}-max}$"
+description "Maximal/minimal current from fuelcell ($A$)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3730,6 +4063,13 @@ Again, here we can model the efficiency (for example
 \end_inset
 
  - the current would flow to the fuelcell, so we use the equation for fuelcell
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:usedfuelcell"
+
+\end_inset
+
  multiplied by efficiency) and even nonlinear characteristics of the efficiency.
  This design follows the wise rule, that the electrolyzer and fuel cell
  should not operate simultaneously (because that would be a waste of power).
@@ -3739,9 +4079,15 @@ er.
 \begin_inset Formula $u_{2}$
 \end_inset
 
- as a variable and not power? Because the model equations give us how the
- voltage depends on current (and from that we can get the power dependency
- on current and thats the function 
+ as a variable and not power? Because the model equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:usedfuelcell"
+
+\end_inset
+
+ give us how the voltage depends on current (and from that we can get the
+ power dependency on current and thats the function 
 \begin_inset Formula $P_{H_{2}}(u_{2})$
 \end_inset
 
@@ -3787,7 +4133,7 @@ Malek chce jak ty rovnice vznikly.
 \begin_layout Standard
 So, once again and nicely written, the dynamics of our system is: 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{x} & = & f(x,u,t)\\
 \dot{\left[\begin{array}{c}
 B(t)\\
@@ -3798,8 +4144,8 @@ P_{H_{2}}(u_{2})
 \end{array}\right]+\left[\begin{array}{c}
 -\sigma\cdot B(t)\\
 0
-\end{array}\right]
-\end{eqnarray*}
+\end{array}\right]\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -3821,16 +4167,13 @@ To finish our formulation, we want to find the minimizing control function
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-J=\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt=hcost(S(T))+bcost(B(T))+\int_{0}^{T}pcost(P_{src}-P_{batt}-P_{H_{2}})\,dt
-\]
+\begin{eqnarray}
+J & = & \phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\nonumber \\
+ & = & hcost(S(T))+bcost(B(T))+\int_{0}^{T}pcost(P_{src}-P_{batt}-P_{H_{2}})\,dt\label{eq:hcostbcostdef}
+\end{eqnarray}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \begin_inset Formula $hcost(x)$
 \end_inset
@@ -3863,7 +4206,7 @@ pridej info o jednotkach a predelej z u na to co pouzivas ve skutecnosti
 \end_layout
 
 \begin_layout Standard
-That simply says, that for not using the grid we pay nothng, selling gives
+That simply says, that for not using the grid we pay nothing, selling gives
  us money, by buying we lose money and that selling the power to grid would
  not give us such an amount of money as we would lose by buying the power.
 \end_layout
@@ -3886,7 +4229,7 @@ Generally we can think of any
 
 \begin_layout Standard
 As we will see later, the most important thing is, that the function 
-\begin_inset Formula $J[y]$
+\begin_inset Formula $J[x(u)]$
 \end_inset
 
  would be continuous.
@@ -3960,7 +4303,7 @@ todo simple model
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Construction of solutions and rewriting the problem
 \end_layout
 
@@ -3981,10 +4324,10 @@ The Hamiltonian of our system, using
 
  as lagrange multipliers is 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
- & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})
-\end{eqnarray*}
+ & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -4019,7 +4362,11 @@ Additionally, in the presence of state constraints (for example
 
 ), the definition of Hamiltonian alone is not sufficient and the theory
  usually also defines the function 
-\begin_inset Formula $c(x,u)=\nabla g(x)\cdot f(x,u)$
+\begin_inset Formula 
+\begin{equation}
+c(x,u)=\nabla g(x)\cdot f(x,u)\label{eq:defc}
+\end{equation}
+
 \end_inset
 
  (that will be used later).
@@ -4045,15 +4392,16 @@ Optimal COntrol str 124.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\\
--\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\tag*{...costate equation}\\
-x(t_{0}) & =(0,0)\tag*{...boundary condition}\\
-(\phi_{x}+\psi_{x}^{T}\nu-\lambda)^{T}|_{T}dx+(\phi_{t}+\psi_{t}^{T}\nu+H)^{T}|_{T}dT & =0\tag*{...boundary condition prototype}\\
-\lambda^{T}|_{T}dx+H^{T}|_{T}dT & =0\tag*{...boundary condition in our case\ensuremath{(dT=0)}}\\
-\lambda_{i}(T) & =\frac{\partial\phi}{\partial x_{i}}(x(T),T)\tag*{...boundary condition for costate (for free final state)}\\
-\lambda_{i}(T) & =0\tag*{...boundary condition for costate in our case}
-\end{align*}
+\begin{flalign}
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber \\
+-\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{\mathsf{T}}}{\partial x}\lambda+\frac{\partial L}{\partial x}\tag*{...costate equation}\nonumber \\
+x(t_{0}) & =(0,0)\tag*{...boundary condition}\nonumber \\
+0 & =(\phi_{x}+\psi_{x}^{\mathsf{T}}\nu-\lambda)^{\mathsf{T}}|_{T}dx+(\phi_{t}+\psi_{t}^{\mathsf{T}}\nu+H)^{\mathsf{T}}|_{T}dT\tag*{...boundary condition prototype}\nonumber \\
+0 & =\psi(x(T),T)\tag*{...final state constraint (if present)}\\
+0 & =\lambda^{\mathsf{T}}|_{T}dx+H^{\mathsf{T}}|_{T}dT\tag*{...boundary condition in our case \ensuremath{(dT=0)}}\nonumber \\
+\lambda_{i}(T) & =\frac{\partial\phi}{\partial x_{i}}(x(T),T)\tag*{...boundary condition for costate (for free final state)}\nonumber \\
+\lambda_{i}(T) & =0\tag*{...boundary condition for costate in our case}\nonumber \\
+\end{flalign}
 
 \end_inset
 
@@ -4141,10 +4489,10 @@ maximum principle for state constraints"), we have the existency of a costate
 
 , such that: 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{p}^{\star}(t) & = & -\nabla_{x}H(x^{\star}(t),p^{\star}(t),u^{\star}(t))+\lambda^{\star}(t)\nabla_{x}c(x^{\star}(t),u^{\star}(t))\\
 H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(x^{\star},u)=0\}
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -4157,11 +4505,26 @@ H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(
 \begin_inset Formula $u^{\star},\,x^{\star}$
 \end_inset
 
- solving the control problem and function 
+ solving the control problem ( eqs.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basiceqs"
+
+\end_inset
+
+ ) and function 
 \begin_inset Formula $c$
 \end_inset
 
- defined above.
+ defined above 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defc"
+
+\end_inset
+
+.
  (Instead of simple 
 \begin_inset Formula $-\dot{\lambda}=\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\mbox{ ...costate equation}$
 \end_inset
@@ -4191,10 +4554,10 @@ Optimal Control str 287 ve me vyvolava pocit ze se hodi definovat do hodnotici
 The equation for developement of the optimal cost (computed backwards) is
  
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 J^{\star}(x(T),T) & = & \phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)
-\end{eqnarray*}
+-\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -4221,16 +4584,16 @@ numerical optimal control pdf str 14,17
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 u^{\star}(t,x,\lambda) & = & \arg\min_{u}(H(x,u,\lambda,t))\phi(x(T),T)
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Approach using direct methods
 \end_layout
 
@@ -4246,10 +4609,11 @@ key "gelfand1964calculus"
 
 .
  If we would like to use direct methods with functions with discontinuities,
- the thoughts will go in different way.
+ the thoughts will go in different way (eg.
+ not using the notation of Hamiltonian).
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Ritz method, finite differences and existence
 \end_layout
 
@@ -4266,7 +4630,24 @@ key "gelfand1964calculus"
 \end_layout
 
 \begin_layout Standard
-We construct an approximating sequence of spaces 
+In a general situation (application to our specific case will come later),
+ where we want to evaluate a functional 
+\begin_inset Formula $J[y]$
+\end_inset
+
+ depending on a function 
+\begin_inset Formula $y$
+\end_inset
+
+ from an general function space 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ (
+\begin_inset Formula $y\in\mathcal{M}$
+\end_inset
+
+), we first construct an approximating sequence of spaces 
 \begin_inset Formula $\mathcal{M}_{i}$
 \end_inset
 
@@ -4363,6 +4744,11 @@ If a functional
 \begin_inset Formula $y_{n}\in\mathcal{M}_{n}$
 \end_inset
 
+, that is then, in fact, a minimizing sequence of functions for the functional
+ 
+\begin_inset Formula $J[y]$
+\end_inset
+
 ).
 \end_layout
 
@@ -4383,33 +4769,68 @@ Together then, if we have a sequence (
 , we are approaching the limit if the given functional is continuous.
 \end_layout
 
-\begin_layout Standard
-Does our problem, from the point of view of direct methods from calculus
- of variations (
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $J$
-\end_inset
-
- is cost function and 
-\begin_inset Formula $y$
-\end_inset
-
- is our 
-\begin_inset Formula $u,\,x,\,\lambda$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-), have this property?
+\begin_layout Subsubsection
+The application of Ritz method
 \end_layout
 
 \begin_layout Standard
-Cost for our problem was given by:
+Does our problem, from the point of view of direct methods from calculus
+ of variations, have this property?
+\end_layout
+
+\begin_layout Standard
+The space 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ is, in our case, defined as the space of real valued functions 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $y(t)=(x(t),u(t)):\,\mathbb{R}^{4}\rightarrow\mathbb{R}$
+\end_inset
+
+, that are bounded on a bounded interval, 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ is continuous, and do satisfy the state equation 
+\begin_inset Formula $\dot{x}=f(x,u,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $J$
+\end_inset
+
+ is the cost function of our
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ problem, that was given by (in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hcostbcostdef"
+
+\end_inset
+
+):
 \end_layout
 
 \begin_layout Standard
@@ -4460,7 +4881,7 @@ And because everything comes down to functions
 \color inherit
 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{\left[\begin{array}{c}
 B(t)\\
 S(t)
@@ -4471,7 +4892,7 @@ P_{H_{2}}(u_{2})
 -\sigma\cdot B(t)\\
 0
 \end{array}\right]
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -4488,10 +4909,30 @@ P_{H_{2}}(u_{2})
 \noun off
 \color none
 ...
- that are selected to be continuous (see models presented before - it is
- not only physically-wise selection that makes approximating easier, computation
- faster, but it also gives us the needed results here), we just need to
- clarify our demands on functions 
+ that are selected to be continuous (see models presented before - 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:usedfuelcell"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:electr"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:battmodel"
+
+\end_inset
+
+ - it is not only physically-wise selection that makes approximating easier,
+ computation faster, but it also gives us the needed results here), we just
+ need to clarify our demands on functions 
 \begin_inset Formula $hcost$
 \end_inset
 
@@ -4544,8 +4985,65 @@ In this analysis we ommited any constraints, but given the fact that the
 
 \begin_layout Standard
 Our functional is, in the end, easier to work with, than normally presented
- problems from the calculus of variations, because we dont have derivatives
+ problems from the calculus of variations, because we do not have derivatives
  of the control function in our functional.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Subsubsection
+The application of Ritz method 2
+\end_layout
+
+\begin_layout Plain Layout
+optimalizuju i oproti lambda
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $y(t)=(x(t),u(t),\lambda(t)):\,\mathbb{R}^{6}\rightarrow\mathbb{R}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ On hamiltonian
+\begin_inset Formula 
+\begin{eqnarray*}
+H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
+ & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4825,20 +5323,36 @@ cela koncepce bude fotovoltaika nebo jadro a energie se bude ukladat kdyz
 \end_layout
 
 \begin_layout Section
-Implementation and results
+Applied numerical procedures and results
 \end_layout
 
 \begin_layout Standard
-Using all previously mentioned, we developed a program answering following
- question 
+Using all previously mentioned, we developed a program capable of answering
+ the following questions:
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Quotes eld
 \end_inset
 
 What is the most economic setting for photovoltaic and hydrogen system and
  what is the specific power managment strategy (the optimal control function)
  of such system?".
- Lets suppose, that we already have measured yearly power consumption and
- have already installed photovoltaic panels and measured power output.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+What is the most economic control function for a specified time scale, given
+ a prediction of consumption and energy generation"
+\end_layout
+
+\begin_layout Standard
+From now on, we will look on the second result to verify the effectivity
+ of numerous NLP solvers on the easier question.
+ So, lets suppose, that we already have measured yearly power consumption
+ and have already installed photovoltaic panels and measured power output.
  If it is not this case, we can, of course, use the model and approach from
  
 \begin_inset CommandInset citation
@@ -4848,12 +5362,15 @@ key "Stand-alonePowerSystems"
 \end_inset
 
  to get the estimated power output from manufacturers datasheets.
+ If we would like to answer the first question, the only remaining work
+ would be to add the equation tying together the cost of a PV panels and
+ other equipment and their effectivity.
 \end_layout
 
 \begin_layout Standard
 Lets now have a look at all the implementation details and all the used
  tools (because this way it would make the actual usage of the scripts less
- time consuming work).
+ time consuming work) and the accompanynig numerical experiments.
 \end_layout
 
 \begin_layout Subsection
@@ -5080,6 +5597,14 @@ AsBusiness
  and final cost.
 \end_layout
 
+\begin_layout Itemize
+Directory 
+\family typewriter
+Test
+\family default
+ contains all the code for the numerical test cases presented below.
+\end_layout
+
 \begin_layout Standard
 All the matlab scripts in each directory follow this structure:
 \end_layout
@@ -5130,7 +5655,7 @@ state.m
 \family typewriter
 statesens.m
 \family default
- - script for cimputing sensitivity equations
+ - script for computing sensitivity equations
 \end_layout
 
 \begin_layout Itemize
@@ -5173,6 +5698,15 @@ controldata
  - points on piecewise lienar function defining the power demands
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+dispsaved.m
+\family default
+ - the script that would print the graphs like in this work and compute
+ the constraint violation and final cost.
+\end_layout
+
 \begin_layout Standard
 Every variation of the scripts can be run in the same manner - executing
  
@@ -5188,7 +5722,7 @@ consts.m
 \family default
  - because letting the integrators integrate functions depending on very
  high time ranges in basic physical units (seconds) would take unreasonable
- amount of time (aleso because the boundary conditions are set to change
+ amount of time (also because the boundary conditions are set to change
  on hour by hour basis and that means that nothing interesting happens for
  the numerical integrator that tries to watch for sudden changes and keep
  the precision).
@@ -5315,7 +5849,7 @@ df indirect approach - resim s pomoci lambda a pontryagina.
 \end_layout
 
 \begin_layout Subsection
-Results of test runs
+The numerical experiments
 \end_layout
 
 \begin_layout Standard
@@ -5343,16 +5877,57 @@ consts.m
 \end_layout
 
 \begin_layout Standard
+For correct one-year long prediction, the optimization process would take
+ long time (
+\begin_inset Formula $2^{14}$
+\end_inset
+
+ discretization points would require more than 4 days of processor time
+ per iteration), so we would chose smaller time scale for testing purposes
+ - one day and 
+\begin_inset Formula $2^{5}$
+\end_inset
+
+ discretization points.
+ The main goal is to explore, which NLP solvers would perform reasonably
+ well on this type of problem.
+ 
+\end_layout
+
+\begin_layout Standard
+This test case was set up to control a production of one day, where the
+ photovoltaic power income was less than it would be needed and the test
+ case starts with empty batteries and fuel tank.
+ The goal is to observe lesser cost of electricity over the day.
+\end_layout
+
+\begin_layout Standard
+The currency is set to a virtual one, where to buy an unit of power costs
+ 200 units, to sell it costs 100 units and the energy remaining in batteries
+ and fuel at the end of the run can be sold for 150 units.
+ The efficiency of the battery is set to 70% and the fuelcell is considered
+ ideal in this test case (to see if the algorithm would use the fuelcell
+ even though it's nonlinear characteristic).
+\end_layout
+
+\begin_layout Subsubsection
+Understanding the results
+\end_layout
+
+\begin_layout Standard
 After each iteration, the environment will show the state of the optimization
  in 4 graphs, like in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "fig:1strun"
+reference "fig:Filtersd"
 
 \end_inset
 
 .
- Left top graph shows the state of energy in batter and hydrogen in tank,
+\end_layout
+
+\begin_layout Standard
+Left top graph shows the state of energy in batter and hydrogen in tank,
  right top graph shows the evolution of the cost function in time, left
  bottom graph shows the control function (2 dimension - power to battery
  and current to hydrogen - so two lines) and right bottom graph shows the
@@ -5361,31 +5936,580 @@ reference "fig:1strun"
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:1strun"
+reference "fig:Filtersd"
 
 \end_inset
 
 , because the algorithm starts from a point far from optimum.
  As for multiple shooting, the graph for states is not even continuous,
- because the algorithm had not many iterations to guess correctly the beginnning
-s of states.
+ because the algorithm had not many iterations to guess correctly the beginnings
+ of states.
+ The axes are in each subfigure scaled for better run of the algorithm.
+\end_layout
+
+\begin_layout Subsubsection
+Results of test runs
+\end_layout
+
+\begin_layout Standard
+Usually, the results verify, that with lower number of discretization points,
+ the algorithms tend to fail, because they are not able to even meet the
+ provided conditions on such small scale level - the power input and demand
+ oscillates faster, than the number of control points allows for compensation.
+\end_layout
+
+\begin_layout Standard
+From MATLAB and OPTI toolbox, we have applied the algorithms listed in the
+ table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Results-of-test"
+
+\end_inset
+
+, together with the evaluation of the success of every solver.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+todo, chybi run5, run6 a ipopt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+algorithm (ndisc=32)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+optcost
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+max constraint violation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.072860e+08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.851336e-05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+active-set
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+spustit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interior-point
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bezi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IPOPT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+spustit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NLOPT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:NLOPT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.062047e+09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.919988e+06
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+filtersd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Filtersd"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.429403e+08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.920000e+06
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lbfgsb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PSWARM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nesel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Results-of-test"
+
+\end_inset
+
+Results of test runs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Data.TimeScales=60*60, Data.ControlScales=100, 7*24*60*60/Data.TimeScales;
+ Data.Pbattplusmax = *Data.TimeScales
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All the solvers managed to find a better strategy than to just buy the power
+ from the grid (which can be seen from the bottom right graph that would
+ go steeply linearly down), unfortunately some of them did 'cheat' in a
+ sense that the constraints were not satisfied.
+ The best performance can be observed for SQP (Sequential quadratic programming)
+, which is in line with the suggested approach from various sources.
+\end_layout
+
+\begin_layout Standard
+The solver converged to make decisions (as seen in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SQP"
+
+\end_inset
+
+) copying the peaks from boundary conditions and mostly using the ideal
+ fuelcell over the battery.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename 1stiter.png
+	filename Obrazky/matepsfigFILTERSD.eps
 	lyxscale 80
-	width 50text%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename screenshotdal.png
-	width 50text%
+	width 90text%
 
 \end_inset
 
@@ -5395,14 +6519,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:1strun"
+name "fig:Filtersd"
 
 \end_inset
 
-Algorithm results in progress.
- Axes are scaled for better run of the algorithm.
- Less discretization points and early stage (left, white), more discretization
- points and later stage (right, gray).
+ FilterSD solver results.
 \end_layout
 
 \end_inset
@@ -5413,57 +6534,71 @@ Algorithm results in progress.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-For correct one-year long prediction, the optimization process would take
- long time (
-\begin_inset Formula $2^{14}$
-\end_inset
-
- discretization points would require more than 4 days of processor time
- per iteration), so we would chose smaller time scale for testing purposes
- - one week and 
-\begin_inset Formula $2^{8}$
-\end_inset
-
- discretization points.
- 
-\end_layout
-
-\begin_layout Standard
-Usually, the results verify, that with lower number of discretization points,
- the algorithm fails, because it is not able to even meet the provided condition
-s on such small scale level - the power input and demand oscillates faster,
- than the number of control points allows for compensation.
-\end_layout
-
-\begin_layout Standard
-Also, the first numerical optimal control algorithm, that did not undergo
- a breakdown on this problem was SQP (Sequential quadratic programming),
- which is in line with the suggested approach in various sources.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-To test the algorithm against common sense, the cost of the hydrogen remaining
- in the tank was set to be high.
- The observed results are satisfactory - in the end of the week, the control
- process tries to accumulate hydrogen, but before the turning point, it
- uses the hydrogen to supply power demand.
+\align center
+\begin_inset Graphics
+	filename Obrazky/matepsfigNLOPT.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:NLOPT"
+
+\end_inset
+
+NLOPT solver results.
+ Note that it did not manage to satisfy the constraints.
 \end_layout
 
 \end_inset
 
 
-\begin_inset Note Note
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-todo interpretuj vysledky
+\align center
+\begin_inset Graphics
+	filename Obrazky/matepsfigSQP.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SQP"
+
+\end_inset
+
+SQP Algorithm results
 \end_layout
 
 \end_inset
@@ -5471,20 +6606,9 @@ todo interpretuj vysledky
 
 \end_layout
 
-\begin_layout Standard
-After 60 iterations, the algorithm starts to converge to periodic decisions
- copying the periodic boundary conditions (as seen in right part of right
- figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:1strun"
-
 \end_inset
 
-).
- It is important to note, that this first test implementation might not
- be able to solve the actual problem in small time, its meaning is rather
- to decide, which algorithm to implement on a paralellized architecture.
+
 \end_layout
 
 \begin_layout Subsection
@@ -5501,7 +6625,7 @@ First, we have looked up optimal control and fuel cells works and articles,
 \begin_layout Itemize
 a method for optimizing system (and system's cost) not against a certain
  strategy, but against ideal maximum instead (which would work even better
- in the need of additionalcontrol strategy change in runtime).
+ in the need of additional control strategy change in runtime).
 \end_layout
 
 \begin_layout Itemize
@@ -5513,6 +6637,11 @@ a method for comparing two strategies against ideal maximum - to allow to
 \begin_layout Itemize
 matlab implementation allowing for solver changes for testing different
  minimum finding algorithms (in case of breakdowns)
+\end_layout
+
+\begin_layout Standard
+From the numerical experiments, the solver called SQP was veryfied to be
+ well suited for the problem.
 \end_layout
 
 \begin_layout Standard
@@ -5562,30 +6691,6 @@ The costs for * were *, tahere were option to use * number of fuel cells,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-printnomenclature
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{chapter}{Nomenclature}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newpage pagebreak
 \end_inset
 
