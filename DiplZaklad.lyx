@@ -356,6 +356,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename Schema-copy.png
 	lyxscale 40
@@ -368,6 +381,19 @@ status open
 	filename instalace.jpg
 	lyxscale 40
 	width 45text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
 
 \end_inset
 

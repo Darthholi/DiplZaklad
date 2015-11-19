@@ -79,7 +79,7 @@
 \usepackage{fancyvrb}
 \usepackage{bbding}
 \usepackage{comment}
-\usepackage{epstopdf} 
+\usepackage{epstopdf}
 \usepackage{url}
 \usepackage{natbib}
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
@@ -90,7 +90,7 @@
 \numberwithin{figure}{chapter}
 \numberwithin{equation}{chapter}
 
-\renewcommand\[{\begin{equation}} 
+\renewcommand\[{\begin{equation}}
 \renewcommand\]{\end{equation}}
 
 \newcommand{\opdiv}{\mathop{\mathrm{div}}}
@@ -150,7 +150,7 @@
 
 \newcommand{\Xm}{\mathbb{X}}
 
-\renewcommand{\t}[1]{#1^\top}  
+\renewcommand{\t}[1]{#1^\top}
 \bibliographystyle{alpha}
 \usepackage{ae}
 %\hyphenation{troj-ú-hel-ník nic-mé-nì pøed-in-te-gro-vá-ní pøí-pa-dì pøe-cho-do-vé uva-žo-va-né na-pøí-klad na-po-èí-ta-nou po-ža-du-je-me umož-ní-me mat-lab-u}
@@ -195,7 +195,7 @@ For now, lets look at the theoretical and practical tools needed to
 solve this problem in the following part ``research and previous
 works''. Later we will return to our model problem, and we will use
 the tools to analyze the setting and rewrite it into mathematical
-formulation. 
+formulation.
 
 Lastly, there will be a brief note about the developed algorithms.
 
@@ -205,7 +205,7 @@ with equations for parts of the system and supplying datas for daily
 light current and energy demand.
 \end{comment}
 \begin{figure}[b]
-\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\caption{Schema of functional units (left) and a photo of existing installation
+\begin{comment}\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\end{comment}\caption{Schema of functional units (left) and a photo of existing installation
 in ÚJV Øež (right) \cite{UJVInst}}
 \end{figure}
 
@@ -259,7 +259,7 @@ is used to prolong the lifetime of such systems \cite{XuPontryaginStrategy,Prolo
 Needed to say, that new algorithms of global optimization are often
 being used (ex. particle swarm, or genetic algorithms). For these
 algorithms, the question of convergence is still an open problem (about
-this and another possibilities of such algorithms see the text \cite{ExperimentalAlgorithms}). 
+this and another possibilities of such algorithms see the text \cite{ExperimentalAlgorithms}).
 
 
 
@@ -289,7 +289,7 @@ course, a diode, and that there is also some ressistance present.
 Thats the reason, why the following (\ref{fig:5-parameter-equivalent})
 equivalent circuit - ``5 parameter circuit\textquotedbl{} - is used
 (there exists even the so called ``7 parameter circuit\textquotedbl{}
-which has another diode in parallel to the first diode). 
+which has another diode in parallel to the first diode).
 
 \begin{wrapfigure}{O}{0.5\columnwidth}%
 \includegraphics[width=0.4\textwidth]{275px-Solar_cell_equivalent_circuit\lyxdot svg}\caption{\label{fig:5-parameter-equivalent}5 parameter equivalent circuit
@@ -298,7 +298,7 @@ for photovoltaic panel}
 Construction details, like material used (single crystalline silicon,
 polycrystalline and semicrystalline, thin films, amorphous silicon,
 spheral...) or additional tricks (concentrated cells, lens, antireflexive
-and other coating) affect the parameters and the efficiency. 
+and other coating) affect the parameters and the efficiency.
 
 The circuit supplies current $I=I_{pv}$ at voltage $V=V_{pv}$, $I_{L}$
 is generated current by photovoltaic effect and from that we subtract
@@ -338,7 +338,7 @@ short circuit current, open circuit voltage and maximum power point.
 Nice derivation is in the work \cite{Stand-alonePowerSystems} together
 with a method on how to compute the parameters from manufacturer supplied
 information from datasheet, notes on behavior with changing temperature,
-and finally even a fortran code for PV panels. 
+and finally even a fortran code for PV panels.
 
 In a work focused on solar panels and water electrolysis \cite{olubukunmi2011solar},
 there is deeper description and analysis and measurement of output
@@ -412,7 +412,7 @@ The indexes ``ch\textquotedbl{} stand for charging and ``dch\textquotedbl{}
 for discharging. The parameters $g_{100},k_{100}$ are height and
 slope parametes for fully charged battery ($SOC=100\%$).
 
-A discrete model for a capacity of the battery is 
+A discrete model for a capacity of the battery is
 \[
 Q_{bat,i}=Q_{bat,i-1}+I_{q}(t_{i}-t_{i-1})=Q_{bat,nom}SOC_{i-1}/100+I_{q}(t_{i}-t_{i-1})
 \]
@@ -588,7 +588,7 @@ the following applies:
 
 \begin{eqnarray}
 V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\label{eq:usedfuelcell}\\
-V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber 
+V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber
 \end{eqnarray}
 
 
@@ -649,7 +649,7 @@ evolving in time, controlled by a function (system dynamics).
 \mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u(x,t),t)\,dt\tag*{...cost function / objective function}\nonumber \\
 \dot{x} & =f(x,u(x,t),t)\tag*{...system dynamics}\nonumber \\
 x(0) & =x_{0}\label{eq:basiceqs}\\
-g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber 
+g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber
 \end{align}
 
 
@@ -765,7 +765,7 @@ using Hamiltonian:
 \begin{align}
 J^{\star}(x(T),T) & =\phi(x(T),T)\\
 -\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber \\
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber 
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber
 \end{align}
 
 
@@ -806,11 +806,11 @@ taking the system dynamic as constraint for lagrange multipliers.
 
 In the presence of state constraints $x\in R=\{x\in\mathbb{R}^{n},\,g(x)\le0\}$,
 PMP is formulated a bit differently \cite{EvansControlCourse} - we
-need to define a function 
+need to define a function
 \begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)
 \end{equation}
- and the costate equation becomes: 
+ and the costate equation becomes:
 \begin{equation}
 -\dot{\lambda}=\frac{\partial H}{\partial x}(x,u,t)+\mu\frac{\partial c}{\partial x}(x,u)
 \end{equation}
@@ -1002,7 +1002,7 @@ We need to rewrite the setting using mathematical formulation - to
 express the boundary conditions, the state variables $x(t)$, the
 performance index $J()$, the control function $u(t)$ and the dynamics
 of the system $\dot{x}=f(x,u,t)$ (using notation consistent with
-the optimal control theory, see eqs. \ref{eq:basiceqs}). 
+the optimal control theory, see eqs. \ref{eq:basiceqs}).
 
 Lets express every state variable in energy, Joules, and control variables
 in Watts, with exception for $u_{2}$\nomenclature{$u_2$}{current flow from hydrogen ($A$)},
@@ -1017,7 +1017,7 @@ and fuelcell), our state is two dimensional real valued function $x(t)=(x_{1}(t)
 These quantities are bounded by $B(t)\leq B_{max}$\nomenclature{$B_{max}$}{maximal energy in battery ($J$)}
 and $S(t)\leq S_{max}$\nomenclature{$S_{max}$}{maximum of hydrogen in tank ($2F \cdot mol$)},
 bounds to maximal battery charge and maximal hydrogen stored (in means
-of power we used to create the hydrogen). 
+of power we used to create the hydrogen).
 
 The boundary condition is the source power from solar collectors and
 power demand, defined as $P_{src}(t)=P_{in}(t)-P_{demand}(t)$\nomenclature{$P_{src}$}{source power as energy from solar collectors minus electricity demand ($W$)},
@@ -1105,7 +1105,7 @@ P_{H_{2}}(u_{2})
 \end{array}\right]+\left[\begin{array}{c}
 -\sigma\cdot B(t)\\
 0
-\end{array}\right]\nonumber 
+\end{array}\right]\nonumber
 \end{eqnarray}
 To finish our formulation, we want to find the minimizing control
 function $u^{\star}$ (and the corresponding minimizing trajectory
@@ -1174,10 +1174,10 @@ even from different views.
 \paragraph{Hamiltonian}
 
 The Hamiltonian of our system, using $\lambda\in\mathbb{R}^{2}$ as
-lagrange multipliers is 
+lagrange multipliers is
 \begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
- & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber 
+ & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber
 \end{eqnarray}
 
 
@@ -1190,7 +1190,7 @@ suddenly become non constant.
 
 Additionally, in the presence of state constraints (for example $x\in[0,B_{max}]\times[0,S_{max}]\iff\{x\in\mathbb{R}^{2},\,g(x)\le0,\,g(x)=-((x_{1}-\nicefrac{1}{2}B_{max})^{2}+\nicefrac{1}{4}B_{max}^{2})((x_{2}-\nicefrac{1}{2}S_{max})^{2}+\nicefrac{1}{4}S_{max}^{2})\}$),
 the definition of Hamiltonian alone is not sufficient and the theory
-usually also defines the function 
+usually also defines the function
 \begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)\label{eq:defc}
 \end{equation}
@@ -1233,7 +1233,7 @@ $0=\frac{\partial H}{\partial u}=\frac{\partial L}{\partial u}+\frac{\partial f^
 
 In the presence of state constraints (``maximum principle for state
 constraints\textquotedbl{}), we have the existency of a costate function
-$p^{\star}$ and a function $\lambda^{\star}$, such that: 
+$p^{\star}$ and a function $\lambda^{\star}$, such that:
 \begin{eqnarray}
 \dot{p}^{\star}(t) & = & -\nabla_{x}H(x^{\star}(t),p^{\star}(t),u^{\star}(t))+\lambda^{\star}(t)\nabla_{x}c(x^{\star}(t),u^{\star}(t))\\
 H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(x^{\star},u)=0\}
@@ -1250,10 +1250,10 @@ H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(
 
 
 The equation for developement of the optimal cost (computed backwards)
-is 
+is
 \begin{eqnarray}
 J^{\star}(x(T),T) & = & \phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber 
+-\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber
 \end{eqnarray}
 
 
@@ -1362,7 +1362,7 @@ easier, computation faster, but it also gives us the needed results
 here), we just need to clarify our demands on functions $hcost$,
 $bcost$ and $pcost$ - to be continuous. Because these functions
 just translate amouts of physical variable to cost in money, we can
-assume continuity without causing any harm. 
+assume continuity without causing any harm.
 
 In this analysis we ommited any constraints, but given the fact that
 the constraints are, in the basic sense, constant, not dependent on
@@ -1403,7 +1403,7 @@ v roubickove knize 260, relaxace proto abych to mohl resit
 
 rizeni je z kompaktni mnoziny
 
-box constraints minimalizuju funkci a 
+box constraints minimalizuju funkci a
 
 gradientni metody jsou supr pro konvexni ulohu - tam vlastne vim ze
 sem v minimu. Muze bejt lepsi druha mocnina kviuli kvadraticky strukture.
@@ -1640,7 +1640,7 @@ take long time ($2^{14}$ discretization points would require more
 than 4 days of processor time per iteration), so we would chose smaller
 time scale for testing purposes - one day and $2^{5}$ discretization
 points. The main goal is to explore, which NLP solvers would perform
-reasonably well on this type of problem. 
+reasonably well on this type of problem.
 
 This test case was set up to control a production of one day, where
 the photovoltaic power income was less than it would be needed and
@@ -1687,31 +1687,31 @@ points allows for compensation.
 
 From MATLAB and OPTI toolbox, we have applied the algorithms listed
 in the table \ref{fig:Results-of-test}, together with the evaluation
-of the success of every solver. 
+of the success of every solver.
 
 \begin{figure}[H]
 \begin{centering}
 \begin{tabular}{|c|c|c|c|}
-\hline 
+\hline
 algorithm (ndisc=32) &  & optcost & max constraint violation\tabularnewline
-\hline 
-\hline 
+\hline
+\hline
 SQP &  & -2.072860e+08 & 2.851336e-05\tabularnewline
-\hline 
+\hline
 active-set & spustit &  & \tabularnewline
-\hline 
+\hline
 interior-point & bezi &  & \tabularnewline
-\hline 
+\hline
 IPOPT & spustit &  & \tabularnewline
-\hline 
+\hline
 NLOPT & \ref{fig:NLOPT} & -1.062047e+09 & 7.919988e+06\tabularnewline
-\hline 
+\hline
 filtersd & \ref{fig:Filtersd} & -2.429403e+08 & 7.920000e+06\tabularnewline
-\hline 
+\hline
 lbfgsb &  &  & \tabularnewline
-\hline 
+\hline
 PSWARM & nesel &  & \tabularnewline
-\hline 
+\hline
 \end{tabular}
 \par\end{centering}
 
@@ -1799,6 +1799,6 @@ as a starting point could make the calculation even faster.)
 %\def\bibname{Bibliography}
 %\begin{thebibliography}{99}
 %\addcontentsline{toc}{chapter}{\bibname}
-%\bibliography{bibdata} 
+%\bibliography{bibdata}
 %\end{thebibliography}
 \end{document}
