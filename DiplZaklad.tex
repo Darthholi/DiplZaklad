@@ -1,12 +1,14 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[a4paper,czech,english,12pt,a4paper,czech,english]{report}
 \usepackage[cp1250]{inputenc}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+\usepackage{color}
 \usepackage{babel}
 \usepackage{verbatim}
 \usepackage{prettyref}
+\usepackage{float}
 \usepackage{wrapfig}
 \usepackage{calc}
 \usepackage{units}
@@ -82,11 +84,14 @@
 \usepackage{natbib}
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
-\setcounter{secnumdepth}{0}
+%\setcounter{secnumdepth}{0}
 
 \numberwithin{table}{chapter}
 \numberwithin{figure}{chapter}
 \numberwithin{equation}{chapter}
+
+\renewcommand\[{\begin{equation}} 
+\renewcommand\]{\end{equation}}
 
 \newcommand{\opdiv}{\mathop{\mathrm{div}}}
 \newcommand{\oprot}{\mathop{\mathrm{rot}}}
@@ -156,10 +161,14 @@
 \begin{document}
 \include{dp_titulni}
 
+\pagebreak{}\printnomenclature
+\addcontentsline{toc}{chapter}{Nomenclature}\pagebreak{}
+
 
 \chapter*{Motivation and introduction}
 
-\setcounter{chapter}{1}
+%\setcounter{chapter}{1}
+\stepcounter{chapter}
 \addcontentsline{toc}{chapter}{Motivation and Introduction}
 
 For better understanding of the whole problem and work, lets imagine
@@ -196,41 +205,42 @@ with equations for parts of the system and supplying datas for daily
 light current and energy demand.
 \end{comment}
 \begin{figure}[b]
-\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\protect\caption{Schema of functional units (left) and a photo of existing installation
+\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\caption{Schema of functional units (left) and a photo of existing installation
 in ÚJV Øež (right) \cite{UJVInst}}
 \end{figure}
 
 
 
-\chapter*{Research and previous works}
+\chapter*{Basic assumptions and definitions}
 
-\setcounter{chapter}{2}
+%\setcounter{chapter}{2}
+\stepcounter{chapter}
 \addcontentsline{toc}{chapter}{Research and previous works}
 
-Lets look at other works and summarize concepts from the relevant
-fields.
+In this section, lets look at other works and summarize concepts from
+the relevant fields.
 
 
 \section{Optimization and hydrogen technology}
 
 Fuel cells and hydrogen technologies (as a part of renewable resources
 \cite{RenewableSources}), extend the possibilities of energy storage
-\cite{EnergyAccumulation} and create a possibility for research of
+\cite{EnergyAccumulation} and create a need for deeper research of
 various systems using mathematical tools to model and optimize these
 systems. One example of such a system are standalone energetic units
 \cite{MassimoStandalone}.
 
-Some possibilities of optimization of these standalone systems are
-summarized in \cite{ErdincOptimumDesign}, optimization of standalone
-energetic units and power managment strategies are being researched
-too (in, for example \cite{IpsakisPowerManagmentStrategies}), and
-some works are also focused on specific installations \cite{Abdelkafi20141},
+Some methods of optimization of these standalone systems are summarized
+in \cite{ErdincOptimumDesign}, optimization of standalone energetic
+units and power managment strategies are being researched too (in,
+for example \cite{IpsakisPowerManagmentStrategies}), and some works
+are also focused on specific installations \cite{Abdelkafi20141},
 \cite{Sarioglu20147}, \cite{Taher2014268}, \cite{Cai2014212}. Also
 optimization problems are solved for vehicles \cite{Maalej2014668}.
 In the article \cite{CaliseSingleLevel}, there is proposed an optimal
-system even for the powerplant of SOFC (solid oxide fuel cell) type.
-Practical measurements of standalone systems efficiency are described
-together with theoretical background in \cite{VyrobaAVyuziti}.
+system even for the powerplant of SOFC (solid oxide fuel cell \nomenclature{SOFC}{Solid oxide fuelcell})
+type. Practical measurements of standalone systems efficiency are
+described together with theoretical background in \cite{VyrobaAVyuziti}.
 
 From the other side, practical application of optimization in the
 theory of optimal control is described in the books \cite{EvansControlCourse},
@@ -260,28 +270,29 @@ this and another possibilities of such algorithms see the text \cite{Experimenta
 \section{Models for batteries, fuel cells, electrolyzer, photovoltaics...}
 
 There are rich availible model descriptions (for example also in \cite{vepa2013dynamic}),
-complex models (with PDEs) are used for complicated problems and for
-detailed desription of inside processes (for example in a battery),
-but these models aren't meant and suited for simulations taking longer
-time or scale. More simple models with less variables (for example
-like curve fitting) are better in case in which we do need to evaluate
-the model more times per run (as in our case).
+complex models (with PDEs \nomenclature{PDE}{Partial differential equation})
+are used for complicated problems and for detailed desription of inside
+processes (for example in a battery), but these models aren't meant
+and suited for simulations taking longer time or scale. More simple
+models with less variables (for example like curve fitting) are better
+in case in which we do need to evaluate the model more times per run
+(as in our case).
 
 
 \subsection{Photovoltaics}
 
-When looking at photovoltaic (PV) panels, if we want a better model
-than just saying ``general power source\textquotedbl{}, we need to
-consider that the photoelectric effect (the power source) happens
-at the P-N junction, which is, of course, a diode, and that there
-is also some ressistance present. Thats the reason, why the following
-(\ref{fig:5-parameter-equivalent}) equivalent circuit - ``5 parameter
-circuit\textquotedbl{} - is used (there exists even the so called
-``7 parameter circuit\textquotedbl{} which has another diode in parallel
-to the first diode). 
+When looking at photovoltaic (PV \nomenclature{PV}{Photovoltaic, usually photovoltaic panels})
+panels, if we want a better model than just saying ``general power
+source\textquotedbl{}, we need to consider that the photoelectric
+effect (the power source) happens at the P-N junction, which is, of
+course, a diode, and that there is also some ressistance present.
+Thats the reason, why the following (\ref{fig:5-parameter-equivalent})
+equivalent circuit - ``5 parameter circuit\textquotedbl{} - is used
+(there exists even the so called ``7 parameter circuit\textquotedbl{}
+which has another diode in parallel to the first diode). 
 
 \begin{wrapfigure}{O}{0.5\columnwidth}%
-\includegraphics[width=0.4\textwidth]{275px-Solar_cell_equivalent_circuit\lyxdot svg}\protect\caption{\label{fig:5-parameter-equivalent}5 parameter equivalent circuit
+\includegraphics[width=0.4\textwidth]{275px-Solar_cell_equivalent_circuit\lyxdot svg}\caption{\label{fig:5-parameter-equivalent}5 parameter equivalent circuit
 for photovoltaic panel}
 \end{wrapfigure}%
 Construction details, like material used (single crystalline silicon,
@@ -292,23 +303,35 @@ and other coating) affect the parameters and the efficiency.
 The circuit supplies current $I=I_{pv}$ at voltage $V=V_{pv}$, $I_{L}$
 is generated current by photovoltaic effect and from that we subtract
 diode current and shunt current. This way we can derive the model:
+
+\begin{equation}
+I_{pv}=I_{L}-I_{D}-I_{sh}=I_{L}-I_{0}(\exp(\frac{V_{pv}+I_{pv}R_{s}}{\alpha}))-\frac{V_{pv}+I_{pv}R_{s}}{R_{sh}}
+\end{equation}
+\nomenclature{$I_{pv}$}{Current from photovoltaic model circuit ($A$)}
+\begin{equation}
+I_{L}=C_{1}G,\,I_{0}=C_{2}T^{3}\exp(\frac{-E_{GO}}{kT})
+\end{equation}
+\begin{equation}
+P_{pv}=V_{pv}I_{pv}\eta_{conv}
+\end{equation}
+ \nomenclature{$P_{pv}$}{Power from photovoltaic model circuit ($J$)}
 \begin{itemize}
-\item $I_{pv}=I_{L}-I_{D}-I_{sh}=I_{L}-I_{0}(\exp(\frac{V_{pv}+I_{pv}R_{s}}{\alpha}))-\frac{V_{pv}+I_{pv}R_{s}}{R_{sh}}$\nomenclature{$I_{pv}$}{Current from photovoltaic model circuit ($A$)}
-\item $I_{L}=C_{1}G,\,I_{0}=C_{2}T^{3}\exp(\frac{-E_{GO}}{kT})$
-\item $P_{pv}=V_{pv}I_{pv}\eta_{conv}$ \nomenclature{$P_{pv}$}{Power from photovoltaic model circuit ($J$)}
 \item $\alpha$ curve fitting parameter (model requires test runs and measurements)
-\item $G$ incident radiation \nomenclature{$G$}{Incident radiation ($W/m^2$)}
-\item $T$ surface temperature (in kelvins)
+\item $G$ incident radiation {[}$W/m^{2}${]} \nomenclature{$G$}{Incident radiation ($W/m^2$)}
+\item $T$ surface temperature ($K$)
 \item $E_{GO}$ band gap of the used PV material \nomenclature{$E_{GO}$}{band gap of the used PV material}
 \item $C_{i}$ constants
-\item $I_{L}$light current\nomenclature{$I_L$}{light current $A$}
-\item $I_{D}$diode current \nomenclature{$I_{D}$}{diode current $A$}
-\item $I_{sh}$shunt current \nomenclature{$I_{sh}$}{shunt current $A$}
-\item $I_{0}$diode reverse saturation current (comes from the Shockley's
-diode equation) \nomenclature{$I_{0}$}{diode reverse saturation current $A$}
-\item $V_{pv}$, $I_{pv}$, operational voltage and current \nomenclature{$V_{pv}$}{operation voltage (photovoltaic) $V$}
-\item $R_{s}$, $R_{sh}$, parallel and shunt ressistors \nomenclature{$R_{s}$}{parallel resistor ressistance $Ohm$}\nomenclature{$R_{sh}$}{shunt ressistor ressitance $Ohm$}
-\item $P_{pv}$, $\eta_{conv}$ output power and effectivity \nomenclature{$\eta_{conv}$}{effectivity of photovoltaic output power}
+\item $I_{L}$ light current {[}$A${]}\nomenclature{$I_L$}{light current ($A$)}
+\item $I_{D}$ diode current {[}$A${]} \nomenclature{$I_{D}$}{diode current ($A$)}
+\item $I_{sh}$ shunt current {[}$A${]} \nomenclature{$I_{sh}$}{shunt current ($A$)}
+\item $I_{0}$ diode reverse saturation current (comes from the Shockley's
+diode equation) {[}$A${]} \nomenclature{$I_{0}$}{diode reverse saturation current ($A$)}
+\item $V_{pv}$, $I_{pv}$, operational voltage and current {[}$V${]},
+{[}$A${]} \nomenclature{$V_{pv}$}{operation voltage (photovoltaic) ($V$)}
+\item $R_{s}$, $R_{sh}$, parallel and shunt ressistors {[}$\Omega${]}
+\nomenclature{$R_{s}$}{parallel resistor ressistance ($\Omega$)}\nomenclature{$R_{sh}$}{shunt ressistor ressitance ($\Omega$)}
+\item $P_{pv}$, $\eta_{conv}$ output power and effectivity {[}$W${]},
+{[}dimensionless{]} \nomenclature{$\eta_{conv}$}{effectivity of photovoltaic output power}
 \end{itemize}
 Parameters commonly used to characterize the output of the unit are:
 short circuit current, open circuit voltage and maximum power point.
@@ -320,16 +343,16 @@ and finally even a fortran code for PV panels.
 In a work focused on solar panels and water electrolysis \cite{olubukunmi2011solar},
 there is deeper description and analysis and measurement of output
 power dependency on illumination and even thermal effects. The efficiency
-of PV energy generation is said to be from 5 to 20\%.
+of PV energy generation is said to be from 5 to 20 \%.
 
 Needed to say, that detailed analysis of output power includes an
 observation \cite{voutetakis2011design}, that there is a maximal
 power point in the voltage current characteristic; this is ideally
 exploited by a microcontroller, traking this point. (In addition this
-book covers many interesting details, even about AC/DC converters.)
-Algorithms for tracking maximal power point are also being developed
-in \cite{beyer2004robust,salas2006review}, also using neural networks
-is considered \cite{caluianu2011photovoltaic}.
+book covers many interesting details, even about AC/DC \nomenclature{AC, DC}{Analog current, direct current}
+converters.) Algorithms for tracking maximal power point are also
+being developed in \cite{beyer2004robust,salas2006review}, also using
+neural networks is considered \cite{caluianu2011photovoltaic}.
 
 
 
@@ -347,7 +370,7 @@ Moreover, in a case, where electrolyzer works more efficiently at
 lower loads, battery can lower the load by taking it on itself.
 
 \begin{wrapfigure}{o}{0.5\columnwidth}%
-\includegraphics[scale=0.2]{EqivLeadAcid}\protect\caption{Equivalent circuit for lead acid accumulator.}
+\includegraphics[scale=0.2]{EqivLeadAcid}\caption{Equivalent circuit for lead acid accumulator.}
 \end{wrapfigure}%
 
 
@@ -355,14 +378,14 @@ The main variables for a common battery model are the voltage and
 state of charge (SOC). Lets speak about a model of lead acid accumulator
 from \cite{voutetakis2011design} - the model is generally valid for
 batteries charged more than 20 \%, has relations for charging and
-discharging and is parametrized by parameters that need to becomputed
+discharging and is parametrized by parameters that need to be computed
 experimentally. (Needed to say, that there exist models even for overcharged
 batteries and other specific cases.)
 
 \[
-I_{bat}=I_{q}-\frac{Q_{bat,nom}}{10}g_{0}exp(\frac{V_{cell}}{g_{1}}-\frac{g_{2}}{T_{bat}})
+I_{bat}=I_{q}-\frac{Q_{bat,nom}}{10}g_{0}\exp(\frac{V_{cell}}{g_{1}}-\frac{g_{2}}{T_{bat}})
 \]
-\nomenclature{$I_{bat}$}{battery current $A$}
+\nomenclature{$I_{bat}$}{battery current ($A$)}
 
 The battery current is the reaction current ($I_{q}$) minus the gas
 current losses, that are modelled using nominal capacity of accumulator
@@ -373,17 +396,17 @@ voltage:
 \[
 V_{cell}=V_{equ,0}+\frac{V_{equ,l}SOC}{100}+V_{pol}
 \]
-\nomenclature{$V_{cell}$}{cell voltage $V$}
+\nomenclature{$V_{cell}$}{cell voltage ($V$)}
 
 The equillibrium voltage is approximated linearily by its value at
 $SOC=0$ and slope $V_{equ,l}$, the polarization voltage is different
 for charging and discharging (with coefficients dependent on the battery):
 
-\begin{eqnarray*}
-V_{pol,ch} & = & U_{ch}a_{ch}(1-\exp(-\frac{I_{q,norm}}{b_{ch}})+c_{ch}I_{q,norm})\\
-V_{pol,dch} & = & U_{dch}(1-\exp(-\frac{I_{q,norm}}{b_{dch}})+c_{dch}I_{q,norm})(1+(g_{100}-1)\exp(\frac{SOC-100}{k_{100}}))
-\end{eqnarray*}
-\nomenclature{$V_{pol,ch}$}{charging polarization voltage $V$}\nomenclature{$V_{pol,dch}$}{discharging polarization voltage}
+\begin{align}
+V_{pol,ch} & =U_{ch}a_{ch}(1-\exp(-\frac{I_{q,norm}}{b_{ch}})+c_{ch}I_{q,norm})\\
+V_{pol,dch} & =U_{dch}(1-\exp(-\frac{I_{q,norm}}{b_{dch}})+c_{dch}I_{q,norm})(1+(g_{100}-1)\exp(\frac{SOC-100}{k_{100}}))
+\end{align}
+\nomenclature{$V_{pol,ch}$}{charging polarization voltage ($V$)}\nomenclature{$V_{pol,dch}$}{discharging polarization voltage ($V$)}
 
 The indexes ``ch\textquotedbl{} stand for charging and ``dch\textquotedbl{}
 for discharging. The parameters $g_{100},k_{100}$ are height and
@@ -393,17 +416,17 @@ A discrete model for a capacity of the battery is
 \[
 Q_{bat,i}=Q_{bat,i-1}+I_{q}(t_{i}-t_{i-1})=Q_{bat,nom}SOC_{i-1}/100+I_{q}(t_{i}-t_{i-1})
 \]
-\nomenclature{$Q_{bat.i}$}{battery capacity $J$}
+\nomenclature{$Q_{bat.i}$}{battery capacity ($J$)}
 
 The state of charge of the accumulator is a fraction of the current
 capacity at each time instant divided by its nominal capacity. So
 for $SOC$ we have a model with efficiency ($\eta_{ac}$)\nomenclature{$\eta_{ac}$}{battery efficiency},
 discharge rate ($\sigma_{ac}$)\nomenclature{$\sigma_{ac}$}{battery discharge rate}
-and charge or discharge current $I_{ac}$\nomenclature{$I_{ac}$}{battery current (charge or discharge)}.
+and charge or discharge current $I_{ac}$\nomenclature{$I_{ac}$}{battery current (charge or discharge) ($A$)}.
 
-\[
-SOC(t+1)=SOC(t)(1-\sigma_{ac})+I_{ac}\eta_{ac}(\Delta t)
-\]
+\begin{equation}
+SOC(t+1)=SOC(t)(1-\sigma_{ac})+I_{ac}\eta_{ac}(\Delta t)\label{eq:battmodel}
+\end{equation}
 
 
 $SOC$ cannot be directly measured, it needs to be derived from the
@@ -446,14 +469,16 @@ being considered too, for example by reforming natural gases.
 \subsubsection{Electrolyzer}
 
 Common types of electrolyzers are alkaline based (operates using an
-alkaline solution) and proton exchange membrane electrolyzer (PEM).
+alkaline solution) and proton exchange membrane electrolyzer (PEM
+\nomenclature{PEM}{Proton exchange membrane}).
 
 As presented in \cite{voutetakis2011design}, there are many ways
 that lead to the voltage-current model of the electrolyzer: regression,
 models based on analysis of processes on anothe, cathode and membrane
 (and calculating then V-I relationship by subtracting from the open
 circuit voltage the voltages of activation polarization and ohmic
-polarization), and even rigorous CFD models.
+polarization), and even rigorous CFD \nomenclature{CFD}{Computational fluid dynamics}
+models.
 
 
 \subsubsection{Butler Volmer equation}
@@ -469,12 +494,12 @@ I=I_{0e}(\exp(\frac{(1-\alpha_{e})n_{e}F}{RT}(U-U_{eq}))-\exp(-\frac{\alpha_{e}n
 
 
 With unknown parameters $I_{0e}$, $\alpha_{e}$ (symmetry factor)
-and$U_{eq}$. Hydrogen production rate is computed as follows: \nomenclature{$n_{H_2}$}{hydrogen production rate ($\frac{mol}{hr \cdot A}$)}
+and $U_{eq}$. Hydrogen production rate is computed as follows: \nomenclature{$n_{H_2}$}{hydrogen production rate ($\frac{mol}{hr \cdot A}$)}
 
 \[
 n_{H_{2}}=\frac{N_{cell}I_{elec}}{n_{e}F}\eta_{F}
 \]
-\nomenclature{$N_{cell}$}{number of cells}\nomenclature{$I_{elec}$}{current through electrolyzer $A$}\nomenclature{$\eta_F$}{Faraday efficiency}
+\nomenclature{$N_{cell}$}{number of cells}\nomenclature{$I_{elec}$}{current through electrolyzer ($A$)}\nomenclature{$\eta_F$}{Faraday efficiency}
 
 where $F$ is Faraday constant and $\eta_{F}$ is Faraday efficiency
 (relation between theoretical and actual electron transfer, often
@@ -484,10 +509,10 @@ to be determined by experimental measure), $n_{e}=2$ \nomenclature{$n_e$}{Electr
 
 \paragraph{One empirical model}
 
-\[
-V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T^{2})\log(\frac{t_{1}+t_{2}/T+t_{3}/T^{2}}{A_{elec}}I_{elec}+1)
-\]
-\nomenclature{$V_{elec}$}{electrolyzer voltage $V$}\nomenclature{$A_{elec}$}{area of electrolyzer $m^2$}
+\begin{equation}
+V_{elec}=V_{rev,elec}+\frac{r_{1}+r_{2}T}{A_{elec}}I_{elec}+(s_{1}+s_{2}T+s_{3}T^{2})\log(\frac{t_{1}+t_{2}/T+t_{3}/T^{2}}{A_{elec}}I_{elec}+1)\label{eq:electr}
+\end{equation}
+\nomenclature{$V_{elec}$}{electrolyzer voltage ($V$)}\nomenclature{$A_{elec}$}{area of electrolyzer ($m^2$)}
 
 This model primary expresses dependency on temperature (\cite{voutetakis2011design}).
 There exists even empirical model for the faraday's efficiency, that
@@ -497,7 +522,7 @@ temperatures, the parasitic currents increase (because of the electrolyte).
 \[
 \eta_{F}=B_{1}+B_{2}\exp(\frac{B_{3}+B_{4}T_{el}+B_{5}T_{el}^{2}}{i})
 \]
-\nomenclature{$i$}{area current $A/m^2$}
+\nomenclature{$i$}{area current ($A/m^2$)}
 
 
 
@@ -517,9 +542,9 @@ And the calculation (from \cite{olubukunmi2011solar}) for the amount
 of hydrogen produced is:
 
 \[
-n_{H_{2}}=\frac{1}{\epsilon}\cdot0,01866\frac{mol}{hr\cdot A},\,m_{H_{2}}=\frac{1}{\epsilon}\cdot3,77\cdot10^{-5}\frac{kg}{hr\cdot A}
+n_{H_{2}}=\epsilon\cdot0,01866\frac{mol}{hr\cdot A},\,m_{H_{2}}=\epsilon\cdot3,77\cdot10^{-5}\frac{kg}{hr\cdot A}
 \]
-\nomenclature{$m_{H_2}$}{hydrogen production rate (kilograms instead of mols) $\frac{kg}{hr \cdot A}$}...
+\nomenclature{$m_{H_2}$}{hydrogen production rate (kilograms instead of mols) ($\frac{kg}{hr \cdot A}$)}...
 where $\epsilon$ is the fuel cell efficiency:
 
 The simplest way to model fuel cell V-I relationship is to look at
@@ -530,11 +555,11 @@ model from \cite{voutetakis2011design}.
 \paragraph{First empiric model}
 
 Takes into account the overvoltages (ohmic and activation), but not
-effects of mass. The model computes the cell voltage $V_{fc}$\nomenclature{$V_{fc}$}{fuel cell voltage $V$}
-using open circuit voltage $V_{o}$\nomenclature{$V_{o}$}{open circuit voltage for fuel cell $V$},
+effects of mass. The model computes the cell voltage $V_{fc}$\nomenclature{$V_{fc}$}{fuel cell voltage ($V$)}
+using open circuit voltage $V_{o}$\nomenclature{$V_{o}$}{open circuit voltage for fuel cell ($V$)},
 current density $i$ (in $A/m^{2}$), model parameter $b$, current
 at the inflection point of the V-I curve $I_{d}$ and slope $\Delta$
-at the linear stage of ohmic overvoltage:\nomenclature{$I_{d}$}{current at inflection point in fuelcell V-I curve }
+at the linear stage of ohmic overvoltage:\nomenclature{$I_{d}$}{current at inflection point in fuelcell V-I curve ($A$)}
 
 \[
 V_{fc}=E+\frac{b}{\ln(1/I_{d}\,i)}-(\Delta-\frac{b}{4I_{d}})\,i
@@ -542,7 +567,7 @@ V_{fc}=E+\frac{b}{\ln(1/I_{d}\,i)}-(\Delta-\frac{b}{4I_{d}})\,i
 
 
 The parameters ($K\in\{E,\,I_{d},\,b,\,\Delta\}$) \nomenclature{$K$}{general notation for one parameter in empiric model for fuelcells}
-vary with fuel cell temperature $T$ and oxygen partial pressue $p_{O_{2}}$:\nomenclature{$p_{O_2}$}{oxygen partial pressue}
+vary with fuel cell temperature $T$ and oxygen partial pressure $p_{O_{2}}$:\nomenclature{$p_{O_2}$}{oxygen partial pressue ($Pa$)}
 
 \[
 K=K_{1}+K_{2}T+K_{3}T\ln(p_{O_{2}})
@@ -561,20 +586,20 @@ This model takes into effect even the mass transport limitation. For
 computation of a cell voltage $V_{fc}$ and open circuit voltage $V_{o}$,
 the following applies:
 
-\begin{eqnarray*}
-V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\\
-V_{o} & = & V_{rev,FC}+B\log(i_{o})
-\end{eqnarray*}
+\begin{eqnarray}
+V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\label{eq:usedfuelcell}\\
+V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber 
+\end{eqnarray}
 
 
-Where $V_{rev,FC}$ \nomenclature{$V_{rev,fc}$}{fuelcell, reversible voltage}is
+Where $V_{rev,FC}$ \nomenclature{$V_{rev,fc}$}{fuelcell, reversible voltage ($V$)}is
 the reversible voltage, $i$ the current density (fuel cell current
-per unit area of the electrode, in units of milliamps per square centimeter),$i_{0}$
-and $B$ the Tafel parameter ($i_{0}$is the value on the Tafel plot
-when the current begins to move away from zero), $a_{T}$ the Tafel
-slope, $r$ the resistance (in $\Omega\cdot cm^{2}$), and finally
-the model parameters $m$, $l$ representing the overvoltage due to
-mass transport limits. All these parameters can depend on temperature.
+per unit area of the electrode, in units of milliampers per square
+centimeter),$i_{0}$ and $B$ the Tafel parameter ($i_{0}$ is the
+value on the Tafel plot when the current begins to move away from
+zero), $a_{T}$ the Tafel slope, $r$ the resistance (in $\Omega\cdot cm^{2}$),
+and finally the model parameters $m$, $l$ representing the overvoltage
+due to mass transport limits. All these parameters can depend on temperature.
 
 Hydrogen and oxygen then flows according to this equations (by Faradays
 law, already substitued $n_{e,H_{2}}=2,\,n_{e,O_{2}}=4$):
@@ -604,7 +629,7 @@ need to add the compressor into the equation (like it is done in \cite{voutetaki
 \section*{\pagebreak{}}
 
 
-\section{Optimization and optimal control}
+\section{Optimization and optimal control - general theory}
 
 
 
@@ -620,12 +645,12 @@ function'' or ``cost function\textquotedbl{} $J$ that consists
 of final time objective and integrated Lagrangian) of a dynamic system,
 evolving in time, controlled by a function (system dynamics).
 
-\begin{align*}
-\mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\tag*{...cost function / objective function}\\
-\dot{x} & =f(x,u,t)\tag*{...system dynamics}\\
-x(0) & =x_{0}\\
-g(x,u,t) & \leq0\tag*{...constraints}
-\end{align*}
+\begin{align}
+\mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u(x,t),t)\,dt\tag*{...cost function / objective function}\nonumber \\
+\dot{x} & =f(x,u(x,t),t)\tag*{...system dynamics}\nonumber \\
+x(0) & =x_{0}\label{eq:basiceqs}\\
+g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber 
+\end{align}
 
 
 In free final time case, the function $\phi$ is not present.
@@ -635,12 +660,14 @@ control problem, so the ideas from this field apply in optimal control
 too. Moreover, optimal control theory has methods for solving the
 problem of controllability and observability and the presence of noise.
 
+\stepcounter{subsection}
+
 
 \subsubsection{Basic terms}
 
 Optimization problems have many subclasses (\ref{fig:Optimization-Tree})
 and optimal control is not an exception.\begin{wrapfigure}{o}{0.5\columnwidth}%
-\includegraphics[width=0.5\textwidth]{treeoptimiz}\protect\caption{\label{fig:Optimization-Tree}Optimization Tree, neos.mcs.anl.gov}
+\includegraphics[width=0.5\textwidth]{treeoptimiz}\caption{\label{fig:Optimization-Tree}Optimization Tree, neos.mcs.anl.gov}
 \end{wrapfigure}%
 
 
@@ -666,8 +693,9 @@ in intermediate states, whereas open loop control has the control
 function predetermined in advance and does not rely on intermedate
 states and values. Methods for solving optimal control problems are:
 \textbf{dynamic programming}, \textbf{Hamilton Jacobi Bellman (HJB)
+}\nomenclature{HJB}{Hamilton Jacobi Bellman (equations)}\textbf{
 equations} and \textbf{Pontryagin maximum principle} (or minimum principle
-... is called by both names in literature). Only some of the problems
+... it is called by both names in literature). Only some of the problems
 can be solved analytically, for example the class of \textbf{linear
 quadratic control} problems, that can be solved through Riccati equations.
 
@@ -690,9 +718,9 @@ of the system. We will use it too, so lets state the Hamiltonian as
 a Lagrangian (from cost function) plus adjoint variable times system
 dynamics, how the Hamiltonian is usually defined:
 
-\begin{eqnarray*}
+\begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)
-\end{eqnarray*}
+\end{eqnarray}
 
 
 Said efficiency comes from the fact, that the system dynamics is a
@@ -734,11 +762,11 @@ HJB eqs. are partial differential equations of the problem (here we
 need the Hamiltonian), the last equation is just system dynamic written
 using Hamiltonian:
 
-\begin{align*}
+\begin{align}
 J^{\star}(x(T),T) & =\phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\\
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}
-\end{align*}
+-\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber \\
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber 
+\end{align}
 
 
 When using this apporach, the first step to solve is to get the optimal
@@ -754,21 +782,21 @@ numerical stability is said to not be good in practise.
 \subsubsection{Pontryagin principle of maximality, PMP}
 
 The last step - or method - is principle of maximality (Pontryagin
-principle of maximality, PMP) and can be - for continuous control
-functions - derived using the HJB equations (as in \cite{bertsekas1995dynamic}).
-Using that, we get to formulate equations for adjoint variable - the
-first equation is pontryagin maximum principle and the second we get
-by differentiating HJB equation, as in \cite{diehl2011numerical}.
-The last condition is the transversality condition for fixed time
-free endpoint problem.
+principle of maximality, PMP \nomenclature{PMP}{Pontryagin maximum principle})
+and can be - for continuous control functions - derived using the
+HJB equations (as in \cite{bertsekas1995dynamic}). Using that, we
+get to formulate equations for adjoint variable - the first equation
+is pontryagin maximum principle and the second we get by differentiating
+HJB equation, as in \cite{diehl2011numerical}. The last condition
+is the transversality condition for fixed time free endpoint problem.
 
 
 
-\begin{align*}
+\begin{align}
 u^{\star}(t,x,\lambda) & =\arg\min_{u}(H(x,u,\lambda,t))\phi(x(T),T)\\
 -\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\\
 \lambda(T) & =\nabla\phi(x(T),T)
-\end{align*}
+\end{align}
 
 
 
@@ -779,13 +807,13 @@ taking the system dynamic as constraint for lagrange multipliers.
 In the presence of state constraints $x\in R=\{x\in\mathbb{R}^{n},\,g(x)\le0\}$,
 PMP is formulated a bit differently \cite{EvansControlCourse} - we
 need to define a function 
-\[
+\begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)
-\]
+\end{equation}
  and the costate equation becomes: 
-\[
+\begin{equation}
 -\dot{\lambda}=\frac{\partial H}{\partial x}(x,u,t)+\mu\frac{\partial c}{\partial x}(x,u)
-\]
+\end{equation}
 While the PMP now states the existence of the function $\mu:\,[0,T]\rightarrow\mathbb{R}$.
 
 Needed to say, that PMP equations are only necessary condition for
@@ -796,16 +824,16 @@ All these analytic methods will give us equations, to solve the equations
 is a concern of numerical optimal control.
 
 
-\subsection{Numerical optimal control}
+\section{Numerical optimal control}
 
 Numerical optimal control can be, again, used to solve either continuous
 or discretized problems. Heavily relies on the problem analysis and
 follows the said methods. It would seem, that it is sufficient to
-just solve HJB PDR's, but it is not used everytime. For example, the
+just solve HJB PDE's, but it is not used everytime. For example, the
 problem is, so called, curse of dimensionality - when state and/or
 control, has many components, the problem becomes exponentially hard
 to solve. Suggested remedy, in the article \cite{diehl2011numerical},
-is, for example, to approximate value function by another means, for
+is, for example, to approximate cost function by another means, for
 example using neural network methods.  Second clue, to know when
 to use state and costate equations, is, that when we want to have
 continuous control function, we can just solve the boundary value
@@ -830,72 +858,81 @@ optimization problem (an excellent book about this topic is \cite{chachuat2007no
 %
 \end{minipage}}
 
-\protect\caption{Numerical optimal control cases}
+\caption{Numerical optimal control cases}
 \end{figure}
 
 
 As said above, the main classes are \textbf{indirect methods} (first
 optimize then discretize) and \textbf{direct methods} (first discretize,
 then optimize). Indirect methods result in algorithms similar to ODE
-solvers, but the resulting system can be badly conditioned or unstable
-in some cases. Direct methods just rewrite the problem to the area
-of nonlinear programming problem and then apply convenient solver.
+\nomenclature{ODE}{Ordinary differential equation} solvers, but the
+resulting system can be badly conditioned or unstable in some cases.
+Direct methods just rewrite the problem to the area of nonlinear programming
+problem and then apply convenient solver.
 
-There are three main cases of direct methods - single shooting, Multiple
-shooting and collocation.
+There are three main cases of direct methods - \textbf{\textcolor{black}{single
+shooting}}, \textbf{multiple shooting} and \textbf{collocation}.
 
-Single shooting discretizes the control to piecewise constant function
-and uses numerical integrator for the evaluation of the cost function
-(ODE). This way we get a finite dimensional optimization problem,
-which can be solved by any nonlinear programming algorithm \cite{OptcontrNLP},
-more in section below.
+
+\paragraph*{Single shooting}
+
+discretizes the control to piecewise constant function and uses numerical
+integrator for the evaluation of the cost function (ODE). This way
+we get a finite dimensional optimization problem, which can be solved
+by any nonlinear programming algorithm \cite{OptcontrNLP}, more in
+section below.
 
 Single shooting algorithm is usefull, but the stability can sometimes
 depend heavily on starting value.
 
-Collocation discretizes both the control function and state function
-and approximates the integral. We get larger system for nonlinear
-programming, but the good news is that the system is sparse (in the
-meaning, that the Jacobian has many zero elements). Collocation can
-treat better even unstable systems, but refining the grid results
-in new problem with higher dimensions.
 
-Multiple shooting discretizes the control, as single shooting, and
-additionally the time scale. So it is called ``multiple'' shooting,
-because it works like running single shooting algorithm repeatedly
-again from the starting times $t_{i}$. Of course we need to add constraints
-for continuity (the end values from the previous interval to be the
-same as the starting values on the next interval). Multiple shooting
-algorithm results in only a block sparse problem, but is easy to paralelize
-and can treat even unstable systems well.
+\paragraph*{Collocation}
+
+discretizes both the control function and state function and approximates
+the integral. We get larger system for nonlinear programming, but
+the good news is that the system is sparse (in the meaning, that the
+Jacobian has many zero elements). Collocation can treat better even
+unstable systems, but refining the grid results in new problem with
+higher dimensions.
+
+
+\paragraph*{Multiple shooting}
+
+discretizes the control, as single shooting, and additionally the
+time scale. So it is called ``multiple'' shooting, because it works
+like running single shooting algorithm repeatedly again from the starting
+times $t_{i}$. Of course we need to add constraints for continuity
+(the end values from the previous interval to be the same as the starting
+values on the next interval). Multiple shooting algorithm results
+in only a block sparse problem, but is easy to paralelize and can
+treat even unstable systems well.
 
 Numerous implementations of numerical optimal control are availible,
 not only in MATLAB, but for example also in C++ in \cite{Houska2011a}.
 
 
-\paragraph{Nonlinear programming (NLP)}
+\paragraph{Nonlinear programming (NLP)\nomenclature{NLP}{Nonlinear programming}}
 
 Is an area of algorithms for optimizing nonlinear cost functions (on
 constrained and unconstrained sets). Methods include derived algorithms
 from ideas of gradient descend or newton method (applied on finding
 a point where the gradient is zero), for example. Usually these methods
-can also make use of derivatives (with said newton method on forst
+can also make use of derivatives (with said newton method on first
 derivative we, for example, need also second derivatives) and that,
 in case of optimal control and optimizing differential equations,
 leads to the need of computing sensitivity equations. That means how
 the functional depends on the choice of (discretized) control function
 $\frac{\partial J}{\partial u_{i}}$. When not supplied, methods usually
 compute these just by approximating. Algoritmical approaches for getting
-the results for sensitivity are, for example External Numerical Differentiation
-(END), Variational Differential Equations, Automatic Differentiation,
-Internal Numerical Differentiation (IND) (that makes use of the equations
-written directly in source code for numerical computation).
+the results for sensitivity are, for example External Numerical Differentiation,
+Variational Differential Equations, Automatic Differentiation, Internal
+Numerical Differentiation (that makes use of the equations written
+directly in source code for numerical computation).
 
 More details about computing sensitivity equations are for example
-in \cite{Sensitivity20061553}.
-
-A suggested technique for solving optimal control problems is, for
-example, Sequential quadratic programming, SQP, \cite{boggs1995sequential},
+in \cite{Sensitivity20061553}. A suggested technique for solving
+optimal control problems is, for example, Sequential quadratic programming,
+SQP \nomenclature{SQP}{Sequential quadratic programming}, \cite{boggs1995sequential},
 \cite{ottanumerical}. It is a method for solving nonlinear problems
 with second derivatives; uses repeated subsolutions of quadratic programming
 problems.
@@ -903,9 +940,13 @@ problems.
 \pagebreak{}
 
 
-\chapter*{Solution}
+\chapter*{Optimal problem algorithm for actual energy source configuration}
 
-\setcounter{chapter}{3}
+%\setcounter{chapter}{3}
+%\setcounter{section}{0}
+%\setcounter{subsection}{0}
+%\setcounter{subsubsection}{0}
+\stepcounter{chapter}
 \addcontentsline{toc}{chapter}{Solution}
 
 In this section we will apply the theory and methods to our setting
@@ -917,14 +958,14 @@ and problem (trying to focus on issues, that were not answered elsewhere).
 Now, lets emphasize, that other existing works tried to model the
 problem using discontinuous functions and optimized only the system
 parameters (for minimial cost) for given power managment strategy
-or optimized only the the power managment strategy (or decision constants
+or optimized only the power managment strategy (or decision constants
 of the said strategy).
 
 So our aim will be to optimize the global parameters against the cost
-(using global optimization algorithms) but for each test case (values
-of variables) use the methods of optimal control theory to find the
-best control strategy. That can be usefull in cases, where we wonder
-about the following:
+(using global optimization algorithms), but for each test case (values
+of variables) to use the methods of optimal control theory to find
+the best control strategy. That can be usefull in cases, where we
+wonder about the following:
 \begin{itemize}
 \item How will the perception of the problem change for continuous formulation
 of equations?
@@ -943,8 +984,9 @@ computing the values for an exact desired setting.
 
 \section{Mathematical formulation}
 
-This section will goadvance from writing the problem in terms of equations
-to actually applying knowledge and methods for rewriting the problem.
+This section will advance from writing the problem in terms of equations
+to actually applying knowledge and methods for rewritting for numerical
+solving
 
 
 \subsection{Formulation of the optimal control strategy}
@@ -959,28 +1001,35 @@ difference from other works).
 We need to rewrite the setting using mathematical formulation - to
 express the boundary conditions, the state variables $x(t)$, the
 performance index $J()$, the control function $u(t)$ and the dynamics
-of the system $f(x,u,t)$ (using notation consistent with the optimal
-control theory). 
+of the system $\dot{x}=f(x,u,t)$ (using notation consistent with
+the optimal control theory, see eqs. \ref{eq:basiceqs}). 
 
-Lets express every variable in energy, Joules, with exception for
-$u_{2}$\nomenclature{$u_2$}{current flow from hydrogen $A$}, that
-will be in ampers (see next).
+Lets express every state variable in energy, Joules, and control variables
+in Watts, with exception for $u_{2}$\nomenclature{$u_2$}{current flow from hydrogen ($A$)},
+that will be in ampers (see next).
 
 Because we have two state variables - the state of charge of the accumulator
-$B(t)$\nomenclature{$B(t)$}{energy stored in the accumulator $J$}
-and the stored hydrogen $S(t)$\nomenclature{$S(t)$}{stored hydrogen $2F \cdot mol$}(in
+$B(t)$\nomenclature{$B(t)$}{energy stored in the accumulator ($J$)}
+and the stored hydrogen $S(t)$\nomenclature{$S(t)$}{stored hydrogen ($2F \cdot mol$)}(in
 the scripts the units are multiplied by Faradays constant times $n_{e}$
-to not do conversion again for electrolyzer and fuelcell), our state
-is two dimensional real valued function $x(t)=(x_{1}(t),x_{2}(t))=(B(t),S(t))$.
-These quantities are bounded by $B(t)\leq B_{max}$\nomenclature{$B_{max}$}{maximal energy in battery $J$}
-and $S(t)\leq S_{max}$\nomenclature{$S_{max}$}{maximum of hydrogen in tank $2F \cdot mol$},
+times number of moles - to not do conversion again for electrolyzer
+and fuelcell), our state is two dimensional real valued function $x(t)=(x_{1}(t),x_{2}(t))=(B(t),S(t))$.
+These quantities are bounded by $B(t)\leq B_{max}$\nomenclature{$B_{max}$}{maximal energy in battery ($J$)}
+and $S(t)\leq S_{max}$\nomenclature{$S_{max}$}{maximum of hydrogen in tank ($2F \cdot mol$)},
 bounds to maximal battery charge and maximal hydrogen stored (in means
 of power we used to create the hydrogen). 
 
-The boundary condition is $P_{src}(t)=P_{in}(t)-P_{demand}(t)$\nomenclature{$P_{src}$}{source power as energy from solar collectors minus electricity demand $W$},
-difference between input power and power demand (so its units will
-be Watts).
+The boundary condition is the source power from solar collectors and
+power demand, defined as $P_{src}(t)=P_{in}(t)-P_{demand}(t)$\nomenclature{$P_{src}$}{source power as energy from solar collectors minus electricity demand ($W$)},
+difference between input power and power demand (in Watts). Usually
+the data would look like in figure \ref{fig:First-seven-days}.
+\begin{figure}
+\includegraphics[width=1\textwidth]{oneweekofdata}\caption{\label{fig:First-seven-days}First seven days of availible data (power
+production from PV panels from UJV Øež). As the data start with wednsday,
+notice bigger consumption over weekends (in the middle).}
 
+
+\end{figure}
 The control function $u$ is also a two dimensional function of time
 and will define the power flow:
 \begin{itemize}
@@ -993,15 +1042,14 @@ and will define the power flow:
 
 
 
-Using this equation we can model the less than one efficiency by setting
-$P_{batt}(u_{1})=u_{1}\eta_{batt}$ and the result of auto discharge
-$\sigma$.
+Using this equation we can model the efficiency by setting $P_{batt}(u_{1})=u_{1}\eta_{batt}$
+and also the result of auto discharge $\sigma$.
 \begin{itemize}
 \item $u_{1}>0$ ... We are charging the battery, using the power $u_{1}$.
-There is a bound, how much power can we give to the battery $u_{1}\in[P_{batt+min},P_{batt+max}]$
+There is a bound, how much power can we give to the battery $u_{1}\in[P_{batt+min},P_{batt+max}]$\nomenclature{$P_{batt+max},P_{batt+max},$}{Maximal/minimal power flow to the battery ($W$)}
 \item $u_{1}=0$ ... Battery disconnected
 \item $u_{1}<0$ ... We are discharging the battery, getting the power $-u_{1}$.
-There is a bound, how much power we can get from battery $-u_{1}\in[P_{batt-min},P_{batt-max}]$
+There is a bound, how much power we can get from battery $-u_{1}\in[P_{batt-min},P_{batt-max}]$\nomenclature{$P_{batt-max},P_{batt-max},$}{Maximal/minimal power flow from the battery ($W$)}
 \end{itemize}
 \item The second component tells us about the current flowing from the hydrogen
 source:
@@ -1017,35 +1065,36 @@ Definitely the term will be different for $u_{2}$ positive and negative,
 because this equation models two different devices:
 \begin{itemize}
 \item $u_{2}>0$ ... The electrolyzer is turned on, using the power$P_{H_{2}}(u_{2})$.
-There is a bound, how much current can flow $u_{2}\in[P_{H_{2}+min},P_{H_{2}+max}]$
+There is a bound, how much current can flow $u_{2}\in[P_{H_{2}+min},P_{H_{2}+max}]$\nomenclature{$P_{H_{2}+min},P_{H_{2}+max}$}{Maximal/minimal current to electrolyzer ($A$)}
 \item $u_{2}=0$ ... No change in hydrogen supply
 \item $u_{2}<0$ ... The fuel cell is turned on, giving us the power $P_{H_{2}}(u_{2})$.
-There is a bound, how much current we can get $-u_{2}\in[P_{H_{2}-min},P_{H_{2}-max}]$
+There is a bound, how much current we can get $-u_{2}\in[P_{H_{2}-min},P_{H_{2}-max}]$\nomenclature{$P_{H_{2}-min},P_{H_{2}-max}$}{Maximal/minimal current from fuelcell ($A$)}
 \end{itemize}
 
 Again, here we can model the efficiency (for example $P_{H_{2}}(u_{2})=\frac{N_{cell}u_{2}}{2F\eta_{F}}\eta_{H_{2}}$
 for $u_{2}<0$ - the current would flow to the fuelcell, so we use
-the equation for fuelcell times efficiency) and even nonlinear characteristics
-of the efficiency. This design follows the wise rule, that the electrolyzer
-and fuel cell should not operate simultaneously (because that would
-be a waste of power). The bounds are, for example, the technical specifications
-set by manufacturer. Why do we use current for $u_{2}$ and not power?
-Because the model equations give us how the voltage depends on current
-(and from that we can get the power dependency on current and thats
-the function $P_{H_{2}}(u_{2})$).
+the equation for fuelcell \ref{eq:usedfuelcell} multiplied by efficiency)
+and even nonlinear characteristics of the efficiency. This design
+follows the wise rule, that the electrolyzer and fuel cell should
+not operate simultaneously (because that would be a waste of power).
+The bounds are, for example, the technical specifications set by the
+manufacturer. Why do we use current for $u_{2}$ as a variable and
+not power? Because the model equations \ref{eq:usedfuelcell} give
+us how the voltage depends on current (and from that we can get the
+power dependency on current and thats the function $P_{H_{2}}(u_{2})$).
 
 \end{itemize}
 Also in many cases in literature, the result of the analysis of the
-optimal control problem is, that the actuall control function is so
+optimal control problem is, that the actual control function is so
 called bang-bang control or bang-off-bang control. These controls
-are called in this way, because they only use extreme allowed values
+are called this way, because they only use maximal allowed values
 and zero (turned off). In our case it would not be wise to follow
 this path, because the efficiency, in the means of power, varies.
 
 
 
 So, once again and nicely written, the dynamics of our system is:
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{x} & = & f(x,u,t)\\
 \dot{\left[\begin{array}{c}
 B(t)\\
@@ -1056,25 +1105,24 @@ P_{H_{2}}(u_{2})
 \end{array}\right]+\left[\begin{array}{c}
 -\sigma\cdot B(t)\\
 0
-\end{array}\right]
-\end{eqnarray*}
+\end{array}\right]\nonumber 
+\end{eqnarray}
 To finish our formulation, we want to find the minimizing control
 function $u^{\star}$ (and the corresponding minimizing trajectory
 $x^{\star}$ and costate $\lambda^{\star}$ - will be introduced later)
 to minimize the performance index
 
-\[
-J=\phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt=hcost(S(T))+bcost(B(T))+\int_{0}^{T}pcost(P_{src}-P_{batt}-P_{H_{2}})\,dt
-\]
-
-
+\begin{eqnarray}
+J & = & \phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\nonumber \\
+ & = & hcost(S(T))+bcost(B(T))+\int_{0}^{T}pcost(P_{src}-P_{batt}-P_{H_{2}})\,dt\label{eq:hcostbcostdef}
+\end{eqnarray}
 where $hcost(x)$ is a function that gives a price for hydrogen,
 $bcost(x)$, price for power in the battery and $pcost(x)$ is a function
 that translates power exchange with the grid to its money cost. Generally
 $pcost(0)=0,\,pcost(x)\cdot x\geq0,\,|pcost(x)|\leq|pcost(-x)|$ and
 all the functions are bounded on bounded intervals.
 
-That simply says, that for not using the grid we pay nothng, selling
+That simply says, that for not using the grid we pay nothing, selling
 gives us money, by buying we lose money and that selling the power
 to grid would not give us such an amount of money as we would lose
 by buying the power.
@@ -1084,7 +1132,7 @@ scripts below we will simply use $pcost(x)=c_{1}x\mbox{ if }x\geq0\mbox{, otherw
 for $c_{1},c_{2}\geq0$.
 
 As we will see later, the most important thing is, that the function
-$J[y]$ would be continuous.
+$J[x(u)]$ would be continuous.
 
 
 \subparagraph{Note}
@@ -1106,18 +1154,17 @@ so it can compute parameters for the most economic installation. The
 adjustment is just adding parameters to the equation, that will allow
 us to use components with different efficiency and tie these to a
 cost. The cost, in turn, can then be added to the cost functional
-(with keeping eye that then the physical units will become a currency
-and making and adjustments) and the parameters can be also passed
-to the numerical optimalizator.
+(with keeping an eye on the fact that then the physical units will
+become a currency and making any necessary adjustments) and the parameters
+can be also passed to the numerical optimalizator.
 
-For the testing run in the scripts attached, very simple models are
-used, that bind the efficiency quadraticaly to cost (bounded on an
-interval).
-
+For the test run in the scripts attached, very simple models are used,
+that bind the efficiency quadraticaly to cost (bounded on an interval).
 
 
 
-\subsubsection{Construction of solutions and rewriting the problem}
+
+\subsection{Construction of solutions and rewriting the problem}
 
 Now we will look at different formulations and used methods from the
 literature, that will give us necessary conditions for minimality,
@@ -1128,10 +1175,10 @@ even from different views.
 
 The Hamiltonian of our system, using $\lambda\in\mathbb{R}^{2}$ as
 lagrange multipliers is 
-\begin{eqnarray*}
+\begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
- & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})
-\end{eqnarray*}
+ & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber 
+\end{eqnarray}
 
 
 By the way, because our state equations do not depend on time, our
@@ -1141,8 +1188,13 @@ suddenly become non constant.
 
 
 
-Additionally, in the presence of state constraints $x\in[0,B_{max}]\times[0,S_{max}]\iff\{x\in\mathbb{R}^{2},\,g(x)\le0,\,g(x)=-((x_{1}-\nicefrac{1}{2}B_{max})^{2}+\nicefrac{1}{4}B_{max}^{2})((x_{2}-\nicefrac{1}{2}S_{max})^{2}+\nicefrac{1}{4}S_{max}^{2})\}$,
-we need to define a function $c(x,u)=\nabla g(x)\cdot f(x,u)$
+Additionally, in the presence of state constraints (for example $x\in[0,B_{max}]\times[0,S_{max}]\iff\{x\in\mathbb{R}^{2},\,g(x)\le0,\,g(x)=-((x_{1}-\nicefrac{1}{2}B_{max})^{2}+\nicefrac{1}{4}B_{max}^{2})((x_{2}-\nicefrac{1}{2}S_{max})^{2}+\nicefrac{1}{4}S_{max}^{2})\}$),
+the definition of Hamiltonian alone is not sufficient and the theory
+usually also defines the function 
+\begin{equation}
+c(x,u)=\nabla g(x)\cdot f(x,u)\label{eq:defc}
+\end{equation}
+ (that will be used later).
 
 
 \paragraph{Conditions for minimum}
@@ -1150,15 +1202,16 @@ we need to define a function $c(x,u)=\nabla g(x)\cdot f(x,u)$
 Other (necessary) conditions for minimum are: (state equation, costate
 equation, boundary conditions)
 
-\begin{align*}
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\\
--\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\tag*{...costate equation}\\
-x(t_{0}) & =(0,0)\tag*{...boundary condition}\\
-(\phi_{x}+\psi_{x}^{T}\nu-\lambda)^{T}|_{T}dx+(\phi_{t}+\psi_{t}^{T}\nu+H)^{T}|_{T}dT & =0\tag*{...boundary condition prototype}\\
-\lambda^{T}|_{T}dx+H^{T}|_{T}dT & =0\tag*{...boundary condition in our case\ensuremath{(dT=0)}}\\
-\lambda_{i}(T) & =\frac{\partial\phi}{\partial x_{i}}(x(T),T)\tag*{...boundary condition for costate (for free final state)}\\
-\lambda_{i}(T) & =0\tag*{...boundary condition for costate in our case}
-\end{align*}
+\begin{flalign}
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber \\
+-\dot{\lambda} & =\frac{\partial H}{\partial x}=\frac{\partial f^{\mathsf{T}}}{\partial x}\lambda+\frac{\partial L}{\partial x}\tag*{...costate equation}\nonumber \\
+x(t_{0}) & =(0,0)\tag*{...boundary condition}\nonumber \\
+0 & =(\phi_{x}+\psi_{x}^{\mathsf{T}}\nu-\lambda)^{\mathsf{T}}|_{T}dx+(\phi_{t}+\psi_{t}^{\mathsf{T}}\nu+H)^{\mathsf{T}}|_{T}dT\tag*{...boundary condition prototype}\nonumber \\
+0 & =\psi(x(T),T)\tag*{...final state constraint (if present)}\\
+0 & =\lambda^{\mathsf{T}}|_{T}dx+H^{\mathsf{T}}|_{T}dT\tag*{...boundary condition in our case \ensuremath{(dT=0)}}\nonumber \\
+\lambda_{i}(T) & =\frac{\partial\phi}{\partial x_{i}}(x(T),T)\tag*{...boundary condition for costate (for free final state)}\nonumber \\
+\lambda_{i}(T) & =0\tag*{...boundary condition for costate in our case}\nonumber \\
+\end{flalign}
 
 
 
@@ -1178,7 +1231,18 @@ In other words $H(x^{\star},u^{\star},\lambda^{\star},t)\geq H(x^{\star},u,\lamb
 for all admissible $u$. (We have this instead of the stationary condition
 $0=\frac{\partial H}{\partial u}=\frac{\partial L}{\partial u}+\frac{\partial f^{T}}{\partial u}\lambda$)
 
-In the presence of state constraints, we have $ $ (instead of $-\dot{\lambda}=\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\mbox{ ...costate equation}$).
+In the presence of state constraints (``maximum principle for state
+constraints\textquotedbl{}), we have the existency of a costate function
+$p^{\star}$ and a function $\lambda^{\star}$, such that: 
+\begin{eqnarray}
+\dot{p}^{\star}(t) & = & -\nabla_{x}H(x^{\star}(t),p^{\star}(t),u^{\star}(t))+\lambda^{\star}(t)\nabla_{x}c(x^{\star}(t),u^{\star}(t))\\
+H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(x^{\star},u)=0\}
+\end{eqnarray}
+
+
+... for $u^{\star},\,x^{\star}$ solving the control problem ( eqs.
+\ref{eq:basiceqs} ) and function $c$ defined above \ref{eq:defc}.
+(Instead of simple $-\dot{\lambda}=\frac{\partial H}{\partial x}=\frac{\partial f^{T}}{\partial x}\lambda+\frac{\partial L}{\partial x}\mbox{ ...costate equation}$.)
 
 
 \paragraph{Hamilton Jacobi Bellman}
@@ -1187,36 +1251,39 @@ In the presence of state constraints, we have $ $ (instead of $-\dot{\lambda}=\f
 
 The equation for developement of the optimal cost (computed backwards)
 is 
-\begin{eqnarray*}
+\begin{eqnarray}
 J^{\star}(x(T),T) & = & \phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)
-\end{eqnarray*}
+-\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber 
+\end{eqnarray}
 
 
 And to get $u^{\star}$ using HJB and Minimum principle:
 
-\begin{eqnarray*}
+\begin{eqnarray}
 u^{\star}(t,x,\lambda) & = & \arg\min_{u}(H(x,u,\lambda,t))\phi(x(T),T)
-\end{eqnarray*}
+\end{eqnarray}
 
 
 
-\subsubsection{Approach using direct methods}
+\subsection{Approach using direct methods}
 
-Above conditions for minimum come from the indirect approach. Allowing
-countable number of discontinuities would rise the need to rewrite
-the problem, as in \cite{gelfand1964calculus}. If we would like to
-use direct methods with functions with discontinuities, the thoughts
-will go in different way.
+Above methods and conditions for minimum come from the indirect approach.
+Allowing countable number of discontinuities would rise the need to
+rewrite the problem, as in \cite{gelfand1964calculus}. If we would
+like to use direct methods with functions with discontinuities, the
+thoughts will go in different way (eg. not using the notation of Hamiltonian).
 
 
-\paragraph{Ritz method, finite differences and existence}
+\subsubsection{Ritz method, finite differences and existence}
 
 As an important known result about direct methods, the direct way
 to get to the minimum is the following (using \cite{gelfand1964calculus}
-as a reference):
+as a reference, where also proofs can be found):
 
-We construct an approximating sequence of spaces $\mathcal{M}_{i}$.
+In a general situation (application to our specific case will come
+later), where we want to evaluate a functional $J[y]$ depending on
+a function $y$ from an general function space $\mathcal{M}$ ($y\in\mathcal{M}$),
+we first construct an approximating sequence of spaces $\mathcal{M}_{i}$.
 Each space $\mathcal{M}_{i}$ is defined by the basis functions $\{\varphi_{i}\}_{i=1}^{n}$,
 such that their every linear combination $\sum^{n}\alpha_{i}\varphi_{i}$
 together make the whole particular space $\mathcal{M}_{i}$. The sequence
@@ -1227,17 +1294,27 @@ This approach is called Ritz method.
 Note, that the space $\mathcal{M}$ is likely to be infinite dimensional,
 because the solution is, of course, a control function.
 
+
+\paragraph*{Definition of complete sequence}
+
 Approximating sequence of spaces is called complete, if, for any given
 $y\in\mathcal{M}$ and $\epsilon>0$, we can have a function $y_{n}$
 (of the form of linear combination) that differs less than epsilon
-from the given function - $\left\Vert y_{n}-y\right\Vert <\epsilon$.
+from the given function - $\left\Vert y_{n}-y\right\Vert <\epsilon$.\medskip{}
+
 
 The convergence results then continue in this way:
+
+
+\paragraph*{Theorem}
 
 If a functional $J[y]$, $y\in\mathcal{M}$ is continuous (in the
 norm of the space $\mathcal{M}$) and if a sequence $\mathcal{M}_{i}$
 is complete, then $\lim_{n\rightarrow\infty}\mu_{n}=\inf_{y}J[y]$
-($\mu_{n}$'s are realized by functions $y_{n}\in\mathcal{M}_{n}$).
+($\mu_{n}$'s are realized by functions $y_{n}\in\mathcal{M}_{n}$,
+that is then, in fact, a minimizing sequence of functions for the
+functional $J[y]$).\medskip{}
+
 
 The finite differences idea then adds, that the approximation in each
 particular space is done by piecewise linear function.
@@ -1246,11 +1323,17 @@ Together then, if we have a sequence ($y_{n}$), of optimal solutions
 of our problem constrained to space $\mathcal{M}_{n}$, we are approaching
 the limit if the given functional is continuous.
 
-Does our problem, from the point of view of direct methods from calculus
-of variations (``$J$ is cost function and $y$ is our$u,\,x,\,\lambda$''),
-have this property?
 
-Cost for our problem was given by:
+\subsubsection{The application of Ritz method}
+
+Does our problem, from the point of view of direct methods from calculus
+of variations, have this property?
+
+The space $\mathcal{M}$ is, in our case, defined as the space of
+real valued functions $y(t)=(x(t),u(t)):\,\mathbb{R}^{4}\rightarrow\mathbb{R}$,
+that are bounded on a bounded interval, $x(t)$ is continuous, and
+do satisfy the state equation $\dot{x}=f(x,u,t)$ and $J$ is the
+cost function of our problem, that was given by (in \ref{eq:hcostbcostdef}):
 
 \begin{eqnarray*}
 J[x,u] & = & \phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\\
@@ -1260,7 +1343,7 @@ J[x,u] & = & \phi(x(T),T)+\int_{0}^{T}L(x,u,t)\,dt\\
 
 
 And because everything comes down to functions $P_{batt}$ and $P_{H_{2}}$...
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{\left[\begin{array}{c}
 B(t)\\
 S(t)
@@ -1271,9 +1354,10 @@ P_{H_{2}}(u_{2})
 -\sigma\cdot B(t)\\
 0
 \end{array}\right]
-\end{eqnarray*}
+\end{eqnarray}
 ... that are selected to be continuous (see models presented before
-- it is not only physically-wise selection that makes approximating
+- \ref{eq:usedfuelcell}, \ref{eq:electr}, \ref{eq:battmodel} -
+it is not only physically-wise selection that makes approximating
 easier, computation faster, but it also gives us the needed results
 here), we just need to clarify our demands on functions $hcost$,
 $bcost$ and $pcost$ - to be continuous. Because these functions
@@ -1289,8 +1373,10 @@ also dont affect the existence of minima, because they constrain the
 spaces on which we are searching for the minima).
 
 Our functional is, in the end, easier to work with, than normally
-presented problems from the calculus of variations, because we dont
-have derivatives of the control function in our functional.
+presented problems from the calculus of variations, because we do
+not have derivatives of the control function in our functional.
+
+
 
 
 
@@ -1370,21 +1456,30 @@ ale absolutni hodnotu v hodnotici funkci?
 
 
 
-\section{Implementation and results}
+\section{Applied numerical procedures and results}
 
-Using all previously mentioned, we developed a program answering following
-question ``What is the most economic setting for photovoltaic and
-hydrogen system and what is the specific power managment strategy
-(the optimal control function) of such system?\textquotedbl{}. Lets
-suppose, that we already have measured yearly power consumption and
-have already installed photovoltaic panels and measured power output.
-If it is not this case, we can, of course, use the model and approach
-from \cite{Stand-alonePowerSystems} to get the estimated power output
-from manufacturers datasheets.
+Using all previously mentioned, we developed a program capable of
+answering the following questions:
+\begin{itemize}
+\item ``What is the most economic setting for photovoltaic and hydrogen
+system and what is the specific power managment strategy (the optimal
+control function) of such system?\textquotedbl{}.
+\item ``What is the most economic control function for a specified time
+scale, given a prediction of consumption and energy generation\textquotedbl{}
+\end{itemize}
+From now on, we will look on the second, easier question, with the
+goal to verify the effectivity of numerous NLP solvers. So, lets suppose,
+that we already have measured yearly power consumption and have already
+installed photovoltaic panels and measured power output. If it is
+not this case, we can, of course, use the model and approach from
+\cite{Stand-alonePowerSystems} to get the estimated power output
+from manufacturers datasheets. If we would like to answer the first
+question, the only remaining work would be to add the equation tying
+together the cost of a PV panels and other equipment and their effectivity.
 
 Lets now have a look at all the implementation details and all the
 used tools (because this way it would make the actual usage of the
-scripts less time consuming work).
+scripts less time consuming work) and the accompanynig numerical experiments.
 
 
 \subsection{Setting up the constants}
@@ -1410,7 +1505,7 @@ and sufficient). The source codes are in the directory ``fit\textquotedbl{}.
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{fittedelectrolyzerplot}\includegraphics[width=0.45\textwidth]{fittedfuelcell}
 
-\protect\caption{Results of the fitting for electrolyzer (left) and fuelcell (right),
+\caption{Results of the fitting for electrolyzer (left) and fuelcell (right),
 x axis is current density ($mA\cdot m^{-2}$ ), y axis is voltage
 ($V$). Actual values of parameters are kept in the file \texttt{consts.m}
 together with all the other model constants and numerical settings.}
@@ -1426,20 +1521,20 @@ codes using this library are also attached, in the directory AcadoLinearVersion
 (waiting for the next release of the toolkit).
 
 The next step was to use MATLAB and to write multiple shooting algorithm
-(as was said, in such a way, that they would reformulate the optimal
-control problem as NLP problem), the formulation is independent on
-actual solver used and so it is able to run with MATLABs original
-fmincon function and with any algorithm from OPTI toolbox (\url{http://www.i2c2.aut.ac.nz/Wiki/OPTI/}).
+(as was said, in a way to reformulate the optimal control problem
+as NLP problem), the formulation is independent on actual solver used
+and so it is able to run with MATLABs original fmincon function and
+with any algorithm from OPTI toolbox (\url{http://www.i2c2.aut.ac.nz/Wiki/OPTI/}).
 In the case of algorithm breakdown on a specific problem setting,
-we can just easily switch to different algorithm.
+we can just easily switch to a different algorithm.
 
-All used and tried approaches to the problem are reported with respective
-sources in these directories:
+All used approaches to the problem are reported with respective sources
+in these directories:
 \begin{itemize}
 \item Directory \texttt{MatlabSinglShooting1} contains implementation using
 single shooting technique. This implementation was not effective for
 this problem.
-\item In the main directory, there is implementation of multiple shooting
+\item In the main directory, there is an implementation of multiple shooting
 using MATLAB function fmincon.
 \item Directory \texttt{TrySensitivity} contains the same problem implementation
 with multiple shooting, but with employed sensitivity equations for
@@ -1453,12 +1548,15 @@ one for battery input, one for battery output and one for fuelcell)
 in an attempt to try to cure said problem with derivatives, using
 more dimensional problem, with only positive valued control functions
 and more constraints. Unfortunately this approach failed, because
-the resulting matrices in the computation were said to be badly conditioned.
+the resulting matrices in the computation were detected to be badly
+conditioned by the algorithms.
 \item Directory \texttt{Opti} contains the code for multiple shooting using
 Opti toolbox solver.
 \item Directory \texttt{AsBusiness} has sample scripts for optimization
 of the cost - variables that influence the efficiency of the fuelcell
 are added to the formulation, optimizer and final cost.
+\item Directory \texttt{Test} contains all the code for the numerical test
+cases presented below.
 \end{itemize}
 All the matlab scripts in each directory follow this structure:
 \begin{itemize}
@@ -1470,7 +1568,7 @@ and the ones resulting from multiple shooting approach)
 \item \texttt{fun.m} - computing the whole equation, integration over the
 time
 \item \texttt{state.m} - evaluation of state equation
-\item \texttt{statesens.m} - script for cimputing sensitivity equations
+\item \texttt{statesens.m} - script for computing sensitivity equations
 \item \texttt{consts.m} - file for storing the constants and options defining
 the problem
 \item \texttt{dispopt.m} - script for displaying graphs
@@ -1480,26 +1578,29 @@ each iteration
 source data
 \item \texttt{controldata} - points on piecewise lienar function defining
 the power demands
+\item \texttt{dispsaved.m} - the script that would print the graphs like
+in this work and compute the constraint violation and final cost.
 \end{itemize}
 Every variation of the scripts can be run in the same manner - executing
 \texttt{main.m}. The solved problem is set to examine the effectivity
-over one year period. Because of this, you can also notice rescaling
-constants in \texttt{consts.m} - because letting the integrators integrate
-functions depending on very high time ranges in basic physical units
-(seconds) would take unreasonable amount of time (aleso because the
-boundary conditions are set to change on hour by hour basis and that
-means that nothing interesting happens for the numerical integrator
-that tries to watch for sudden changes and keep the precision).
+over one year period (or one week in the main folder). You can also
+notice rescaling constants in \texttt{consts.m} - because letting
+the integrators integrate functions depending on very high time ranges
+in basic physical units (seconds) would take unreasonable amount of
+time (also because the boundary conditions are set to change on hour
+by hour basis and that means that nothing interesting happens for
+the numerical integrator that tries to watch for sudden changes and
+keep the precision).
 
-For more discretization points the program becomes of course slower.
-If you want to see some results earlier, you can set the constants
-``Data.cLogBegin'' and ``Data.cLogEnd'' in \texttt{consts.m} to
-specify at which power of two discretization points to begin and at
-which to end. This also affects the selection of the initial values
-- on the first run they are set randomly and on each consecutive run
-they are copied from previous run (this is because the selection of
-initial point in the search space can affect the outcome of certain
-optimalizators and also their running time).
+For more discretization points the program becomes, of course, slower.
+If we want to see some results earlier, we can set the constants ``Data.cLogBegin''
+and ``Data.cLogEnd'' in \texttt{consts.m} to specify at which power
+of two discretization points to begin and at which to end. This also
+affects the selection of the initial values - on the first run they
+are set randomly and on each consecutive run they are copied from
+previous run (this is because the selection of initial point in the
+search space can affect the outcome of certain optimalizators and
+also their running time).
 
 \begin{comment}
 The program can operate in different modes:
@@ -1521,94 +1622,174 @@ version.
 
 
 
-\subsection{Results of test runs}
+\subsection{The numerical experiments}
 
 The scripts will start solving the problem on discretized control
-function to number of discretization points beggining at $2^{\mbox{cLogBeg}}$
+function to number of discretization points beginning at $2^{\mbox{cLogBeg}}$
 and ending at $2^{\mbox{cLogEnd}}$ (constants from \texttt{consts.m}),
-copying the results from previous run to the next run. Some iterations
-can fail to satisfy the bounds thinking that the problem is infeasible,
-because at lower number of discretization points it can actually be
-really difficult to achieve. Anyway it is automatically fixed when
-the number of discretization points grows bigger. Then there will
-be more decision points, that can steer the system to allowed set
-of states.
-
-After each iteration, matlab will show the state of the optimization
-in 4 graphs, like in \prettyref{fig:1strun}. Left top graph shows
-the state of energy in batter and hydrogen in tank, right top graph
-shows the evolution of the cost function in time, left bottom graph
-shows the control function (2 dimension - power to battery and current
-to hydrogen - so two lines) and right bottom graph shows the state
-trajectory. At the beginning, the results will look like in the figure
-\ref{fig:1strun}, because the algorithm starts from a point far from
-optimum. As for multiple shooting, the graph for states is not even
-continuous, because the algorithm had not many iterations to guess
-correctly the beginnnings of states.
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{1stiter}\includegraphics[width=0.5\textwidth]{screenshotdal}\protect\caption{\label{fig:1strun}Algorithm results in progress. Axes are scaled
-for better run of the algorithm. Less discretization points and early
-stage (left, white), more discretization points and later stage (right,
-gray).}
-
-
-\end{figure}
-
+using the results from previous run as a starting point for the next
+run. Some iterations can fail to satisfy the bounds, thinking that
+the problem is infeasible, because at a lower number of discretization
+points, achieving the result might be difficult or impossible. This
+flaw is fortunately automatically fixed when the number of discretization
+points grows bigger, because higher number of availible decision points
+can steer the system to allowed set of states.
 
 For correct one-year long prediction, the optimization process would
 take long time ($2^{14}$ discretization points would require more
 than 4 days of processor time per iteration), so we would chose smaller
-time scale for testing purposes - one week and $2^{8}$ discretization
-points. 
+time scale for testing purposes - one day and $2^{5}$ discretization
+points. The main goal is to explore, which NLP solvers would perform
+reasonably well on this type of problem. 
 
-Usually, the results suggest, that the algorithm fails, because it
-is not able to even meet the provided conditions on such small scale
-level - the power input and demand oscillates faster, than the number
-of control points allows.
+This test case was set up to control a production of one day, where
+the photovoltaic power income was less than it would be needed and
+the test case starts with empty batteries and fuel tank. The goal
+is to observe lesser cost of electricity over the day.
 
-Also, the first numerical optimal control algorithm, that did not
-undergo a breakdown on this problem was SQP (Sequential quadratic
-programming), that is in line with the suggested approach in various
-sources.
+The currency is set to a virtual one, where to buy an unit of power
+costs 200 units, to sell it costs 100 units and the energy remaining
+in batteries and fuel at the end of the run can be sold for 150 units.
+The efficiency of the battery is set to 70\% and the fuelcell is considered
+ideal in this test case (to see if the algorithm would use the fuelcell
+even though it's nonlinear characteristic).
 
-
-
-After 60 iterations, the algorithm starts converge to periodic decisions
-copying the periodic boundary conditions. It is important to note,
-that this first testing implementation should decide which algorithm
-to implement on a paralellized architecture.
+The initial point is chosen to be random, because some solvers would
+consider zero to be a local optimum.
 
 
-\paragraph{Summary}
+\subsubsection{Understanding the results}
 
-We have summarized optimal control and fuel cells works and articles,
-including deeper links to existence and uniqueness results. Then applied
-a numerical optimal control method on a physical problem in a (so
-far) unique way to get:
+After each iteration, the environment will show the state of the optimization
+in 4 graphs, like in \prettyref{fig:Filtersd}.
+
+Left top graph shows the state of energy in battery and hydrogen in
+tank, right top graph shows the evolution of the cost function in
+time (this curve is an integral of our virtual currency flow, which
+is just weighted power flow to the system), left bottom graph shows
+the control function (2 dimension - power to battery and current to
+hydrogen - so two lines) and right bottom graph shows the state trajectory.
+The axes in each subfigure are scaled for better run of the algorithm.
+
+At the beginning, the algorithm starts from a point far from optimum.
+As for multiple shooting, the graph for states is not even continuous
+during the computation, because the solvers need more iterations to
+guess correctly the beginnings of the states.
+
+
+\subsubsection{Results of test runs}
+
+Usually, the results verify, that with lower number of discretization
+points, the algorithms tend to fail, because they are not able to
+even meet the provided conditions on such small scale level - the
+power input and demand oscillates faster, than the number of control
+points allows for compensation.
+
+From MATLAB and OPTI toolbox, we have applied the algorithms listed
+in the table \ref{fig:Results-of-test}, together with the evaluation
+of the success of every solver. 
+
+\begin{figure}[H]
+\begin{centering}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+algorithm (ndisc=32) &  & optcost & max constraint violation\tabularnewline
+\hline 
+\hline 
+SQP &  & -2.072860e+08 & 2.851336e-05\tabularnewline
+\hline 
+active-set & spustit &  & \tabularnewline
+\hline 
+interior-point & bezi &  & \tabularnewline
+\hline 
+IPOPT & spustit &  & \tabularnewline
+\hline 
+NLOPT & \ref{fig:NLOPT} & -1.062047e+09 & 7.919988e+06\tabularnewline
+\hline 
+filtersd & \ref{fig:Filtersd} & -2.429403e+08 & 7.920000e+06\tabularnewline
+\hline 
+lbfgsb &  &  & \tabularnewline
+\hline 
+PSWARM & nesel &  & \tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+
+\caption{\label{fig:Results-of-test}Results of test runs.}
+\end{figure}
+
+
+
+
+All the solvers managed to find a better strategy than to just buy
+the power from the grid (which can be seen from the top right graph
+that would go steeply linearly down), unfortunately some of them did
+'cheat' in a sense, that the constraints were not satisfied. The best
+performance can be observed for SQP (Sequential quadratic programming),
+which is in line with the suggested approach from various sources.
+
+The solver converged to make decisions (as seen in figure \ref{fig:SQP})
+copying the peaks from boundary conditions and mostly using the ideal
+fuelcell over the battery - even in spite of accompanying nonlinearities
+- and used the battery as a backup for one moment of need. In reality,
+the roles would be reversed and fuelcell used more as long term storage,
+but that might not be the same challenge for the numerical test of
+the solver.
+
+\begin{figure}
+\centering{}\includegraphics[width=0.9\textwidth]{Obrazky/matepsfigFILTERSD}\caption{\label{fig:Filtersd} FilterSD solver results.}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.9\textwidth]{Obrazky/matepsfigNLOPT}
+\par\end{centering}
+
+\caption{\label{fig:NLOPT}NLOPT solver results. Note that it did not manage
+to satisfy the constraints.}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.9\textwidth]{Obrazky/matepsfigSQP}
+\par\end{centering}
+
+\caption{\label{fig:SQP}SQP Algorithm results}
+\end{figure}
+
+
+
+\subsection{Summary}
+
+First, we have looked up optimal control and fuel cells works and
+articles, including deeper links to existence results. Then, we have
+applied a numerical optimal control method on a physical problem in
+a way, so that we got:
 \begin{itemize}
-\item a method for optimizing system (and system's cost) not against a certain
-strategy, but against ideal maximum (which would work even better
-in the need of control strategy change in runtime)
-\item a method for comparing two strategies against ideal maximum - to allow
-to answer a question whether we can get better, that cannot be otherwise
-answered.
+\item a new method for optimizing system (and system's cost) not against
+a certain strategy, but against ideal maximum instead (which would
+work even better in the need of additional control strategy change
+in runtime).
+\item a new method for comparing strategies against ideal maximum - to allow
+to answer a question whether we can get better, that could not be
+otherwise answered.
 \item matlab implementation allowing for solver changes for testing different
 minimum finding algorithms (in case of breakdowns)
 \end{itemize}
+From the numerical experiments, the solver SQP was veryfied to be
+well suited for the problem.
+
 Future work could include tuning the method for real applications
 - the process would need to be implemented, for example, on a graphic
 card or a computing cluster to be faster. Also given a reasonable
 forecast of sunshine and power consumption, it could actually control
 the system (by precalculating the control for the next week each specified
-step in time), though this would need to be tested against (currently
+step in time), though this would need to be tested against other (currently
 considered) best power managment strategies. (Using previous forecast
 as a starting point could make the calculation even faster.)
 
 
 \subsection*{}
 
-\pagebreak{}\printnomenclature
-\addcontentsline{toc}{chapter}{Nomenclature}\pagebreak{}\listoffigures
+\pagebreak{}\listoffigures
 \addcontentsline{toc}{chapter}{List of Figures}
 
 \pagebreak{}

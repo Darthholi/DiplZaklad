@@ -4626,7 +4626,7 @@ key "gelfand1964calculus"
 
 \end_inset
 
- as a reference):
+ as a reference, where also proofs can be found):
 \end_layout
 
 \begin_layout Standard
@@ -4690,6 +4690,10 @@ Note, that the space
  a control function.
 \end_layout
 
+\begin_layout Paragraph*
+Definition of complete sequence
+\end_layout
+
 \begin_layout Standard
 Approximating sequence of spaces is called complete, if, for any given 
 \begin_inset Formula $y\in\mathcal{M}$
@@ -4709,10 +4713,18 @@ Approximating sequence of spaces is called complete, if, for any given
 \end_inset
 
 .
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 The convergence results then continue in this way:
+\end_layout
+
+\begin_layout Paragraph*
+Theorem
 \end_layout
 
 \begin_layout Standard
@@ -4750,6 +4762,10 @@ If a functional
 \end_inset
 
 ).
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5349,8 +5365,8 @@ What is the most economic control function for a specified time scale, given
 \end_layout
 
 \begin_layout Standard
-From now on, we will look on the second result to verify the effectivity
- of numerous NLP solvers on the easier question.
+From now on, we will look on the second, easier question, with the goal
+ to verify the effectivity of numerous NLP solvers.
  So, lets suppose, that we already have measured yearly power consumption
  and have already installed photovoltaic panels and measured power output.
  If it is not this case, we can, of course, use the model and approach from
@@ -5910,6 +5926,11 @@ The currency is set to a virtual one, where to buy an unit of power costs
  even though it's nonlinear characteristic).
 \end_layout
 
+\begin_layout Standard
+The initial point is chosen to be random, because some solvers would consider
+ zero to be a local optimum.
+\end_layout
+
 \begin_layout Subsubsection
 Understanding the results
 \end_layout
@@ -5927,24 +5948,20 @@ reference "fig:Filtersd"
 \end_layout
 
 \begin_layout Standard
-Left top graph shows the state of energy in batter and hydrogen in tank,
- right top graph shows the evolution of the cost function in time, left
- bottom graph shows the control function (2 dimension - power to battery
- and current to hydrogen - so two lines) and right bottom graph shows the
- state trajectory.
- At the beginning, the results will look like in the left part of figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Filtersd"
+Left top graph shows the state of energy in battery and hydrogen in tank,
+ right top graph shows the evolution of the cost function in time (this
+ curve is an integral of our virtual currency flow, which is just weighted
+ power flow to the system), left bottom graph shows the control function
+ (2 dimension - power to battery and current to hydrogen - so two lines)
+ and right bottom graph shows the state trajectory.
+ The axes in each subfigure are scaled for better run of the algorithm.
+\end_layout
 
-\end_inset
-
-, because the algorithm starts from a point far from optimum.
- As for multiple shooting, the graph for states is not even continuous,
- because the algorithm had not many iterations to guess correctly the beginnings
- of states.
- The axes are in each subfigure scaled for better run of the algorithm.
+\begin_layout Standard
+At the beginning, the algorithm starts from a point far from optimum.
+ As for multiple shooting, the graph for states is not even continuous during
+ the computation, because the solvers need more iterations to guess correctly
+ the beginnings of the states.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5991,9 +6008,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="9" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6026,20 +6042,11 @@ optcost
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-max constraint violation
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+max constraint violation
 \end_layout
 
 \end_inset
@@ -6073,20 +6080,11 @@ SQP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2.851336e-05
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.851336e-05
 \end_layout
 
 \end_inset
@@ -6107,15 +6105,6 @@ active-set
 
 \begin_layout Plain Layout
 spustit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -6167,15 +6156,6 @@ bezi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -6201,15 +6181,6 @@ IPOPT
 
 \begin_layout Plain Layout
 spustit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -6267,20 +6238,11 @@ reference "fig:NLOPT"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.919988e+06
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+7.919988e+06
 \end_layout
 
 \end_inset
@@ -6320,20 +6282,11 @@ reference "fig:Filtersd"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.920000e+06
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+7.920000e+06
 \end_layout
 
 \end_inset
@@ -6345,15 +6298,6 @@ reference "fig:Filtersd"
 
 \begin_layout Plain Layout
 lbfgsb
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -6401,15 +6345,6 @@ PSWARM
 
 \begin_layout Plain Layout
 nesel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -6479,9 +6414,9 @@ Data.TimeScales=60*60, Data.ControlScales=100, 7*24*60*60/Data.TimeScales;
 
 \begin_layout Standard
 All the solvers managed to find a better strategy than to just buy the power
- from the grid (which can be seen from the bottom right graph that would
- go steeply linearly down), unfortunately some of them did 'cheat' in a
- sense that the constraints were not satisfied.
+ from the grid (which can be seen from the top right graph that would go
+ steeply linearly down), unfortunately some of them did 'cheat' in a sense,
+ that the constraints were not satisfied.
  The best performance can be observed for SQP (Sequential quadratic programming)
 , which is in line with the suggested approach from various sources.
 \end_layout
@@ -6495,7 +6430,11 @@ reference "fig:SQP"
 \end_inset
 
 ) copying the peaks from boundary conditions and mostly using the ideal
- fuelcell over the battery.
+ fuelcell over the battery - even in spite of accompanying nonlinearities
+ - and used the battery as a backup for one moment of need.
+ In reality, the roles would be reversed and fuelcell used more as long
+ term storage, but that might not be the same challenge for the numerical
+ test of the solver.
 \end_layout
 
 \begin_layout Standard
@@ -6617,19 +6556,19 @@ Summary
 
 \begin_layout Standard
 First, we have looked up optimal control and fuel cells works and articles,
- including deeper links to existence and uniqueness results.
+ including deeper links to existence results.
  Then, we have applied a numerical optimal control method on a physical
- problem in a (so far) unique way, so that we got:
+ problem in a way, so that we got:
 \end_layout
 
 \begin_layout Itemize
-a method for optimizing system (and system's cost) not against a certain
+a new method for optimizing system (and system's cost) not against a certain
  strategy, but against ideal maximum instead (which would work even better
  in the need of additional control strategy change in runtime).
 \end_layout
 
 \begin_layout Itemize
-a method for comparing two strategies against ideal maximum - to allow to
+a new method for comparing strategies against ideal maximum - to allow to
  answer a question whether we can get better, that could not be otherwise
  answered.
 \end_layout
@@ -6640,8 +6579,8 @@ matlab implementation allowing for solver changes for testing different
 \end_layout
 
 \begin_layout Standard
-From the numerical experiments, the solver called SQP was veryfied to be
- well suited for the problem.
+From the numerical experiments, the solver SQP was veryfied to be well suited
+ for the problem.
 \end_layout
 
 \begin_layout Standard

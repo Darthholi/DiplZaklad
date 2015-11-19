@@ -789,16 +789,35 @@ Abstrakt:
 První část práce je věnovaná hlubší rešerši do literatury optimálního řízení,
  shrnutí principů a způsobů jak je aplikovat na prezentovaný problém.
  Následně je sestaven a popsán model použitelný pro samostatnou energetickou
- jednotku s použitím vodíkových článků, akumulátoru a fotovoltaických panelů,
- spolu s nejčastějšími používanými rovnicemi z literatury.
+ jednotku s
+\begin_inset space ~
+\end_inset
+
+použitím vodíkových článků, akumulátoru a fotovoltaických panelů, spolu
+ s
+\begin_inset space ~
+\end_inset
+
+nejčastějšími používanými rovnicemi z literatury.
  Také je formulován problém optimálního řízení řečeného systému pro optimální
- cenu v provozu při nejlepších podmínkách.
- Dále jsou popsány algoritmy numerického řešení systému spolu s implementací
- konkrétního numerického algoritmu 
+ cenu v
+\begin_inset space ~
+\end_inset
+
+provozu při nejlepších podmínkách.
+ Dále jsou popsány algoritmy numerického řešení systému spolu s
+\begin_inset space ~
+\end_inset
+
+implementací konkrétního numerického algoritmu 
 \begin_inset Quotes gld
 \end_inset
 
-multiple shooting" na tento problém spolu s numerickými testy a výsledky.
+multiple shooting" na tento problém a
+\begin_inset space ~
+\end_inset
+
+ numerické testy a výsledky.
 \end_layout
 
 \begin_layout Standard
