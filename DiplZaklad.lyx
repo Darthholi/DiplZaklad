@@ -42,7 +42,7 @@
 \usepackage{comment}
 \usepackage{epstopdf} 
 \usepackage{url}
-\usepackage{natbib}
+%\usepackage{natbib}
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
 %\setcounter{secnumdepth}{0}
@@ -137,7 +137,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command biber
 \index_command default
 \paperfontsize default
 \spacing single
@@ -6034,7 +6034,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6054,7 +6054,7 @@ algorithm (ndisc=32)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Note
 \end_layout
 
 \end_inset
@@ -6063,7 +6063,7 @@ algorithm (ndisc=32)
 \begin_inset Text
 
 \begin_layout Plain Layout
-optcost
+Optimal cost found
 \end_layout
 
 \end_inset
@@ -6072,7 +6072,7 @@ optcost
 \begin_inset Text
 
 \begin_layout Plain Layout
-max constraint violation
+Maximal constraint violation
 \end_layout
 
 \end_inset
@@ -6092,6 +6092,12 @@ SQP
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SQP"
+
+\end_inset
+
 
 \end_layout
 
@@ -6121,44 +6127,6 @@ SQP
 \begin_inset Text
 
 \begin_layout Plain Layout
-active-set
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-spustit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 interior-point
 \end_layout
 
@@ -6168,7 +6136,13 @@ interior-point
 \begin_inset Text
 
 \begin_layout Plain Layout
-bezi
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InteriorPoint"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6177,7 +6151,7 @@ bezi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+8.456483e+13
 \end_layout
 
 \end_inset
@@ -6186,7 +6160,7 @@ bezi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.526876e+06
 \end_layout
 
 \end_inset
@@ -6206,7 +6180,7 @@ IPOPT
 \begin_inset Text
 
 \begin_layout Plain Layout
-spustit
+
 \end_layout
 
 \end_inset
@@ -6319,7 +6293,7 @@ reference "fig:Filtersd"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6328,40 +6302,17 @@ lbfgsb
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-PSWARM
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:LBFGS"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6370,16 +6321,7 @@ PSWARM
 \begin_inset Text
 
 \begin_layout Plain Layout
-nesel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+-3.524222e+08
 \end_layout
 
 \end_inset
@@ -6388,7 +6330,7 @@ nesel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+7.919967e+06
 \end_layout
 
 \end_inset
@@ -6564,6 +6506,80 @@ name "fig:SQP"
 \end_inset
 
 SQP Algorithm results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Obrazky/matepsfiglbfgs.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:LBFGS"
+
+\end_inset
+
+LBFGSB Solver results (timed out).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Obrazky/matepsfiginteriorpoint.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InteriorPoint"
+
+\end_inset
+
+InteriorPoint Algorithm results (timed out).
 \end_layout
 
 \end_inset

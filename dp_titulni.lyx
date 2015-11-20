@@ -1,4 +1,4 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
+#LyX file created by tex2lyx 2.1
 \lyxformat 474
 \begin_document
 \begin_header
@@ -9,7 +9,7 @@
 \language_package default
 \inputencoding cp1250
 \fontencoding default
-\font_roman default
+\font_roman ae
 \font_sans default
 \font_typewriter default
 \font_math auto
@@ -27,34 +27,32 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "Efektivnímetodyzobrazováníobjemovýchdat"
-\pdf_author "MartinHoleček"
-\pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
+\pdf_title "Optimization of operation of renewable electric energy sources based on fuel cells, accumulators and PV panels for small powers"
+\pdf_author "Martin Holeček"
+\pdf_bookmarks 1
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder false
-\pdf_colorlinks false
-\pdf_backref section
-\pdf_pdfusetitle true
-\pdf_pagemode UseOutlines
-\pdf_quoted_options "unicode,%% hyperlinky budou označeny červenými rámečky, které budou neviditelné při tisku na papír"
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref false
+\pdf_pdfusetitle 0
 \papersize a4paper
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
-\use_package cancel 1
-\use_package esint 1
+\use_package cancel 0
+\use_package esint 2
 \use_package mathdots 0
-\use_package mathtools 1
+\use_package mathtools 0
 \use_package mhchem 0
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine natbib
 \cite_engine_type authoryear
-\biblio_style plainnat
+\biblio_style alpha
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -83,14 +81,198 @@
 \begin_body
 
 \begin_layout Standard
+
+\lang czech
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+empty
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang czech
+
+\size large
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
+Charles University in Prague
+\size default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\size large
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang czech
+
+\begin_inset VSpace medskip
+\end_inset
+
+ 
+\size large
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
+Faculty of Mathematics and Physics
+\size default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\size large
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang czech
+
+\begin_inset VSpace vfill
+\end_inset
+
+ 
+\series bold
+
+\size larger
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
+MASTER THESIS
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\size larger
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang czech
+
+\begin_inset VSpace vfill
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-pagestyle{empty}
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+\lang czech
+
+\begin_inset Graphics 
+	filename Obrazky/logo.eps
+	width 60mm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
 \end_layout
 
 \end_inset
@@ -101,100 +283,12 @@ pagestyle{empty}
 \begin_layout Standard
 \align center
 
-\size large
-Charles University in Prague
-\end_layout
+\lang czech
 
-\begin_layout Standard
-\align center
-\begin_inset VSpace medskip
-\end_inset
-
-
-\size large
-Faculty of Mathematics and Physics
-\end_layout
-
-\begin_layout Standard
-\align center
 \begin_inset VSpace vfill
 \end_inset
 
-
-\series bold
-\size larger
-MASTER THESIS
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset VSpace vfill
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename Obrazky/logo.eps
-	width 60mm
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset VSpace vfill
-\end_inset
-
-
+ 
 \begin_inset VSpace 5mm
 \end_inset
 
@@ -204,12 +298,37 @@ status collapsed
 \begin_layout Standard
 \align center
 
+\lang czech
+
 \size largest
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
 Martin Holeček
+\size default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\size largest
+
 \end_layout
 
 \begin_layout Standard
 \align center
+
+\lang czech
+
 \begin_inset VSpace 15mm
 \end_inset
 
@@ -219,22 +338,50 @@ Martin Holeček
 \begin_layout Standard
 \align center
 
+\lang czech
+
 \series bold
+
 \size largest
-Optimization of operation of renewable electric energy sources based on
- fuel cells, accumulators and FV panels for small powers
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
+Optimization of operation of renewable electric energy sources based on fuel cells, accumulators and FV panels for small powers
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\size largest
+
 \end_layout
 
 \begin_layout Standard
 \align center
+
+\lang czech
+
 \begin_inset VSpace vfill
 \end_inset
 
-Mathematical Institute of Charles University
+ Mathematical Institute of Charles University 
 \end_layout
 
 \begin_layout Standard
 \align center
+
+\lang czech
+
 \begin_inset VSpace vfill
 \end_inset
 
@@ -243,17 +390,22 @@ Mathematical Institute of Charles University
 
 \begin_layout Standard
 \align center
-\begin_inset Tabular
+
+\lang czech
+
+\begin_inset Tabular 
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="right" valignment="top">
 <column alignment="left" valignment="top">
 <row>
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Supervisor of the master thesis:
+\begin_layout Standard
+
+\lang czech
+Supervisor of the master thesis: 
 \end_layout
 
 \end_inset
@@ -261,10 +413,10 @@ Supervisor of the master thesis:
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-prof.
- Ing.
- František Maršík, DrSc.
+\begin_layout Standard
+
+\lang czech
+prof. Ing. František Maršík, DrSc.
 \end_layout
 
 \end_inset
@@ -274,20 +426,18 @@ prof.
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %% Jméno a příjmení s~tituly 
 \backslash
 
 \backslash
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -298,7 +448,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 noalign
@@ -311,7 +460,6 @@ noalign
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -321,12 +469,11 @@ status collapsed
 \begin_inset VSpace 2mm
 \end_inset
 
-
+ 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -340,7 +487,9 @@ status collapsed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
+\lang czech
 Mathematics
 \end_layout
 
@@ -351,12 +500,14 @@ Mathematics
 <cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
+\lang czech
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 noalign
@@ -369,7 +520,6 @@ noalign
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -379,18 +529,17 @@ status collapsed
 \begin_inset VSpace 2mm
 \end_inset
 
-
+ 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
 \end_inset
 
- Specialization:
+ Specialization: 
 \end_layout
 
 \end_inset
@@ -398,7 +547,9 @@ status collapsed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
+\lang czech
 Mathematical Modelling in Physics and Technology
 \end_layout
 
@@ -414,6 +565,9 @@ Mathematical Modelling in Physics and Technology
 
 \begin_layout Standard
 \align center
+
+\lang czech
+
 \begin_inset VSpace vfill
 \end_inset
 
@@ -421,77 +575,61 @@ Mathematical Modelling in Physics and Technology
 \end_layout
 
 \begin_layout Standard
-\align center
+
+\lang czech
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % Zde doplnte rok
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
-\end_inset
+\begin_layout Standard
+\align center
 
+\lang czech
 Prague 2015
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% Následuje vevázaný list -- kopie podepsaného "Zadání diplomove práce".
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% Toto zadání NENÍ součástí elektronické verze práce, nescanovat.
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% Na tomto místě mohou být napsána případná poděkování (vedoucímu práce,
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% konzultantovi, tomu, kdo zapůjčil software, literaturu apod.)
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -502,10 +640,9 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 openright
@@ -513,43 +650,37 @@ openright
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
-Děkuji panu profesorovi Maršíkovi za podporu při vypracování a zkontaktování
- s výzkumnými kolegy a panu Douckovi za vzorová data pro testování.
+
+\lang czech
+Děkuji panu profesorovi Maršíkovi za podporu při vypracování a zkontaktování s výzkumnými kolegy a panu Douckovi za vzorová data pro testování.
 \end_layout
 
 \begin_layout Standard
 \noindent
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%DOD: Děkuji panu Hronovi za podporu a pomoc v .
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% Strana s čestným prohlášením k diplo práci
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -558,147 +689,216 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
-vglue 0pt plus 1fill
+vglue
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+ 0pt plus 1fill
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang czech
+I declare that I carried out this master thesis independently, and only with the cited sources, literature and other professional sources.
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\begin_inset VSpace medskip
+\end_inset
+
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\noindent
 
+\lang czech
+I understand that my work relates to the rights and obligations under the Act No.
+\begin_inset space ~
+
+\end_inset
+
+121/2000 Coll., the Copyright Act, as amended, in particular the fact that the Charles University in Prague has the right to conclude a license agreement on the use of this work as a school work pursuant to Section 60 paragraph 1 of the Copyright Act.
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\begin_inset VSpace 10mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang czech
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-noindent I declare that I carried out this master thesis independently,
- and only with the cited sources, literature and other professional sources.
+hbox
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-
-\backslash
-medskip
-\backslash
-noindent
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-I understand that my work relates to the rights and obligations under the
- Act No.~121/2000 Coll., the Copyright Act, as amended, in particular the
- fact that the Charles University in Prague has the right to conclude a
- license agreement on the use of this work as a school work pursuant to
- Section 60 paragraph 1 of the Copyright Act.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{10mm}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hbox{
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-hbox to 0.5
-\backslash
-hsize{
-\end_layout
-
-\begin_layout Plain Layout
-
-  In ........
- date ............
  
-\end_layout
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+hbox
+\end_layout
+
+\end_inset
+
+ to 0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ In ........ date ............ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hss
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 }
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-hbox to 0.5
+hbox
+\end_layout
+
+\end_inset
+
+ to 0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
-hsize{
+hsize
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-  signature of the author 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ signature of the author 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hss
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 }
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 }
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-
-\backslash
-vspace{20mm}
-\end_layout
-
+ 
+\begin_inset VSpace 20mm
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+
 \begin_inset Newpage newpage
 \end_inset
 
@@ -706,20 +906,62 @@ vspace{20mm}
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+vbox
+\end_layout
+
+\end_inset
+
+ to 0.5 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-vbox to 0.5 
-\backslash
-vsize{
+vsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
 setlength{
 \backslash
 parindent}{0mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
 setlength{
 \backslash
@@ -732,34 +974,34 @@ parskip}{5mm}
 \end_layout
 
 \begin_layout Standard
-Název práce: Optimalizace funkce obnovitelných zdrojů elektrické energie
- na bázi palivových článků, akumulátorů a FV panelů pro malé výkony.
+
+\lang czech
+Název práce: Optimalizace funkce obnovitelných zdrojů elektrické energie na bázi palivových článků, akumulátorů a FV panelů pro malé výkony.
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
 Autor: Martin Holeček
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
 Katedra: Matematický ústav UK
 \end_layout
 
 \begin_layout Standard
-Vedoucí diplomové práce: prof.
- Ing.
- František Maršík, DrSc., Matematický ústav UK 
+
+\lang czech
+Vedoucí diplomové práce: prof. Ing. František Maršík, DrSc., Matematický ústav UK 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %% Jméno a příjmení s tituly, pracoviště
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -767,13 +1009,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-%% dle Organizační struktury MFF UK, případně plný název pracoviště mimo
- MFF UK
-\end_layout
-
-\begin_layout Plain Layout
-
+%% dle Organizační struktury MFF UK, případně plný název pracoviště mimo MFF UK
 \end_layout
 
 \end_inset
@@ -782,72 +1018,139 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Abstrakt: 
+
+\lang czech
+Abstrakt:
 \end_layout
 
 \begin_layout Standard
-První část práce je věnovaná hlubší rešerši do literatury optimálního řízení,
- shrnutí principů a způsobů jak je aplikovat na prezentovaný problém.
- Následně je sestaven a popsán model použitelný pro samostatnou energetickou
- jednotku s
+
+\lang czech
+První část práce je věnovaná hlubší rešerši do literatury optimálního řízení, shrnutí principů a způsobů jak je aplikovat na prezentovaný problém. Následně je sestaven a popsán model použitelný pro samostatnou energetickou jednotku s
 \begin_inset space ~
+
 \end_inset
 
-použitím vodíkových článků, akumulátoru a fotovoltaických panelů, spolu
- s
+použitím vodíkových článků, akumulátoru a fotovoltaických panelů, spolu s
 \begin_inset space ~
+
 \end_inset
 
-nejčastějšími používanými rovnicemi z literatury.
- Také je formulován problém optimálního řízení řečeného systému pro optimální
- cenu v
+nejčastějšími používanými rovnicemi z literatury. Také je formulován problém optimálního řízení řečeného systému pro optimální cenu v
 \begin_inset space ~
+
 \end_inset
 
-provozu při nejlepších podmínkách.
- Dále jsou popsány algoritmy numerického řešení systému spolu s
+provozu při nejlepších podmínkách. Dále jsou popsány algoritmy numerického řešení systému spolu s
 \begin_inset space ~
+
 \end_inset
 
-implementací konkrétního numerického algoritmu 
-\begin_inset Quotes gld
-\end_inset
-
-multiple shooting" na tento problém a
+implementací konkrétního numerického algoritmu ,,multiple shooting" na tento problém a
 \begin_inset space ~
+
 \end_inset
 
  numerické testy a výsledky.
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
 Klíčová slova: řídící systémy, palivové články, stacionární zdroje energie
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-vss}
+vss
 \end_layout
 
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
 \begin_layout Plain Layout
 
+\backslash
+nobreak
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-nobreak 
+vbox
+\end_layout
+
+\end_inset
+
+ to 0.49 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
-vbox to 0.49 
-\backslash
-vsize{ 
+vsize
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
 setlength{
 \backslash
-parindent}{0mm} 
+parindent}{0mm}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \backslash
 setlength{
 \backslash
@@ -860,54 +1163,62 @@ parskip}{5mm}
 \end_layout
 
 \begin_layout Standard
-Title: Optimization of operation of renewable electric energy sources based
- on fuel cells, accumulators and FV panels for small powers.
+
+\lang czech
+Title: Optimization of operation of renewable electric energy sources based on fuel cells, accumulators and FV panels for small powers.
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
 Author: Martin Holeček
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
 Department: Mathematical Institute of Charles University
 \end_layout
 
 \begin_layout Standard
-Supervisor: prof.
- Ing.
- František Maršík, DrSc., Ph.D., Mathematical Institute
+
+\lang czech
+Supervisor: prof. Ing. František Maršík, DrSc., Ph.D., Mathematical Institute
 \end_layout
 
 \begin_layout Standard
-Abstract: 
+
+\lang czech
+Abstract:
 \end_layout
 
 \begin_layout Standard
-The first part of the research is motivated to provide citations deeper
- to the literature of optimal control principles that could be linked to
- the system optimization problem, discuss these principles and various ways
- to apply them.
- Then we describe one fuel cell, accumulator and photovoltaic standalone
- system along with the most used equations from the literature.
- Next, we formulate the problem of optimal control for this system to optimize
- the system financial cost in the best case and we process to describe and
- discuss the numerical optimal control algorithm - multiple shooting - that
- will be used to solve the problem, that was not used in literature so far
- in conjunction with the problem.
- The codes and numerical simulations are also provided.
+
+\lang czech
+The first part of the research is motivated to provide citations deeper to the literature of optimal control principles that could be linked to the system optimization problem, discuss these principles and various ways to apply them. Then we describe one fuel cell, accumulator and photovoltaic standalone system along with the most used equations from the literature. Next, we formulate the problem of optimal control for this system to optimize the system financial cost in the best case and we process to describe and discuss the numerical optimal control algorithm - multiple shooting - that will be used to solve the problem, that was not used in literature so far in conjunction with the problem. The codes and numerical simulations are also provided.
 \end_layout
 
 \begin_layout Standard
-Keywords: control systems, fuel cells, stationary electric energy sources
- 
+
+\lang czech
+Keywords: control systems, fuel cells, stationary electric energy sources 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
-vss}
+vss
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
 \end_layout
 
 \end_inset
@@ -916,48 +1227,34 @@ vss}
 \end_layout
 
 \begin_layout Standard
+
+\lang czech
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-%%% Strana s automaticky generovaným obsahem diplolářské práce.
- U matematických
-\end_layout
-
-\begin_layout Plain Layout
-
+%%% Strana s automaticky generovaným obsahem diplolářské práce. U matematických
 \end_layout
 
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-%%% prací je přípustné, aby případný seznam tabulek a zkratek, existují-li,
- byl umístěn
-\end_layout
-
-\begin_layout Plain Layout
-
+%%% prací je přípustné, aby případný seznam tabulek a zkratek, existují-li, byl umístěn
 \end_layout
 
 \end_inset
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 %%% na začátku práce, místo na jejím konci.
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -968,24 +1265,53 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 openright
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-pagestyle{plain}
+pagestyle
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+plain
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 setcounter{page}{1}
@@ -999,6 +1325,8 @@ LatexCommand tableofcontents
 
 \end_inset
 
+
+\lang english
 
 \end_layout
 

@@ -1,28 +1,38 @@
 %% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[a4paper,czech,english,12pt,a4paper,czech,english]{report}
+\documentclass[12pt,a4paper,english,czech]{report}
 \usepackage[cp1250]{inputenc}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
-\usepackage{color}
-\usepackage{babel}
+\usepackage{color, xcolor}
+\usepackage{babel,epstopdf,graphicx}
 \usepackage{verbatim}
 \usepackage{prettyref}
-\usepackage{float}
-\usepackage{wrapfig}
-\usepackage{calc}
-\usepackage{units}
+\usepackage{float,wrapfig}
+\usepackage{calc, units, url, lipsum}
 \usepackage{textcomp}
-\usepackage{url}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{graphicx}
 \usepackage{esint}
-\usepackage{nomencl}
+\usepackage{natbib, nomencl}
+\usepackage{amsthm,amsmath,amssymb,amscd,mathrsfs,url}
+\usepackage{showkeys}
+\usepackage{stackengine}
+\usepackage{comment}
+\usepackage{caption, subcaption}
+\usepackage{tikz}
+\usepackage[customcolors,shade]{hf-tikz}
+\usepackage{marginnote}
+\usepackage{esint}
+\usepackage{ulem, ae, bbding}
+\usepackage{multicol}%%% vícesloupcová sazba
+\usepackage{fancybox}%%% vkládání obrázkù
+\usepackage{psfrag}
+\usepackage{fancyvrb}
+\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
+%%\usepackage{MNsymbol} NIKDY!
+%\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
 % the following is useful when we have the old nomencl.sty package
 \providecommand{\printnomenclature}{\printglossary}
 \providecommand{\makenomenclature}{\makeglossary}
-\makenomenclature
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
@@ -30,7 +40,6 @@
 \hypersetup{pdftitle={Optimization of operation of renewable electric energy sources based on fuel cells, accumulators and PV panels for small powers},
  pdfauthor={Martin Holeèek}}
 
-\makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \pdfpageheight\paperheight
@@ -51,38 +60,6 @@
 \setlength{\headsep}{0mm}
 \setlength{\headheight}{0mm}
 \let\openright=\clearpage
-%\ifx\uv\undefined\newcommand{\uv}[1]{,,#1``}\fi
-\usepackage{amsthm,amsmath,amssymb,amscd,mathrsfs,url}
-%\usepackage[czech]{babel}
-%\usepackage[utf8]{inputenc}
-\usepackage[cp1250]{inputenc}
-\usepackage{verbatim}
-%\usepackage{ictamxs}
-\usepackage{showkeys}
-\usepackage{xcolor}
-\usepackage{stackengine}
-\usepackage{lipsum}
-\usepackage{comment}
-%%\usepackage{MNsymbol} NIKDY!
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{nomencl}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage[customcolors,shade]{hf-tikz}
-\usepackage{marginnote}
-\usepackage{esint}
-\usepackage{ulem}
-\usepackage{multicol}%%% vícesloupcová sazba
-\usepackage{fancybox}%%% vkládání obrázkù
-\usepackage{psfrag}
-\usepackage{fancyvrb}
-\usepackage{bbding}
-\usepackage{comment}
-\usepackage{epstopdf} 
-\usepackage{url}
-\usepackage{natbib}
-\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
 %\setcounter{secnumdepth}{0}
 
@@ -90,7 +67,7 @@
 \numberwithin{figure}{chapter}
 \numberwithin{equation}{chapter}
 
-\renewcommand\[{\begin{equation}} 
+\renewcommand\[{\begin{equation}}
 \renewcommand\]{\end{equation}}
 
 \newcommand{\opdiv}{\mathop{\mathrm{div}}}
@@ -150,26 +127,27 @@
 
 \newcommand{\Xm}{\mathbb{X}}
 
-\renewcommand{\t}[1]{#1^\top}  
-\bibliographystyle{alpha}
-\usepackage{ae}
+\renewcommand{\t}[1]{#1^\top}
 %\hyphenation{troj-ú-hel-ník nic-mé-nì pøed-in-te-gro-vá-ní pøí-pa-dì pøe-cho-do-vé uva-žo-va-né na-pøí-klad na-po-èí-ta-nou po-ža-du-je-me umož-ní-me mat-lab-u}
-\makenomenclature
 
+\bibliographystyle{alpha}
+
+\makeatletter
+\makenomenclature
 \makeatother
 
 \begin{document}
 \include{dp_titulni}
 
-\pagebreak{}\printnomenclature
-\addcontentsline{toc}{chapter}{Nomenclature}\pagebreak{}
+%\pagebreak{}\printnomenclature
+%\addcontentsline{toc}{chapter}{Nomenclature}\pagebreak{}
 
 
 \chapter*{Motivation and introduction}
 
 %\setcounter{chapter}{1}
-\stepcounter{chapter}
-\addcontentsline{toc}{chapter}{Motivation and Introduction}
+%\stepcounter{chapter}
+%\addcontentsline{toc}{chapter}{Motivation and Introduction}
 
 For better understanding of the whole problem and work, lets imagine
 a model situation, that we can follow. Lets say, we want to make an
@@ -185,38 +163,38 @@ to do so) and power managment strategy in a manner to make the system
 independent as much as possible (minimizing the consumption of backup
 energy or energy from grid).
 
-\begin{comment}
-In this work not only do we want to solve this problem, but also to
-make this text usefull for future coworkers,
-\end{comment}
+%\begin{comment}
+%In this work not only do we want to solve this problem, but also to
+%make this text usefull for future coworkers,
+%\end{comment}
 
 
 For now, lets look at the theoretical and practical tools needed to
 solve this problem in the following part ``research and previous
 works''. Later we will return to our model problem, and we will use
 the tools to analyze the setting and rewrite it into mathematical
-formulation. 
+formulation.
 
 Lastly, there will be a brief note about the developed algorithms.
 
-\begin{comment}
-At our disposition we will have (or will develop) model for the system
-with equations for parts of the system and supplying datas for daily
-light current and energy demand.
-\end{comment}
-\begin{figure}[b]
-\begin{comment}\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\end{comment}\caption{Schema of functional units (left) and a photo of existing installation
-in ÚJV Øež (right) \cite{UJVInst}}
-\end{figure}
-
-
-
+%\begin{comment}
+%At our disposition we will have (or will develop) model for the system
+%with equations for parts of the system and supplying datas for daily
+%light current and energy demand.
+%\end{comment}
+%\begin{figure}[b]
+%\begin{comment}\includegraphics[width=0.45\textwidth]{Schema-copy}\includegraphics[width=0.45\textwidth]{instalace}\end{comment}\caption{Schema of functional units (left) and a photo of existing installation
+%in ÚJV Øež (right) \cite{UJVInst}}
+%\end{figure}
+%
+%
+%
 \chapter*{Basic assumptions and definitions}
-
+%
 %\setcounter{chapter}{2}
-\stepcounter{chapter}
-\addcontentsline{toc}{chapter}{Research and previous works}
-
+%\stepcounter{chapter}
+%\addcontentsline{toc}{chapter}{Research and previous works}
+%
 In this section, lets look at other works and summarize concepts from
 the relevant fields.
 
@@ -259,16 +237,16 @@ is used to prolong the lifetime of such systems \cite{XuPontryaginStrategy,Prolo
 Needed to say, that new algorithms of global optimization are often
 being used (ex. particle swarm, or genetic algorithms). For these
 algorithms, the question of convergence is still an open problem (about
-this and another possibilities of such algorithms see the text \cite{ExperimentalAlgorithms}). 
+this and another possibilities of such algorithms see the text \cite{ExperimentalAlgorithms}).
 
-
-
-
-\paragraph*{}
-
-
+%
+%
+%
+%\paragraph*{}
+%
+%
 \section{Models for batteries, fuel cells, electrolyzer, photovoltaics...}
-
+%
 There are rich availible model descriptions (for example also in \cite{vepa2013dynamic}),
 complex models (with PDEs \nomenclature{PDE}{Partial differential equation})
 are used for complicated problems and for detailed desription of inside
@@ -289,16 +267,16 @@ course, a diode, and that there is also some ressistance present.
 Thats the reason, why the following (\ref{fig:5-parameter-equivalent})
 equivalent circuit - ``5 parameter circuit\textquotedbl{} - is used
 (there exists even the so called ``7 parameter circuit\textquotedbl{}
-which has another diode in parallel to the first diode). 
+which has another diode in parallel to the first diode).
 
-\begin{wrapfigure}{O}{0.5\columnwidth}%
-\includegraphics[width=0.4\textwidth]{275px-Solar_cell_equivalent_circuit\lyxdot svg}\caption{\label{fig:5-parameter-equivalent}5 parameter equivalent circuit
-for photovoltaic panel}
-\end{wrapfigure}%
+%\begin{wrapfigure}{O}{0.5\columnwidth}%
+%\includegraphics[width=0.4\textwidth]{275px-Solar_cell_equivalent_circuit\lyxdot svg}\caption{\label{fig:5-parameter-equivalent}5 parameter equivalent circuit
+%for photovoltaic panel}
+%\end{wrapfigure}%
 Construction details, like material used (single crystalline silicon,
 polycrystalline and semicrystalline, thin films, amorphous silicon,
 spheral...) or additional tricks (concentrated cells, lens, antireflexive
-and other coating) affect the parameters and the efficiency. 
+and other coating) affect the parameters and the efficiency.
 
 The circuit supplies current $I=I_{pv}$ at voltage $V=V_{pv}$, $I_{L}$
 is generated current by photovoltaic effect and from that we subtract
@@ -338,7 +316,7 @@ short circuit current, open circuit voltage and maximum power point.
 Nice derivation is in the work \cite{Stand-alonePowerSystems} together
 with a method on how to compute the parameters from manufacturer supplied
 information from datasheet, notes on behavior with changing temperature,
-and finally even a fortran code for PV panels. 
+and finally even a fortran code for PV panels.
 
 In a work focused on solar panels and water electrolysis \cite{olubukunmi2011solar},
 there is deeper description and analysis and measurement of output
@@ -353,14 +331,14 @@ book covers many interesting details, even about AC/DC \nomenclature{AC, DC}{Ana
 converters.) Algorithms for tracking maximal power point are also
 being developed in \cite{beyer2004robust,salas2006review}, also using
 neural networks is considered \cite{caluianu2011photovoltaic}.
-
-
-
-
-
-
+%
+%
+%
+%
+%
+%
 \subsection{Battery}
-
+%
 Why to use both batteries and hydrogen (tanks) to store energy? Batteries
 have higher efficiency, but can not store as much energy as we can
 with hydrogen. Moreover, the state of charge of batteries tends to
@@ -368,12 +346,12 @@ decrease and batteries tends to lose quality over time. But using
 them as quick source, or buffer of energy, is generally a good idea.
 Moreover, in a case, where electrolyzer works more efficiently at
 lower loads, battery can lower the load by taking it on itself.
-
-\begin{wrapfigure}{o}{0.5\columnwidth}%
-\includegraphics[scale=0.2]{EqivLeadAcid}\caption{Equivalent circuit for lead acid accumulator.}
-\end{wrapfigure}%
-
-
+%
+%\begin{wrapfigure}{o}{0.5\columnwidth}%
+%\includegraphics[scale=0.2]{EqivLeadAcid}\caption{Equivalent circuit for lead acid accumulator.}
+%\end{wrapfigure}%
+%
+%
 The main variables for a common battery model are the voltage and
 state of charge (SOC). Lets speak about a model of lead acid accumulator
 from \cite{voutetakis2011design} - the model is generally valid for
@@ -412,7 +390,7 @@ The indexes ``ch\textquotedbl{} stand for charging and ``dch\textquotedbl{}
 for discharging. The parameters $g_{100},k_{100}$ are height and
 slope parametes for fully charged battery ($SOC=100\%$).
 
-A discrete model for a capacity of the battery is 
+A discrete model for a capacity of the battery is
 \[
 Q_{bat,i}=Q_{bat,i-1}+I_{q}(t_{i}-t_{i-1})=Q_{bat,nom}SOC_{i-1}/100+I_{q}(t_{i}-t_{i-1})
 \]
@@ -431,12 +409,12 @@ SOC(t+1)=SOC(t)(1-\sigma_{ac})+I_{ac}\eta_{ac}(\Delta t)\label{eq:battmodel}
 
 $SOC$ cannot be directly measured, it needs to be derived from the
 model or indirectly from experiements.\nomenclature{$SOC$}{battery state of charge}
-
-
-
-
+%
+%
+%
+%
 \subsection{Electrolyzer and Fuel cell}
-
+%
 Electrolyzer and fuel cell both basically operate from a simple chemical
 reaction (\cite{rayment2003introduction}) :
 
@@ -588,7 +566,7 @@ the following applies:
 
 \begin{eqnarray}
 V_{fc} & = & V_{o}-a_{T}\log(i)-ir+m\exp(il)\label{eq:usedfuelcell}\\
-V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber 
+V_{o} & = & V_{rev,FC}+B\log(i_{o})\nonumber
 \end{eqnarray}
 
 
@@ -622,17 +600,17 @@ or at higher pressue or liquidified. These possibilities are covered
 in most of presented resources and citations. If we wanted to store
 the hydrogen in any other way, than at the output pressue, we would
 need to add the compressor into the equation (like it is done in \cite{voutetakisdesign}).
-
-
-
-
-\section*{\pagebreak{}}
-
-
+%
+%
+%
+%
+%\section*{\pagebreak{}}
+%
+%
 \section{Optimization and optimal control - general theory}
-
-
-
+%
+%
+%
 Optimization is a rich field with many subproblems arising from the
 specific problem settings. Optimal control is actually applied optimization
 together with variational calculus \cite{milyutin1999calculus} and
@@ -649,7 +627,7 @@ evolving in time, controlled by a function (system dynamics).
 \mbox{minimize}\,J & =\phi(x(T),T)+\int_{0}^{T}L(x,u(x,t),t)\,dt\tag*{...cost function / objective function}\nonumber \\
 \dot{x} & =f(x,u(x,t),t)\tag*{...system dynamics}\nonumber \\
 x(0) & =x_{0}\label{eq:basiceqs}\\
-g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber 
+g(x,u(x,t),t) & \leq0\tag*{...constraints}\nonumber
 \end{align}
 
 
@@ -666,8 +644,11 @@ problem of controllability and observability and the presence of noise.
 \subsubsection{Basic terms}
 
 Optimization problems have many subclasses (\ref{fig:Optimization-Tree})
-and optimal control is not an exception.\begin{wrapfigure}{o}{0.5\columnwidth}%
-\includegraphics[width=0.5\textwidth]{treeoptimiz}\caption{\label{fig:Optimization-Tree}Optimization Tree, neos.mcs.anl.gov}
+and optimal control is not an exception.
+\begin{wrapfigure}{o}{0.5\columnwidth}%
+\includegraphics[width=0.5\textwidth]{treeoptimiz}
+\caption{Optimization Tree, neos.mcs.anl.gov}
+\label{fig:Optimization-Tree}
 \end{wrapfigure}%
 
 
@@ -765,7 +746,7 @@ using Hamiltonian:
 \begin{align}
 J^{\star}(x(T),T) & =\phi(x(T),T)\\
 -\frac{\partial J^{\star}}{\partial t} & =\min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber \\
-\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber 
+\dot{x} & =\frac{\partial H}{\partial\lambda}=f\tag*{...state equation}\nonumber
 \end{align}
 
 
@@ -806,11 +787,11 @@ taking the system dynamic as constraint for lagrange multipliers.
 
 In the presence of state constraints $x\in R=\{x\in\mathbb{R}^{n},\,g(x)\le0\}$,
 PMP is formulated a bit differently \cite{EvansControlCourse} - we
-need to define a function 
+need to define a function
 \begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)
 \end{equation}
- and the costate equation becomes: 
+ and the costate equation becomes:
 \begin{equation}
 -\dot{\lambda}=\frac{\partial H}{\partial x}(x,u,t)+\mu\frac{\partial c}{\partial x}(x,u)
 \end{equation}
@@ -843,23 +824,23 @@ optimization problem (an excellent book about this topic is \cite{chachuat2007no
 
 
 
-\begin{figure}
-\fbox{\begin{minipage}[t]{1\columnwidth}%
-\begin{itemize}
-\item HJB Equations - tabulation in state space
-\item Indirect methods, Pontryagin - solve boundary value problem
-\item Direct Methods - change to nonlinear programming
+%\begin{figure}
+%\fbox{\begin{minipage}[t]{1\columnwidth}%
+%\begin{itemize}
+%\item HJB Equations - tabulation in state space
+%\item Indirect methods, Pontryagin - solve boundary value problem
+%\item Direct Methods - change to nonlinear programming
 
-\begin{itemize}
-\item Single shooting - discretized controls to NLP
-\item Multiple shooting - controls and node start values discretized
-\item Collocation - disretized controls and states\end{itemize}
-\end{itemize}
+%\begin{itemize}
+%\item Single shooting - discretized controls to NLP
+%\item Multiple shooting - controls and node start values discretized
+%\item Collocation - disretized controls and states\end{itemize}
+%\end{itemize}
+%%
+%\end{minipage}}
 %
-\end{minipage}}
-
-\caption{Numerical optimal control cases}
-\end{figure}
+%\caption{Numerical optimal control cases}
+%\end{figure}
 
 
 As said above, the main classes are \textbf{indirect methods} (first
@@ -942,12 +923,13 @@ problems.
 
 \chapter*{Optimal problem algorithm for actual energy source configuration}
 
-%\setcounter{chapter}{3}
-%\setcounter{section}{0}
-%\setcounter{subsection}{0}
-%\setcounter{subsubsection}{0}
-\stepcounter{chapter}
-\addcontentsline{toc}{chapter}{Solution}
+%%\setcounter{chapter}{3}
+%%\setcounter{section}{0}
+%%\setcounter{subsection}{0}
+%%\setcounter{subsubsection}{0}
+%
+%\stepcounter{chapter}
+%\addcontentsline{toc}{chapter}{Solution}
 
 In this section we will apply the theory and methods to our setting
 and problem (trying to focus on issues, that were not answered elsewhere).
@@ -1002,7 +984,7 @@ We need to rewrite the setting using mathematical formulation - to
 express the boundary conditions, the state variables $x(t)$, the
 performance index $J()$, the control function $u(t)$ and the dynamics
 of the system $\dot{x}=f(x,u,t)$ (using notation consistent with
-the optimal control theory, see eqs. \ref{eq:basiceqs}). 
+the optimal control theory, see eqs. \ref{eq:basiceqs}).
 
 Lets express every state variable in energy, Joules, and control variables
 in Watts, with exception for $u_{2}$\nomenclature{$u_2$}{current flow from hydrogen ($A$)},
@@ -1017,30 +999,27 @@ and fuelcell), our state is two dimensional real valued function $x(t)=(x_{1}(t)
 These quantities are bounded by $B(t)\leq B_{max}$\nomenclature{$B_{max}$}{maximal energy in battery ($J$)}
 and $S(t)\leq S_{max}$\nomenclature{$S_{max}$}{maximum of hydrogen in tank ($2F \cdot mol$)},
 bounds to maximal battery charge and maximal hydrogen stored (in means
-of power we used to create the hydrogen). 
+of power we used to create the hydrogen).
 
 The boundary condition is the source power from solar collectors and
 power demand, defined as $P_{src}(t)=P_{in}(t)-P_{demand}(t)$\nomenclature{$P_{src}$}{source power as energy from solar collectors minus electricity demand ($W$)},
 difference between input power and power demand (in Watts). Usually
 the data would look like in figure \ref{fig:First-seven-days}.
 \begin{figure}
-\includegraphics[width=1\textwidth]{oneweekofdata}\caption{\label{fig:First-seven-days}First seven days of availible data (power
-production from PV panels from UJV Øež). As the data start with wednsday,
+\includegraphics[width=1\textwidth]{oneweekofdata}%
+\caption{\label{fig:First-seven-days}%
+First seven days of availible data (power production from PV panels from UJV Øež). 
+As the data start with Wednesday,
 notice bigger consumption over weekends (in the middle).}
-
-
 \end{figure}
 The control function $u$ is also a two dimensional function of time
 and will define the power flow:
 \begin{itemize}
 \item the first component tells us about charging/discharging the battery:
 
-
 \[
 \dot{(B)}(t)=P_{batt}(u_{1})-\sigma B(t)
 \]
-
-
 
 Using this equation we can model the efficiency by setting $P_{batt}(u_{1})=u_{1}\eta_{batt}$
 and also the result of auto discharge $\sigma$.
@@ -1105,7 +1084,7 @@ P_{H_{2}}(u_{2})
 \end{array}\right]+\left[\begin{array}{c}
 -\sigma\cdot B(t)\\
 0
-\end{array}\right]\nonumber 
+\end{array}\right]\nonumber
 \end{eqnarray}
 To finish our formulation, we want to find the minimizing control
 function $u^{\star}$ (and the corresponding minimizing trajectory
@@ -1174,10 +1153,10 @@ even from different views.
 \paragraph{Hamiltonian}
 
 The Hamiltonian of our system, using $\lambda\in\mathbb{R}^{2}$ as
-lagrange multipliers is 
+lagrange multipliers is
 \begin{eqnarray}
 H(x,u,\lambda,t) & = & L(x,u,t)+\lambda^{T}f(x,u,t)\\
- & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber 
+ & = & |P_{src}-P_{batt}-P_{H_{2}}|+\lambda_{1}(P_{batt}(u_{1})-\sigma\cdot B(t))+\lambda_{2}P_{H_{2}}(u_{2})\nonumber
 \end{eqnarray}
 
 
@@ -1190,7 +1169,7 @@ suddenly become non constant.
 
 Additionally, in the presence of state constraints (for example $x\in[0,B_{max}]\times[0,S_{max}]\iff\{x\in\mathbb{R}^{2},\,g(x)\le0,\,g(x)=-((x_{1}-\nicefrac{1}{2}B_{max})^{2}+\nicefrac{1}{4}B_{max}^{2})((x_{2}-\nicefrac{1}{2}S_{max})^{2}+\nicefrac{1}{4}S_{max}^{2})\}$),
 the definition of Hamiltonian alone is not sufficient and the theory
-usually also defines the function 
+usually also defines the function
 \begin{equation}
 c(x,u)=\nabla g(x)\cdot f(x,u)\label{eq:defc}
 \end{equation}
@@ -1233,7 +1212,7 @@ $0=\frac{\partial H}{\partial u}=\frac{\partial L}{\partial u}+\frac{\partial f^
 
 In the presence of state constraints (``maximum principle for state
 constraints\textquotedbl{}), we have the existency of a costate function
-$p^{\star}$ and a function $\lambda^{\star}$, such that: 
+$p^{\star}$ and a function $\lambda^{\star}$, such that:
 \begin{eqnarray}
 \dot{p}^{\star}(t) & = & -\nabla_{x}H(x^{\star}(t),p^{\star}(t),u^{\star}(t))+\lambda^{\star}(t)\nabla_{x}c(x^{\star}(t),u^{\star}(t))\\
 H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(x^{\star},u)=0\}
@@ -1250,10 +1229,10 @@ H(x^{\star},p^{\star},u^{\star}) & = & \max_{u}\{H(x^{\star},p^{\star},u)\,|\,c(
 
 
 The equation for developement of the optimal cost (computed backwards)
-is 
+is
 \begin{eqnarray}
 J^{\star}(x(T),T) & = & \phi(x(T),T)\\
--\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber 
+-\frac{\partial J^{\star}}{\partial t} & = & \min_{u}H(x,u,J_{x}^{\star},t)=L(x,u,t)+J_{x}^{\star}f(x,u,t)\nonumber
 \end{eqnarray}
 
 
@@ -1362,7 +1341,7 @@ easier, computation faster, but it also gives us the needed results
 here), we just need to clarify our demands on functions $hcost$,
 $bcost$ and $pcost$ - to be continuous. Because these functions
 just translate amouts of physical variable to cost in money, we can
-assume continuity without causing any harm. 
+assume continuity without causing any harm.
 
 In this analysis we ommited any constraints, but given the fact that
 the constraints are, in the basic sense, constant, not dependent on
@@ -1375,87 +1354,87 @@ spaces on which we are searching for the minima).
 Our functional is, in the end, easier to work with, than normally
 presented problems from the calculus of variations, because we do
 not have derivatives of the control function in our functional.
-
-
-
-
-
-\begin{comment}
-otazky
-
-$\dot{x}=f(x,u,t):\dot{\left[\begin{array}{c}
-SOC(t)\\
-S(t)
-\end{array}\right]}=\left[\begin{array}{c}
-P_{batt}(u_{1})\\
-P_{H_{2}}(u_{2})
-\end{array}\right]+\left[\begin{array}{c}
--\sigma\cdot SOC(t)\\
-0
-\end{array}\right]$ minimize the performance index $J=\int_{0}^{T}|P_{src}-P_{batt}-P_{H_{2}}|\,dt$
-
-poznamky z konzultace s Kurzikem 14082014
-
-nejdriv jestli to existuje jestli mi ty omezeni na rozsah nezkazi
-existenci - to je potreba overit
-
-v roubickove knize 260, relaxace proto abych to mohl resit
-
-rizeni je z kompaktni mnoziny
-
-box constraints minimalizuju funkci a 
-
-gradientni metody jsou supr pro konvexni ulohu - tam vlastne vim ze
-sem v minimu. Muze bejt lepsi druha mocnina kviuli kvadraticky strukture.
-ta absolutni hodnota
-
-v numerice to nebude hladky takze na gradient by byl problem, tam
-by byla absolutni hodnota - takze lepsi kvadratickej, to muzu zkusit.
-
-fortran - optimization tree mittleman - plato asu
-
------------>-Numericky kody brat z http://plato.la.asu.edu/bench.html<\textcompwordmark{}<---------------------------
-
----------------
-
-OTAZKA - Jak vyjadrim, ze u (ridici funkce) a x (stavova promenna)
-je omezene (nejakym uzavrenym intervalem)? Jak se to projevi na rovnicich?
-
-OTAZKA - Jak postupovat dal? Jaky numericky resic (c++ idealne) se
-da pouzit? Je jich hrozna hromada:
-
-Hodi se dal posutpovat spis Hamilton jakobi bellmanem, dynamickym
-programovanim s diskretizaci, nebo principem maxima? Co je nejlepsi
-z hlediska programovyho/numerickyho nejrychlejsiho? Co se pouziva?
-
-OTAZKY ohledne PDR a viskoznich reseni:
-
--OTAZKA jak resit pomoci HJB a vizkoznich reseni? Staci MKP? Jak na
-to?
-
--OTAZKA - jsou viskozni reseni zobecneny slabyma resenima z nami zname
-PDR 1?
-
-otazka - Co znamenaji posledni podminky v optimal control strany 123
-
-others
-
-OTAZKA - jde nas problem vyresit jako linear quadratic regulator?
-To pak ma analyzticky reseni! a nemusim diskretizovat.
-
-protiOTAZKA - co by se zmenilo, kdybych tam dal absolutni hodnotu
-misto kvadratu? otazka co by se zmenilo kdybych tam nemel kvadrat,
-ale absolutni hodnotu v hodnotici funkci?
-
-...
-\end{comment}
-
-
-
-
-
-
-
+%
+%
+%
+%
+%
+%\begin{comment}
+%otazky
+%
+%$\dot{x}=f(x,u,t):\dot{\left[\begin{array}{c}
+%SOC(t)\\
+%S(t)
+%\end{array}\right]}=\left[\begin{array}{c}
+%P_{batt}(u_{1})\\
+%P_{H_{2}}(u_{2})
+%\end{array}\right]+\left[\begin{array}{c}
+%-\sigma\cdot SOC(t)\\
+%0
+%\end{array}\right]$ minimize the performance index $J=\int_{0}^{T}|P_{src}-P_{batt}-P_{H_{2}}|\,dt$
+%
+%poznamky z konzultace s Kurzikem 14082014
+%
+%nejdriv jestli to existuje jestli mi ty omezeni na rozsah nezkazi
+%existenci - to je potreba overit
+%
+%v roubickove knize 260, relaxace proto abych to mohl resit
+%
+%rizeni je z kompaktni mnoziny
+%
+%box constraints minimalizuju funkci a
+%
+%gradientni metody jsou supr pro konvexni ulohu - tam vlastne vim ze
+%sem v minimu. Muze bejt lepsi druha mocnina kviuli kvadraticky strukture.
+%ta absolutni hodnota
+%
+%v numerice to nebude hladky takze na gradient by byl problem, tam
+%by byla absolutni hodnota - takze lepsi kvadratickej, to muzu zkusit.
+%
+%fortran - optimization tree mittleman - plato asu
+%
+%----------->-Numericky kody brat z http://plato.la.asu.edu/bench.html<\textcompwordmark{}<---------------------------
+%
+%---------------
+%
+%OTAZKA - Jak vyjadrim, ze u (ridici funkce) a x (stavova promenna)
+%je omezene (nejakym uzavrenym intervalem)? Jak se to projevi na rovnicich?
+%
+%OTAZKA - Jak postupovat dal? Jaky numericky resic (c++ idealne) se
+%da pouzit? Je jich hrozna hromada:
+%
+%Hodi se dal posutpovat spis Hamilton jakobi bellmanem, dynamickym
+%programovanim s diskretizaci, nebo principem maxima? Co je nejlepsi
+%z hlediska programovyho/numerickyho nejrychlejsiho? Co se pouziva?
+%
+%OTAZKY ohledne PDR a viskoznich reseni:
+%
+%-OTAZKA jak resit pomoci HJB a vizkoznich reseni? Staci MKP? Jak na
+%to?
+%
+%-OTAZKA - jsou viskozni reseni zobecneny slabyma resenima z nami zname
+%PDR 1?
+%
+%otazka - Co znamenaji posledni podminky v optimal control strany 123
+%
+%others
+%
+%OTAZKA - jde nas problem vyresit jako linear quadratic regulator?
+%To pak ma analyzticky reseni! a nemusim diskretizovat.
+%
+%protiOTAZKA - co by se zmenilo, kdybych tam dal absolutni hodnotu
+%misto kvadratu? otazka co by se zmenilo kdybych tam nemel kvadrat,
+%ale absolutni hodnotu v hodnotici funkci?
+%
+%...
+%\end{comment}
+%
+%
+%
+%
+%
+%
+%
 \section{Applied numerical procedures and results}
 
 Using all previously mentioned, we developed a program capable of
@@ -1472,7 +1451,7 @@ goal to verify the effectivity of numerous NLP solvers. So, lets suppose,
 that we already have measured yearly power consumption and have already
 installed photovoltaic panels and measured power output. If it is
 not this case, we can, of course, use the model and approach from
-\cite{Stand-alonePowerSystems} to get the estimated power output
+%\cite{Stand-alonePowerSystems} to get the estimated power output
 from manufacturers datasheets. If we would like to answer the first
 question, the only remaining work would be to add the equation tying
 together the cost of a PV panels and other equipment and their effectivity.
@@ -1502,17 +1481,17 @@ parameters were fitted using MATLAB fitting toolbox (and from the
 results below we can see, that the empiric models are indeed usefull
 and sufficient). The source codes are in the directory ``fit\textquotedbl{}.
 
-\begin{figure}
-\includegraphics[width=0.45\textwidth]{fittedelectrolyzerplot}\includegraphics[width=0.45\textwidth]{fittedfuelcell}
-
-\caption{Results of the fitting for electrolyzer (left) and fuelcell (right),
-x axis is current density ($mA\cdot m^{-2}$ ), y axis is voltage
-($V$). Actual values of parameters are kept in the file \texttt{consts.m}
-together with all the other model constants and numerical settings.}
-\end{figure}
-
-
-
+%\begin{figure}
+%\includegraphics[width=0.45\textwidth]{fittedelectrolyzerplot}
+%\includegraphics[width=0.45\textwidth]{fittedfuelcell}
+%\caption{Results of the fitting for electrolyzer (left) and fuelcell (right),
+%x axis is current density ($mA\cdot m^{-2}$ ), y axis is voltage
+%($V$). Actual values of parameters are kept in the file \texttt{consts.m}
+%together with all the other model constants and numerical settings.}
+%\end{figure}
+%
+%
+%
 \subsection{The scripts and usage}
 
 First attempt was to use the ACADO optimization toolkit. Even though
@@ -1617,11 +1596,11 @@ algorithm to find optimal control for this one case
 Source codes and program executables are attached in the electronic
 version.
 \end{comment}
-
-
-
-
-
+%
+%
+%
+%
+%
 \subsection{The numerical experiments}
 
 The scripts will start solving the problem on discretized control
@@ -1640,7 +1619,7 @@ take long time ($2^{14}$ discretization points would require more
 than 4 days of processor time per iteration), so we would chose smaller
 time scale for testing purposes - one day and $2^{5}$ discretization
 points. The main goal is to explore, which NLP solvers would perform
-reasonably well on this type of problem. 
+reasonably well on this type of problem.
 
 This test case was set up to control a production of one day, where
 the photovoltaic power income was less than it would be needed and
@@ -1687,35 +1666,34 @@ points allows for compensation.
 
 From MATLAB and OPTI toolbox, we have applied the algorithms listed
 in the table \ref{fig:Results-of-test}, together with the evaluation
-of the success of every solver. 
+of the success of every solver.
 
 \begin{figure}[H]
 \begin{centering}
 \begin{tabular}{|c|c|c|c|}
-\hline 
+\hline
 algorithm (ndisc=32) &  & optcost & max constraint violation\tabularnewline
-\hline 
-\hline 
+\hline
+\hline
 SQP &  & -2.072860e+08 & 2.851336e-05\tabularnewline
-\hline 
+\hline
 active-set & spustit &  & \tabularnewline
-\hline 
+\hline
 interior-point & bezi &  & \tabularnewline
-\hline 
+\hline
 IPOPT & spustit &  & \tabularnewline
-\hline 
+\hline
 NLOPT & \ref{fig:NLOPT} & -1.062047e+09 & 7.919988e+06\tabularnewline
-\hline 
+\hline
 filtersd & \ref{fig:Filtersd} & -2.429403e+08 & 7.920000e+06\tabularnewline
-\hline 
+\hline
 lbfgsb &  &  & \tabularnewline
-\hline 
+\hline
 PSWARM & nesel &  & \tabularnewline
-\hline 
+\hline
 \end{tabular}
 \par\end{centering}
-
-\caption{\label{fig:Results-of-test}Results of test runs.}
+%\caption{\label{fig:Results-of-test}Results of test runs.}
 \end{figure}
 
 
@@ -1737,24 +1715,25 @@ but that might not be the same challenge for the numerical test of
 the solver.
 
 \begin{figure}
-\centering{}\includegraphics[width=0.9\textwidth]{Obrazky/matepsfigFILTERSD}\caption{\label{fig:Filtersd} FilterSD solver results.}
+%\centering{}
+\includegraphics[width=0.9\textwidth]{Obrazky/matepsfigFILTERSD}
+%\caption{\label{fig:Filtersd} FilterSD solver results.}
 \end{figure}
+%
 \begin{figure}
-\begin{centering}
+%\begin{centering}
 \includegraphics[width=0.9\textwidth]{Obrazky/matepsfigNLOPT}
-\par\end{centering}
-
-\caption{\label{fig:NLOPT}NLOPT solver results. Note that it did not manage
-to satisfy the constraints.}
+%\par\end{centering}
+%\caption{\label{fig:NLOPT}NLOPT solver results. Note that it did not manage
+%to satisfy the constraints.}
 \end{figure}
+%
 \begin{figure}
-\begin{centering}
+%\begin{centering}
 \includegraphics[width=0.9\textwidth]{Obrazky/matepsfigSQP}
-\par\end{centering}
-
-\caption{\label{fig:SQP}SQP Algorithm results}
+%\par\end{centering}
+%\caption{\label{fig:SQP}SQP Algorithm results}
 \end{figure}
-
 
 
 \subsection{Summary}
@@ -1799,6 +1778,6 @@ as a starting point could make the calculation even faster.)
 %\def\bibname{Bibliography}
 %\begin{thebibliography}{99}
 %\addcontentsline{toc}{chapter}{\bibname}
-%\bibliography{bibdata} 
+%\bibliography{bibdata}
 %\end{thebibliography}
 \end{document}
