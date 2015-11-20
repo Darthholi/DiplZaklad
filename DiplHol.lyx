@@ -41,7 +41,6 @@
 \usepackage{bbding}
 \usepackage{comment}
 \usepackage{epstopdf} 
-\usepackage{url}
 %\usepackage{natbib}
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps}
 
@@ -137,7 +136,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command biber
+\bibtex_command default
 \index_command default
 \paperfontsize default
 \spacing single
@@ -356,19 +355,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\end_inset
-
-
+\align center
 \begin_inset Graphics
 	filename Schema-copy.png
 	lyxscale 40
@@ -381,19 +368,6 @@ begin{comment}
 	filename instalace.jpg
 	lyxscale 40
 	width 45text%
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
 
 \end_inset
 
@@ -3896,10 +3870,6 @@ First seven days of availible data (power production from PV panels from
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 The control function 
@@ -5544,6 +5514,10 @@ consts.m
 
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 The scripts and usage
 \end_layout
@@ -6022,9 +5996,6 @@ todo, chybi run5, run6 a ipopt
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -6384,9 +6355,11 @@ Data.TimeScales=60*60, Data.ControlScales=100, 7*24*60*60/Data.TimeScales;
 All the solvers managed to find a better strategy than to just buy the power
  from the grid (which can be seen from the top right graph that would go
  steeply linearly down), unfortunately some of them did 'cheat' in a sense,
- that the constraints were not satisfied.
+ that the constraints were not satisfied or were terminated by the time
+ condition (those that did time out were roughly three times slower, than
+ SQP solver).
  The best performance can be observed for SQP (Sequential quadratic programming)
-, which is in line with the suggested approach from various sources.
+ solver, which is in line with the suggested approach from various sources.
 \end_layout
 
 \begin_layout Standard
@@ -6403,9 +6376,6 @@ reference "fig:SQP"
  In reality, the roles would be reversed and fuelcell used more as long
  term storage, but that might not be the same challenge for the numerical
  test of the solver.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6430,7 +6400,7 @@ name "fig:Filtersd"
 
 \end_inset
 
- FilterSD solver results.
+ FilterSD solver results (failed to satisfy the constraints).
 \end_layout
 
 \end_inset
@@ -6505,7 +6475,7 @@ name "fig:SQP"
 
 \end_inset
 
-SQP Algorithm results
+SQP solver results (so far the most suited one).
 \end_layout
 
 \end_inset
@@ -6542,7 +6512,7 @@ name "fig:LBFGS"
 
 \end_inset
 
-LBFGSB Solver results (timed out).
+LBFGSB solver results (timed out).
 \end_layout
 
 \end_inset
@@ -6579,7 +6549,7 @@ name "fig:InteriorPoint"
 
 \end_inset
 
-InteriorPoint Algorithm results (timed out).
+Interior-point solver results (timed out).
 \end_layout
 
 \end_inset
