@@ -19,7 +19,7 @@
 \usepackage[cp1250]{inputenc}
 \usepackage{verbatim}
 %\usepackage{ictamxs}
-\usepackage{showkeys}
+%\usepackage{showkeys} zakomentovat pro finalni tisk
 \usepackage{xcolor}
 \usepackage{stackengine}
 \usepackage{lipsum}
@@ -281,13 +281,13 @@ Lets add renewable energy source (photovoltaic panels) and a system for
  storing energy.
  Batteries alone are not sufficient, because they would need to be changed,
  due to degradation.
- So lets add availible hydrogen technologies - electrolyzer, hydrogen tank,
+ So lets add available hydrogen technologies - electrolyzer, hydrogen tank,
  fuel cells.
  And, to finish the setting, backup energy unit (or electric grid).
  The goal is to determine the system parameters (and develop the strategy
- to do so) and power managment strategy in a manner to make the system independe
-nt as much as possible (minimizing the consumption of backup energy or energy
- from grid).
+ to do so) and power management strategy in a manner to make the system
+ independent as much as possible (minimizing the consumption of backup energy
+ or energy from grid).
 \end_layout
 
 \begin_layout Standard
@@ -296,7 +296,7 @@ status open
 
 \begin_layout Plain Layout
 In this work not only do we want to solve this problem, but also to make
- this text usefull for future coworkers,
+ this text useful for future coworkers,
 \end_layout
 
 \end_inset
@@ -475,7 +475,7 @@ key "ErdincOptimumDesign"
 
 \end_inset
 
-, optimization of standalone energetic units and power managment strategies
+, optimization of standalone energetic units and power management strategies
  are being researched too (in, for example 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -589,7 +589,7 @@ key "Chaudhuri1997733"
 \end_inset
 
 ).
- There is even a method taking in account the uncertainity of data, called
+ There is even a method taking in account the uncertainty of data, called
  Stochastic annealing 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -696,7 +696,7 @@ Models for batteries, fuel cells, electrolyzer, photovoltaics...
 \end_layout
 
 \begin_layout Standard
-There are rich availible model descriptions (for example also in 
+There are rich available model descriptions (for example also in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "vepa2013dynamic"
@@ -738,8 +738,8 @@ description "Photovoltaic, usually photovoltaic panels"
 
 general power source", we need to consider that the photoelectric effect
  (the power source) happens at the P-N junction, which is, of course, a
- diode, and that there is also some ressistance present.
- Thats the reason, why the following (
+ diode, and that there is also some resistance present.
+ That is the reason, why the following (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:5-parameter-equivalent"
@@ -802,7 +802,7 @@ lline and semicrystalline, thin films, amorphous silicon, spheral...) or additio
 status open
 
 \begin_layout Plain Layout
-boook votetaukis seferlis str 33; druhej model (kterej sem sem zatim nenapsal,
+book votetaukis seferlis str 33; druhej model (kterej sem sem zatim nenapsal,
  je na str 35)
 \end_layout
 
@@ -2749,8 +2749,8 @@ reference
 
 \end_inset
 
- When we add probabilty to the problem, we will be dealing with markov chains
- theory.
+ When we add probability to the problem, we will be dealing with markov
+ chains theory.
 \begin_inset Note Note
 status open
 
@@ -2885,7 +2885,7 @@ key "EvansControlCourse,Lewis2012optimal,bryson1975applied"
 adjoint variable" to one of the derivatives, so it is conveniet to use the
  name.
  It is essential for formulations, that will come later.
- Lets just note here, that Hamiltonian is constant for systems with parametres
+ Lets just note here, that Hamiltonian is constant for systems with parameters
  independent on time.
 \end_layout
 
@@ -2941,8 +2941,9 @@ Dynamic Programming is a principle well known for problems, that can be
  from optimal solutions of subproblems, we can use this information to build
  the solution.
  Whenever this is true (needs, for example, additive cost function), we
- just dont need to search the whole state space, but we can construct the
- solution by constructing subsolutions one from another in a clever order.
+ just do not need to search the whole state space, but we can construct
+ the solution by constructing subsolutions one from another in a clever
+ order.
  Like, for example, the problem of finding the shortest path in a graph.
 \begin_inset Note Note
 status open
@@ -3399,7 +3400,7 @@ key "OptcontrNLP"
 \end_layout
 
 \begin_layout Standard
-Single shooting algorithm is usefull, but the stability can sometimes depend
+Single shooting algorithm is useful, but the stability can sometimes depend
  heavily on starting value.
 \end_layout
 
@@ -3440,7 +3441,7 @@ multiple
  the previous interval to be the same as the starting values on the next
  interval).
  Multiple shooting algorithm results in only a block sparse problem, but
- is easy to paralelize and can treat even unstable systems well.
+ is easy to parallelize and can treat even unstable systems well.
 \begin_inset Note Note
 status open
 
@@ -3454,7 +3455,7 @@ toliko numericaloptimalcontrol.pdf ted jde jen o to to trochu lip popsat
 \end_layout
 
 \begin_layout Standard
-Numerous implementations of numerical optimal control are availible, not
+Numerous implementations of numerical optimal control are available, not
  only in MATLAB, but for example also in C++ in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3620,15 +3621,15 @@ Contribution of this work
 \begin_layout Standard
 Now, lets emphasize, that other existing works tried to model the problem
  using discontinuous functions and optimized only the system parameters
- (for minimial cost) for given power managment strategy or optimized only
- the power managment strategy (or decision constants of the said strategy).
+ (for minimial cost) for given power management strategy or optimized only
+ the power management strategy (or decision constants of the said strategy).
 \end_layout
 
 \begin_layout Standard
 So our aim will be to optimize the global parameters against the cost (using
  global optimization algorithms), but for each test case (values of variables)
  to use the methods of optimal control theory to find the best control strategy.
- That can be usefull in cases, where we wonder about the following:
+ That can be useful in cases, where we wonder about the following:
 \end_layout
 
 \begin_layout Itemize
@@ -3859,9 +3860,9 @@ name "fig:First-seven-days"
 
 \end_inset
 
-First seven days of availible data (power production from PV panels from
+First seven days of available data (power production from PV panels from
  UJV Řež).
- As the data start with wednsday, notice bigger consumption over weekends
+ As the data start with wednesday, notice bigger consumption over weekends
  (in the middle).
 \end_layout
 
@@ -4986,7 +4987,7 @@ DOD otazka - staci to? Co si muzeme dovolit u funkce pcost? Tam muzeme i
 \end_layout
 
 \begin_layout Standard
-In this analysis we ommited any constraints, but given the fact that the
+In this analysis we omitted any constraints, but given the fact that the
  constraints are, in the basic sense, constant, not dependent on anything
  (because they just limit the maximal allowed powers of components), they
  are not going to affect continuity in the presence of multipliers, or any
@@ -5348,7 +5349,7 @@ Using all previously mentioned, we developed a program capable of answering
 \end_inset
 
 What is the most economic setting for photovoltaic and hydrogen system and
- what is the specific power managment strategy (the optimal control function)
+ what is the specific power management strategy (the optimal control function)
  of such system?".
 \end_layout
 
@@ -5373,7 +5374,7 @@ key "Stand-alonePowerSystems"
 
 \end_inset
 
- to get the estimated power output from manufacturers datasheets.
+ to get the estimated power output from manufacturer's datasheets.
  If we would like to answer the first question, the only remaining work
  would be to add the equation tying together the cost of a PV panels and
  other equipment and their effectivity.
@@ -5451,7 +5452,7 @@ http://plotdigitizer.sourceforge.net/
 
 .
  The model parameters were fitted using MATLAB fitting toolbox (and from
- the results below we can see, that the empiric models are indeed usefull
+ the results below we can see, that the empiric models are indeed useful
  and sufficient).
  The source codes are in the directory 
 \begin_inset Quotes eld
@@ -5719,8 +5720,8 @@ controldata
 \family typewriter
 dispsaved.m
 \family default
- - the script that would print the graphs like in this work and compute
- the constraint violation and final cost.
+ - the script that would print, after the solver finishes, the graphs like
+ in this work and compute the constraint violation and final cost for comparing.
 \end_layout
 
 \begin_layout Standard
@@ -5771,7 +5772,7 @@ consts.m
  This also affects the selection of the initial values - on the first run
  they are set randomly and on each consecutive run they are copied from
  previous run (this is because the selection of initial point in the search
- space can affect the outcome of certain optimalizators and also their running
+ space can affect the outcome of certain solvers and also their running
  time).
 \end_layout
 
@@ -5792,7 +5793,7 @@ global and control optimization - searches for the best setting against
 
 \begin_layout Enumerate
 global optimization using PMS - searches for the best setting against costs
- using only defined power managment strategies.
+ using only defined power management strategies.
 \end_layout
 
 \begin_layout Enumerate
@@ -5888,7 +5889,7 @@ consts.m
  is infeasible, because at a lower number of discretization points, achieving
  the result might be difficult or impossible.
  This flaw is fortunately automatically fixed when the number of discretization
- points grows bigger, because higher number of availible decision points
+ points grows bigger, because higher number of available decision points
  can steer the system to allowed set of states.
 \end_layout
 
@@ -6005,8 +6006,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="7" columns="5">
 <features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6016,7 +6018,16 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-algorithm (ndisc=32)
+Solver
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Figure
 \end_layout
 
 \end_inset
@@ -6043,7 +6054,7 @@ Optimal cost found
 \begin_inset Text
 
 \begin_layout Plain Layout
-Maximal constraint violation
+Max constraint violation
 \end_layout
 
 \end_inset
@@ -6054,7 +6065,7 @@ Maximal constraint violation
 \begin_inset Text
 
 \begin_layout Plain Layout
-SQP
+FILTERSD
 \end_layout
 
 \end_inset
@@ -6065,7 +6076,7 @@ SQP
 \begin_layout Plain Layout
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:SQP"
+reference "fig:Filtersd"
 
 \end_inset
 
@@ -6078,7 +6089,19 @@ reference "fig:SQP"
 \begin_inset Text
 
 \begin_layout Plain Layout
--2.072860e+08
+\begin_inset Formula $\otimes$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.429403e+08
 \end_layout
 
 \end_inset
@@ -6087,89 +6110,7 @@ reference "fig:SQP"
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.851336e-05
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-interior-point
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:InteriorPoint"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8.456483e+13
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5.526876e+06
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-IPOPT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+7.920000e+06
 \end_layout
 
 \end_inset
@@ -6204,6 +6145,18 @@ reference "fig:NLOPT"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\otimes$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 -1.062047e+09
 \end_layout
 
@@ -6224,7 +6177,7 @@ reference "fig:NLOPT"
 \begin_inset Text
 
 \begin_layout Plain Layout
-filtersd
+SQP
 \end_layout
 
 \end_inset
@@ -6235,7 +6188,7 @@ filtersd
 \begin_layout Plain Layout
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Filtersd"
+reference "fig:SQP"
 
 \end_inset
 
@@ -6248,7 +6201,19 @@ reference "fig:Filtersd"
 \begin_inset Text
 
 \begin_layout Plain Layout
--2.429403e+08
+\begin_inset Formula $\heartsuit$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.072860e+08
 \end_layout
 
 \end_inset
@@ -6257,23 +6222,23 @@ reference "fig:Filtersd"
 \begin_inset Text
 
 \begin_layout Plain Layout
-7.920000e+06
+2.851336e-05
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-lbfgsb
+LBFGSB
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6288,7 +6253,19 @@ reference "fig:LBFGS"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6297,11 +6274,123 @@ reference "fig:LBFGS"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 7.919967e+06
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interior-point
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InteriorPoint"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.456483e+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.526876e+06
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IPOPT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:IPOPT"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.768536e+08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.919997e+06
 \end_layout
 
 \end_inset
@@ -6325,6 +6414,20 @@ name "fig:Results-of-test"
 \end_inset
 
 Results of test runs.
+ All the solvers performed on 32 discretization points, some did time out
+ (
+\begin_inset Formula $T$
+\end_inset
+
+), some broke down and indicated infeasibility (
+\begin_inset Formula $\otimes$
+\end_inset
+
+), some finished and satisfied the constraints (
+\begin_inset Formula $\heartsuit$
+\end_inset
+
+).
 \end_layout
 
 \end_inset
@@ -6560,29 +6663,65 @@ Interior-point solver results (timed out).
 \end_inset
 
 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Obrazky/matepsfigIPOPT.eps
+	width 90text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:IPOPT"
+
+\end_inset
+
+IPOPT solver results (timed out).
 \end_layout
 
-\begin_layout Subsection
-Summary
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Conclusion
 \end_layout
 
 \begin_layout Standard
-First, we have looked up optimal control and fuel cells works and articles,
- including deeper links to existence results.
- Then, we have applied a numerical optimal control method on a physical
- problem in a way, so that we got:
+We have looked up optimal control and fuel cells works and articles, including
+ deeper links to existence results and have applied a numerical optimal
+ control method on a physical problem in a specific way, so that we got:
 \end_layout
 
 \begin_layout Itemize
-a new method for optimizing system (and system's cost) not against a certain
- strategy, but against ideal maximum instead (which would work even better
- in the need of additional control strategy change in runtime).
+method for optimizing system (and system's cost) not against a certain strategy,
+ but against ideal maximum instead (which would work even better in the
+ need of additional control strategy change in runtime).
 \end_layout
 
 \begin_layout Itemize
-a new method for comparing strategies against ideal maximum - to allow to
- answer a question whether we can get better, that could not be otherwise
- answered.
+method for comparing strategies against ideal maximum - to allow to answer
+ a question whether we can get better, that could not be otherwise answered.
 \end_layout
 
 \begin_layout Itemize
@@ -6591,20 +6730,116 @@ matlab implementation allowing for solver changes for testing different
 \end_layout
 
 \begin_layout Standard
-From the numerical experiments, the solver SQP was veryfied to be well suited
- for the problem.
+The implemented numerical optimal control method shows, that it is possible
+ to find effective algorithms for controlling small photovoltaic powerplants.
+ It is also shown, that not every numerical solver is able to converge on
+ this specific problem setting.
+\end_layout
+
+\begin_layout Standard
+From the numerical experiments, the solver SQP was verified to be well suited
+ for the problem, which is in line with the literature on the topic of multiple
+ shooting method.
+ Other solvers were compared and found to be unbearably slower (in the case
+ of interior point, IPOPT and LBFGSB) or prone to breakdown (FILTERSD and
+ NLOPT).
 \end_layout
 
 \begin_layout Standard
 Future work could include tuning the method for real applications - the
  process would need to be implemented, for example, on a graphic card or
- a computing cluster to be faster.
- Also given a reasonable forecast of sunshine and power consumption, it
- could actually control the system (by precalculating the control for the
- next week each specified step in time), though this would need to be tested
- against other (currently considered) best power managment strategies.
- (Using previous forecast as a starting point could make the calculation
+ a computer cluster to be faster.
+ The strength of multiple shooting approach is, that it is already prepared
+ for parallelization.
+\end_layout
+
+\begin_layout Standard
+The implementation can aid in the design of specific photovoltaic powerplant
+ to optimize the initial cost, the implementation can aid in fulfilling
+ this need.
+\end_layout
+
+\begin_layout Standard
+Also given a reasonable forecast of sunshine and power consumption, it can
+ control the system (by precalculating the control for the next week each
+ specified step in time), though this would need to be tested against other
+ (currently considered) best power management strategies.
+\end_layout
+
+\begin_layout Standard
+So we have successfully reached the initial goals:
+\end_layout
+
+\begin_layout Itemize
+Preparing a computer program for modeling of stationary energetic source
+ with commercially available fuelcells and accumulators in combination with
+ available PV installations.
+\end_layout
+
+\begin_layout Itemize
+To propose a control program for storing and using electrical energy in
+ a stationary installation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Using previous forecast as a starting point could make the calculation
  even faster.)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+V práci navržený postup ukazuje, že lze nalézt efektivní algoritmy k řízení
+ malých fotovoltatických elektráren.
+ Je ukázáno, že ne každý algoritmus je shopen zvlátnout řídící proces v
+ reálném čase a požadovanou přesností.
+\end_layout
+
+\begin_layout Plain Layout
+--Porovnáním.....jsme zjistili...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+--Pro uvedenou formulaci (na bázi Pontryag principu a ...
+ ) se jako nejvýhodnější jevi SQP (proč?) 
+\end_layout
+
+\begin_layout Plain Layout
+--Jako perspektivní se hodí...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+--Při návrhu konkrétní fot.
+ elektr.
+ bude jistě užitečné optimalizovat i pořizovací náklady.
+ Tento požadavek je v uvedené formulaci rovněž zahrnut.
+\end_layout
+
+\begin_layout Plain Layout
+Požadovaných cílú: * Příprava uživatelského počítačového programu pro modelování
+ stacionárního zdroje elektrického výkonu s komerčně dostupnými palivovými
+ články a akumulátory v kombinaci s dostupnými FV instalacemi.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+* navrh programu pro řízení skladování a spotřeby elektrické energie ve
+ stacionární instalaci [2], bylo dosaženo.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
